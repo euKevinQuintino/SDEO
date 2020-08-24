@@ -8,7 +8,7 @@ input,
 textarea,
 button {
   font-size: 62.5%;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   border: none;
   color: #333; }
 
@@ -45,3 +45,63 @@ button {
   .secondary-button:active {
     background: #0744fb;
     color: #fff; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden; }
+
+.system {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  margin: 0 auto; }
+  .system__logo {
+    width: 100%;
+    height: 15%; }
+  .system__search {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 6%; }
+    .system__search__input {
+      width: 66%;
+      height: 40px;
+      margin-right: 2%;
+      border-radius: 6px;
+      padding-left: 8px;
+      font-size: 1.8em;
+      border: 2px solid #396afc;
+      margin-top: 2px; }
+    .system__search__button {
+      width: 32%;
+      height: 40px; }
+      .system__search__button i {
+        margin-left: 6px; }
+  .system__updates {
+    width: 100%;
+    height: 50%;
+    border: 2px solid #396afc;
+    border-radius: 6px; }
+  .system__add {
+    margin-top: 6%;
+    margin-bottom: 6%; }
+    .system__add__button {
+      width: 100%; }
+      .system__add__button i {
+        margin-right: 6px; }
+  .system__help {
+    width: 100%;
+    height: 2%;
+    border-radius: 6px;
+    margin: 6% auto; }
+    .system__help__button {
+      width: 60%;
+      margin-left: 20%; }
+      .system__help__button i {
+        margin-right: 6px; }
+  .system__search-results {
+    width: 100%;
+    height: 60%;
+    border: 2px solid #396afc;
+    border-radius: 6px; }

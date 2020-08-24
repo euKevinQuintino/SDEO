@@ -14,7 +14,7 @@ input,
 textarea,
 button {
   font-size: 62.5%;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   border: none;
   color: $base-text;
 }
@@ -61,3 +61,78 @@ button {
   }
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.system {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  margin: 0 auto;
+
+  &__logo {
+    width: 100%;
+    height: 15%;
+  }
+  &__search {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 6%;
+    &__input {
+      width: 66%;
+      height: 40px;
+      margin-right: 2%;
+      border-radius: 6px;
+      padding-left: 8px;
+      font-size: 1.8em;
+      border: 2px solid $primary;
+      margin-top: 2px;
+    }
+    &__button {
+      width: 32%;
+      height: 40px;
+      i {
+        margin-left: 6px;
+      }
+    }
+  }
+  &__updates {
+    width: 100%;
+    height: 50%;
+    border: 2px solid $primary;
+    border-radius: 6px;
+  }
+  &__add {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    &__button {
+      width: 100%;
+      i {
+        margin-right: 6px;
+      }
+    }
+  }
+  &__help {
+    width: 100%;
+    height: 2%;
+    border-radius: 6px;
+    margin: 6% auto;
+    &__button {
+      width: 60%;
+      margin-left: 20%;
+      i {
+        margin-right: 6px;
+      }
+    }
+  }
+  &__search-results {
+    width: 100%;
+    height: 60%;
+    border: 2px solid $primary;
+    border-radius: 6px;
+  }
+}
