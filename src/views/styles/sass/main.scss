@@ -1,0 +1,63 @@
+$primary: #396afc;
+$secondary: #2948ff;
+$base-text: #333;
+$white: #fff;
+
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+input,
+textarea,
+button {
+  font-size: 62.5%;
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  color: $base-text;
+}
+
+.primary-button {
+  width: 172px;
+  height: 44px;
+  border-radius: 6px;
+  background: $primary;
+  background: -webkit-linear-gradient(to right, $secondary, $primary);
+  background: linear-gradient(to right, $secondary, $primary);
+  color: $white;
+  font-size: 1.8em;
+  font-weight: 700;
+
+  &:hover {
+    background: $secondary;
+    cursor: pointer;
+  }
+  &:active {
+    background: darken($secondary, 10%);
+  }
+}
+
+.secondary-button {
+  width: 172px;
+  height: 44px;
+  border-radius: 6px;
+  background: $white;
+  border: $primary 2px solid;
+  color: $primary;
+  font-size: 1.8em;
+  font-weight: 700;
+  transition: 0.2s;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    cursor: pointer;
+  }
+  &:active {
+    background: darken($primary, 10%);
+    color: $white;
+  }
+}
+

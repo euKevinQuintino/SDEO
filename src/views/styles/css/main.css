@@ -1,0 +1,47 @@
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0; }
+
+body,
+input,
+textarea,
+button {
+  font-size: 62.5%;
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  color: #333; }
+
+.primary-button {
+  width: 172px;
+  height: 44px;
+  border-radius: 6px;
+  background: #396afc;
+  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  background: linear-gradient(to right, #2948ff, #396afc);
+  color: #fff;
+  font-size: 1.8em;
+  font-weight: 700; }
+  .primary-button:hover {
+    background: #2948ff;
+    cursor: pointer; }
+  .primary-button:active {
+    background: #0023f5; }
+
+.secondary-button {
+  width: 172px;
+  height: 44px;
+  border-radius: 6px;
+  background: #fff;
+  border: #396afc 2px solid;
+  color: #396afc;
+  font-size: 1.8em;
+  font-weight: 700;
+  transition: 0.2s; }
+  .secondary-button:hover {
+    background: #396afc;
+    color: #fff;
+    cursor: pointer; }
+  .secondary-button:active {
+    background: #0744fb;
+    color: #fff; }

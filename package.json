@@ -1,0 +1,46 @@
+{
+  "name": "saas",
+  "version": "0.0.1",
+  "description": "Sistema de Acompanhamento de Atualizações de Serviços - Laboratório de Engenharia de Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinnicolasbq/SAAS.git"
+  },
+  "keywords": [
+    "SAAS",
+    "Sistema",
+    "Acompanhamento",
+    "Atualizações",
+    "Serviços",
+    "LBomfim",
+    "LES",
+    "Laboratório",
+    "Engenharia",
+    "Software"
+  ],
+  "author": "Kevin Quintino, Mattheus Soler & Vinínius de Jesus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinnicolasbq/SAAS/issues"
+  },
+  "homepage": "https://github.com/kevinnicolasbq/SAAS#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "gulp-rename": "^2.0.0",
+    "gulp-terser-js": "^5.2.2",
+    "terser": "^4.8.0"
+  }
+}
