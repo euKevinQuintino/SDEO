@@ -17,6 +17,12 @@ button {
   font-family: "Nunito", sans-serif;
   border: none;
   color: $base-text;
+  resize: none;
+}
+
+textarea {
+  height: 80px !important;
+  padding-top: 10px;
 }
 
 .primary-button {
@@ -69,23 +75,83 @@ body {
 }
 
 .system {
-  width: 100%;
+  width: 92%;
   height: 100%;
-  padding: 12px;
   margin: 0 auto;
-
+  &__form {
+    width: 92%;
+    margin: 0 auto;
+    &__title {
+      margin-top: -2px;
+      margin-bottom: 6px;
+      font-size: 2.4em;
+    }
+    &__left {
+      width: 46%;
+      float: left;
+      position: relative;
+    }
+    &__right {
+      width: 46%;
+      float: right;
+      position: relative;
+    }
+    &__label {
+      font-size: 1.8em;
+      padding-left: 2px;
+      &-alt {
+        width: 100%;
+        font-size: 1.8em;
+        padding-left: 2px;
+      }
+    }
+    &__input {
+      width: 100%;
+      height: 40px;
+      border-radius: 6px;
+      padding-left: 8px;
+      font-size: 1.8em;
+      border: 2px solid $primary;
+      margin-top: 4px;
+      margin-bottom: 16px;
+      &-alt {
+        width: 100%;
+        height: 40px;
+        border-radius: 6px;
+        padding-left: 8px;
+        font-size: 1.8em;
+        border: 2px solid $primary;
+        margin-top: 4px;
+        margin-bottom: 16px;
+      }
+    }
+    &__submit {
+      width: 100%;
+      i {
+        margin-right: 6px;
+      }
+    }
+  }
   &__logo {
-    width: 100%;
-    height: 15%;
+    width: 289px;
+    display: block;
+    margin: 6% auto;
+    margin-bottom: 6%;
+    a {
+      font-size: 4em;
+      cursor: pointer;
+    }
+    embed {
+      pointer-events: none;
+    }
   }
   &__search {
     width: 100%;
     height: 40px;
     margin-bottom: 6%;
     &__input {
-      width: 66%;
+      width: 61%;
       height: 40px;
-      margin-right: 2%;
       border-radius: 6px;
       padding-left: 8px;
       font-size: 1.8em;
@@ -93,8 +159,10 @@ body {
       margin-top: 2px;
     }
     &__button {
-      width: 32%;
-      height: 40px;
+      width: 33%;
+      height: 45px;
+      float: right;
+      margin-top: 2px;
       i {
         margin-left: 6px;
       }
@@ -107,8 +175,7 @@ body {
     border-radius: 6px;
   }
   &__add {
-    margin-top: 6%;
-    margin-bottom: 6%;
+    margin-bottom: 4%;
     &__button {
       width: 100%;
       i {
@@ -120,7 +187,7 @@ body {
     width: 100%;
     height: 2%;
     border-radius: 6px;
-    margin: 6% auto;
+    margin: 4% auto;
     &__button {
       width: 60%;
       margin-left: 20%;

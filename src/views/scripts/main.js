@@ -4,3 +4,10 @@ gsap.from(".system__help", {
     y: 69,
     ease: "Expo.easeInOut",
   });
+
+function toIndex() {
+    window.location="index.html";
+}
+function toCadastroServico() {
+    window.location="cadastro-servico.html";
+}

@@ -4,25 +4,23 @@ html(lang="pt-br")
     title LBomfim - SAAS
     include includes/head
   body
-    .system.container
+    .system
       .system__logo
-    
+        a(onclick="toIndex()")
+          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__search
-        input.system__search__input(type="text" placeholder="Digite o código do serviço")
-        button.system__search__button.primary-button
+        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="Digite o código do serviço")
+        button.system__search__button.primary-button(id="botaoBusca")
           | Buscar
           i.fas.fa-search
-          
       .system__add
-        button.system__add__button.primary-button
-          i.fas.fa-plus-circle
+        button.system__add__button.primary-button(id="botaoParaCadastroServico" onclick="toCadastroServico()")
+          i.fas.fa-arrow-circle-right
           | Cadastrar um novo serviço
       .system__updates
         .system__updates__change
       
       .system__help
-        button.system__help__button.secondary-button
+        button.system__help__button.secondary-button(id="botaoAjuda")
           i.fas.fa-question-circle
           | Preciso de ajuda
-
-
