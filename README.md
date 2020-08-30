@@ -5,5 +5,5 @@
 
 ### Desenvolvedores
 - Kevin Quintino (UX/UI design & front-end)
-- Mattheus Diogo (back-end)
+- Mattheus Diogo (Back-end)
 - Vinícius Bomfim (Database)
