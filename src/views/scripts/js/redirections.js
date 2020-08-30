@@ -1,8 +1,8 @@
 function toIndex() {
     window.location="index.html";
 }
-function toCadastroServico() {
-    window.location="cadastro-servico.html";
+function toCadastroOrdem() {
+    window.location="cadastro-ordem.html";
 }
 function toPainelAjuda() {
     window.location="painel-ajuda.html";

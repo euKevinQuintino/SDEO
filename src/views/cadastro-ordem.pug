@@ -1,0 +1,35 @@
+doctype html
+html(lang="pt-br")
+  head
+    title Cadastro de ordem - SAAS
+    include includes/head
+  body
+    .system
+      .system__logo
+        a(onclick="toIndex()")
+          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+          hr
+      form.system__form
+        h1.system__form__title(style="text-align: center; font-size: 2.8em") Cadastro de ordem
+        label.system__form__label(for="codigoOrdem") #[strong Código da ordem] #[em (obrigatório)]
+        input.system__form__input(id="codigoOrdem" type="number" name="codigoOrdem" placeholder="3145879" required)
+        label.system__form__label(for="nomeClienteOrdem") #[strong Nome do cliente] #[em (obrigatório)]
+        input.system__form__input(id="nomeClienteOrdem" type="text" name="nomeClienteOrdem" placeholder="Maria Joana Silva" required)
+        label.system__form__label(for="descricaoOrdem") #[strong Descrição da ordem] #[em (opcional)]
+        textarea.system__form__input(id="descricaoOrdem" name="descricaoOrdem" placeholder="Descreva o serviço a ser realizado")
+        h2.system__form__title Endereço de execução
+        label.system__form__label(for="enderecoOrdem") #[strong Logradouro] #[em (obrigatório)]
+        input.system__form__input(id="enderecoOrdem" type="text" name="enderecoOrdem" placeholder="Rua Umberto Figueira" required)
+        .system__form__left
+          label.system__form__label-alt(for="numeroEnderecoOrdem") #[strong Número] #[em (obrigatório)]
+          input.system__form__input-alt(id="numeroEnderecoOrdem" type="number" name="numeroEnderecoOrdem" placeholder="79" required)
+        .system__form__right
+          label.system__form__label-alt(for="complementoEnderecoOrdem") #[strong Complemento] #[em (opcional)]
+          input.system__form__input-alt(id="complementoEnderecoOrdem" type="text" name="complementoEnderecoOrdem" placeholder="casa 2")
+        button.system__form__submit.primary-button(id="submitCadastro")
+          i.fas.fa-plus-circle
+          | Cadastrar ordem
+      .system__help
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
+          i.fas.fa-question-circle
+          | Preciso de ajuda

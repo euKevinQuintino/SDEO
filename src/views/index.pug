@@ -9,21 +9,21 @@ html(lang="pt-br")
         a(onclick="toIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="Digite o código do serviço")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="Digite o código do ordem")
         button.system__search__button.primary-button(id="botaoBusca")
           | Buscar
           i.fas.fa-search
       .system__add
-        button.system__add__button.primary-button(id="botaoParaCadastroServico" onclick="toCadastroServico()")
+        button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="toCadastroOrdem()")
           i.fas.fa-arrow-circle-right
-          | Cadastrar um novo serviço
+          | Cadastrar uma nova ordem
       .system__updates
         .system__updates__change--updated
           .system__updates__change--updated__text
-            p A ordem de serviço #[strong 4325] foi #[strong atualizada]
+            p A ordem #[strong 4325] foi #[strong atualizada]
         .system__updates__change--created
           .system__updates__change--created__text
-            p A ordem de serviço #[strong 4297] foi #[strong cadastrada]
+            p A ordem #[strong 4297] foi #[strong cadastrada]
         
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
