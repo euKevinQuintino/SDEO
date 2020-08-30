@@ -2,3 +2,8 @@
 
 ### Instalação
 `npm install`
+
+### Desenvolvedores
+- Kevin Quintino (UX/UI design & front-end)
+- Mattheus Solér (Back-end)
+- Vinícius Bomfim (Database)
