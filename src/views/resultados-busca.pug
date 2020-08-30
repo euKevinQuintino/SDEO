@@ -14,8 +14,11 @@ html(lang="pt-br")
           | Buscar
           i.fas.fa-search
       .system__search-results
+        .system__search-results__result
+          p.system__search-results__result__ordem #[strong 31548]
+          p.system__search-results__result__nome-cliente Gabriella Peres Cunha
 
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
           i.fas.fa-question-circle
           | Preciso de ajuda

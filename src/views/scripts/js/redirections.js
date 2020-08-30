@@ -4,3 +4,6 @@ function toIndex() {
 function toCadastroServico() {
     window.location="cadastro-servico.html";
 }
+function toPainelAjuda() {
+    window.location="painel-ajuda.html";
+}

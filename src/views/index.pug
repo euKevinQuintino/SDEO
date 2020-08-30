@@ -18,9 +18,14 @@ html(lang="pt-br")
           i.fas.fa-arrow-circle-right
           | Cadastrar um novo serviço
       .system__updates
-        .system__updates__change
-      
+        .system__updates__change--updated
+          .system__updates__change--updated__text
+            p A ordem de serviço #[strong 4325] foi #[strong atualizada]
+        .system__updates__change--created
+          .system__updates__change--created__text
+            p A ordem de serviço #[strong 4297] foi #[strong cadastrada]
+        
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
           i.fas.fa-question-circle
           | Preciso de ajuda

@@ -1,0 +1,16 @@
+doctype html
+html(lang="pt-br")
+  head
+    title Detalhes da ordem - SAAS
+    include includes/head
+  body
+    .system
+      .system__logo
+        a(onclick="toIndex()")
+          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+      .system__service-details
+        
+      .system__help
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
+          i.fas.fa-question-circle
+          | Preciso de ajuda

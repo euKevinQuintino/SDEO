@@ -1,34 +1,35 @@
 doctype html
 html(lang="pt-br")
   head
-    title Resultados da busca - SAAS
+    title Cadastro de serviço - SAAS
     include includes/head
   body
     .system
       .system__logo
         a(onclick="toIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+          hr
       form.system__form
-        h1.system__form__title
-        label.system__form__label(for="codigoServico") #[strong Código do serviço] #[em (obrigatório)]:
+        h1.system__form__title(style="text-align: center; font-size: 2.8em") Cadastro de serviço
+        label.system__form__label(for="codigoServico") #[strong Código da ordem de serviço] #[em (obrigatório)]
         input.system__form__input(id="codigoServico" type="number" name="codigoServico" placeholder="3145879" required)
-        label.system__form__label(for="nomeClienteServico") #[strong Nome do cliente] #[em (obrigatório)]:
+        label.system__form__label(for="nomeClienteServico") #[strong Nome do cliente] #[em (obrigatório)]
         input.system__form__input(id="nomeClienteServico" type="text" name="nomeClienteServico" placeholder="Maria Joana Silva" required)
-        label.system__form__label(for="descricaoServico") #[strong Descrição do serviço] #[em (opcional)]:
+        label.system__form__label(for="descricaoServico") #[strong Descrição do serviço] #[em (opcional)]
         textarea.system__form__input(id="descricaoServico" name="descricaoServico" placeholder="Descreva o serviço")
-        h1.system__form__title Endereço do serviço
-        label.system__form__label(for="enderecoServico") #[strong Logradouro] #[em (obrigatório)]:
+        h2.system__form__title Endereço do serviço
+        label.system__form__label(for="enderecoServico") #[strong Logradouro] #[em (obrigatório)]
         input.system__form__input(id="enderecoServico" type="text" name="enderecoServico" placeholder="Rua Umberto Figueira" required)
         .system__form__left
-          label.system__form__label-alt(for="numeroEnderecoServico") #[strong Número] #[em (obrigatório)]:
+          label.system__form__label-alt(for="numeroEnderecoServico") #[strong Número] #[em (obrigatório)]
           input.system__form__input-alt(id="numeroEnderecoServico" type="number" name="numeroEnderecoServico" placeholder="79" required)
         .system__form__right
-          label.system__form__label-alt(for="complementoEnderecoServico") #[strong Complemento] #[em (opcional)]:
+          label.system__form__label-alt(for="complementoEnderecoServico") #[strong Complemento] #[em (opcional)]
           input.system__form__input-alt(id="complementoEnderecoServico" type="text" name="complementoEnderecoServico" placeholder="casa 2")
         button.system__form__submit.primary-button(id="submitCadastro")
           i.fas.fa-plus-circle
           | Cadastrar serviço
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
           i.fas.fa-question-circle
           | Preciso de ajuda
