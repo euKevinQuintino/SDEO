@@ -1,4 +1,4 @@
-gsap.from(".system__help", {
+/*gsap.from(".system__help", {
     opacity: 0,
     duration: 2.8,
     y: 30,
@@ -10,4 +10,4 @@ gsap.from(".system__logo", {
   duration: 1.2,
   y: -30,
   ease: "Expo.easeInOut",
-});
+});*/

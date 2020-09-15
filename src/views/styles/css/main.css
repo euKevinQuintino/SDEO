@@ -41,9 +41,7 @@ button {
 input:focus,
 textarea:focus,
 button:focus {
-  border-style: inset;
-  outline-color: #ffd700;
-  border-color: #ffd700; }
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.33); }
 
 textarea {
   height: 80px !important;
@@ -58,10 +56,12 @@ textarea {
   background: linear-gradient(to right, #2948ff, #396afc);
   color: #fff;
   font-size: 1.8em;
-  font-weight: 700; }
+  font-weight: 700;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.33); }
   .primary-button:hover {
     background: #2948ff;
-    cursor: pointer; }
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.44); }
   .primary-button:active {
     background: #0023f5; }
 
@@ -74,11 +74,13 @@ textarea {
   color: #396afc;
   font-size: 1.8em;
   font-weight: 700;
-  transition: 0.2s; }
+  transition: 0.2s;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.33); }
   .secondary-button:hover {
     background: #396afc;
     color: #fff;
-    cursor: pointer; }
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.44); }
   .secondary-button:active {
     background: #0744fb;
     color: #fff; }
@@ -90,7 +92,7 @@ body {
   overflow-x: hidden; }
 
 .system {
-  width: 92%;
+  width: 90%;
   height: 100%;
   margin: 0 auto; }
   .system__order-details {
@@ -145,7 +147,7 @@ body {
         color: #396afc;
         margin-bottom: 0; }
   .system__form {
-    width: 92%;
+    width: 100%;
     margin: 0 auto; }
     .system__form__title {
       margin-top: 0px;
@@ -153,11 +155,12 @@ body {
       font-size: 2.2em;
       color: #396afc; }
     .system__form__left {
-      width: 46%;
+      width: 44%;
       float: left;
       position: relative; }
     .system__form__right {
-      width: 46%;
+      margin-right: 4%;
+      width: 44%;
       float: right;
       position: relative; }
     .system__form__label {
@@ -168,7 +171,7 @@ body {
         font-size: 1.8em;
         padding-left: 2px; }
     .system__form__input {
-      width: 100%;
+      width: 96%;
       height: 40px;
       border-radius: 6px;
       padding-left: 8px;
@@ -237,7 +240,8 @@ body {
         background-color: #396afc;
         color: #fff;
         cursor: pointer;
-        transition: .2s; }
+        transition: .2s;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
       .system__updates__change--updated__text {
         text-align: center;
         margin-top: -10px;
@@ -254,7 +258,8 @@ body {
         background-color: #396afc;
         color: #fff;
         cursor: pointer;
-        transition: .2s; }
+        transition: .2s;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
       .system__updates__change--created__text {
         text-align: center;
         margin-top: -10px;
