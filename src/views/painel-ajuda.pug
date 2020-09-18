@@ -8,3 +8,15 @@ html(lang="pt-br")
       .system__logo
         a(onclick="toIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+      .system__guides
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+          i.far.fa-hand-point-right
+          | quero #[strong cadastrar] uma ordem
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+          i.far.fa-hand-point-right
+          | quero #[strong consultar] uma ordem
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+          i.far.fa-hand-point-right
+          | quero #[strong atualizar] uma ordem
+        
+

@@ -9,14 +9,14 @@ html(lang="pt-br")
         a(onclick="toIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="Digite o código do ordem")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="digite o código do ordem")
         button.system__search__button.primary-button(id="botaoBusca")
-          | Buscar
+          | buscar
           i.fas.fa-search
       .system__add
         button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="toCadastroOrdem()")
           i.fas.fa-arrow-circle-right
-          | Cadastrar uma nova ordem
+          | cadastrar uma nova ordem
       .system__updates
         .system__updates__change--updated
           .system__updates__change--updated__text
@@ -28,4 +28,4 @@ html(lang="pt-br")
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
           i.fas.fa-question-circle
-          | Preciso de ajuda
+          | preciso de ajuda
