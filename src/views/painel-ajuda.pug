@@ -6,16 +6,16 @@ html(lang="pt-br")
   body
     .system
       .system__logo
-        a(onclick="toIndex()")
+        a(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__guides
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
           i.far.fa-hand-point-right
           | quero #[strong cadastrar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
           i.far.fa-hand-point-right
           | quero #[strong consultar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="toPainelAjuda()")
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
           i.far.fa-hand-point-right
           | quero #[strong atualizar] uma ordem
         

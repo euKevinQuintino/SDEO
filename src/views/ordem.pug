@@ -6,13 +6,11 @@ html(lang="pt-br")
   body
     .system
       .system__logo
-        a(onclick="toIndex()")
+        a(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
         hr
       .system__order-details
         h1.system__order-details__title ordem 4325
-        p.system__order-details__client-name #[strong cliente:] Fábio Gonçalves Silva
-        p.system__order-details__address #[strong endereço:] Av. Castelo Branco, 1256
         .system__order-details__left
           h2.system__order-details__left__subtitle antes
           hr
@@ -21,6 +19,6 @@ html(lang="pt-br")
           h2.system__order-details__right__subtitle depois
           hr
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda" onclick="toPainelAjuda()")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
           i.fas.fa-question-circle
           | preciso de ajuda

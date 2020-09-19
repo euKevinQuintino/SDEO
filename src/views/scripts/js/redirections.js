@@ -1,9 +1,12 @@
-function toIndex() {
+function paraIndex() {
     window.location="index.html";
 }
-function toCadastroOrdem() {
+function paraCadastroOrdem() {
     window.location="cadastro-ordem.html";
 }
-function toPainelAjuda() {
+function paraPainelAjuda() {
     window.location="painel-ajuda.html";
+}
+function fecharPopUp() {
+
 }
