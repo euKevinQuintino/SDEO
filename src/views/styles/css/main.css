@@ -41,7 +41,7 @@ button {
 input:focus,
 textarea:focus,
 button:focus {
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.33); }
+  border: 2px solid #396afc; }
 
 textarea {
   height: 80px !important;
@@ -61,9 +61,13 @@ textarea {
   .primary-button:hover {
     background: #2948ff;
     cursor: pointer;
+    transition: .2s;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.44); }
   .primary-button:active {
-    background: #0023f5; }
+    margin-top: 2px;
+    margin-bottom: -2px;
+    transition: .1s;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.11); }
 
 .secondary-button {
   width: 172px;
@@ -80,9 +84,13 @@ textarea {
     background: #396afc;
     color: #fff;
     cursor: pointer;
+    transition: .2s;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.44); }
   .secondary-button:active {
-    background: #0744fb;
+    margin-top: 2px;
+    margin-bottom: -2px;
+    transition: .1s;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.11);
     color: #fff; }
 
 body {
@@ -111,23 +119,22 @@ body {
     height: 66%;
     margin: 0 auto;
     border-radius: 6px;
-    border: 2px solid #396afc; }
+    border: 1px solid #396afc;
+    box-shadow: inset 0 -8px 16px -8px rgba(0, 0, 0, 0.22);
+    overflow-y: auto; }
     .system__order-details__title {
       font-size: 2.4em;
       text-align: center;
       margin-top: 8px;
       color: #396afc; }
-    .system__order-details__client-name {
+    .system__order-details__observation {
       font-size: 1.6em;
       padding-left: 2%;
-      margin-bottom: 12px; }
-    .system__order-details__address {
-      font-size: 1.6em;
-      padding-left: 2%;
-      margin-top: 0; }
+      margin-bottom: 12px;
+      line-height: 1.6em; }
     .system__order-details__left {
       width: 44.3%;
-      height: 55%;
+      height: 60%;
       padding: 2%;
       position: relative;
       text-align: center;
@@ -137,17 +144,27 @@ body {
         margin-top: 0;
         color: #396afc;
         margin-bottom: 0; }
+      .system__order-details__left__image-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2%; }
+        .system__order-details__left__image-grid__picture {
+          border-radius: 6px;
+          margin: auto; }
+          .system__order-details__left__image-grid__picture img {
+            max-width: 100%;
+            max-height: auto; }
     .system__order-details__center {
       width: 1px;
       padding-left: 1.4%;
-      height: 45%;
+      height: 60%;
       border-right: 1px solid #396afc;
       position: relative;
       float: left;
       margin: 8% auto; }
     .system__order-details__right {
       width: 44.3%;
-      height: 55%;
+      height: 75%;
       padding: 2%;
       position: relative;
       text-align: center;
@@ -246,13 +263,17 @@ body {
       border: 2px solid #396afc;
       background-color: #ffff00;
       border-radius: 6px;
-      height: 28px; }
-      .system__updates__change--updated:hover, .system__updates__change--updated:active {
+      height: 28px;
+      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
+      .system__updates__change--updated:hover {
         background-color: #396afc;
         color: #fff;
         cursor: pointer;
         transition: .2s;
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.33); }
+      .system__updates__change--updated:active {
+        transition: .1s;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.11); }
       .system__updates__change--updated__text {
         text-align: center;
         margin-top: -10px;
@@ -264,13 +285,17 @@ body {
       border: 2px solid #396afc;
       background-color: #ADFF2F;
       border-radius: 6px;
-      height: 28px; }
-      .system__updates__change--created:hover, .system__updates__change--created:active {
+      height: 28px;
+      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
+      .system__updates__change--created:hover {
         background-color: #396afc;
         color: #fff;
         cursor: pointer;
         transition: .2s;
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.22); }
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.33); }
+      .system__updates__change--created:active {
+        transition: .1s;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.11); }
       .system__updates__change--created__text {
         text-align: center;
         margin-top: -10px;
@@ -302,7 +327,7 @@ body {
       border: 2px solid #396afc;
       border-radius: 6px;
       width: 96%;
-      height: 56px;
+      height: 32px;
       margin: 2% auto; }
       .system__search-results__result p {
         font-size: 1.8em;
