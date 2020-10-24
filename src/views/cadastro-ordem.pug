@@ -8,7 +8,6 @@ html(lang="pt-br")
       .system__logo
         a.system__logo__link(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="logotipo da LBomfim")
-          
       form.system__form
         h1.system__form__title cadastro de ordem
         p.system__form__label(for="codigoOrdem") #[strong número da ordem:]
@@ -17,6 +16,8 @@ html(lang="pt-br")
         button.system__form__submit.primary-button(id="submitCadastro")
           i.fas.fa-plus-circle
           | cadastrar ordem
+      .system__link
+        p.link(onclick="paraIndex()") voltar para a tela inicial
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
           i.fas.fa-question-circle

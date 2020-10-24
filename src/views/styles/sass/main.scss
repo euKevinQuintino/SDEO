@@ -1,6 +1,6 @@
 $primary: #396afc;
 $secondary: #2948ff;
-$base-text: #313131;
+$base-text: #333;
 $whatsapp: #25d366;
 $google-maps: #e83c2e;
 $white: #fff;
@@ -11,21 +11,25 @@ html {
   padding: 0;
 }
 
-//Placeholder
+//placeholder
 ::-webkit-input-placeholder {
   color: #aaa;
 }
+
 :-ms-input-placeholder {
   color: #aaa;
 }
+
 ::placeholder {
   color: #aaa;
 }
-//Selection
+
+//selection
 ::-moz-selection {
   color: $white;
   background: $primary;
 }
+
 ::selection {
   color: $white;
   background: $primary;
@@ -37,11 +41,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type=number] {
+
+input[type='number'] {
   -moz-appearance: textfield;
 }
-//end remove input type number arrows
 
+//end remove input type number arrows
 hr {
   margin: 2%;
   background-color: $primary;
@@ -55,7 +60,7 @@ input,
 textarea,
 button {
   font-size: 62.5%;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   border: none;
   color: $base-text;
   resize: none;
@@ -89,13 +94,14 @@ textarea {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background: lighten($primary,3%);
+    background: lighten($primary, 3%);
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
   }
+
   &:active {
-    background: darken($primary,3%);
+    background: darken($primary, 3%);
     transform: translateY(2px);
     transition: 0.1s;
     box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
@@ -120,6 +126,7 @@ textarea {
     transition: 0.2s;
     box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
   }
+
   &:active {
     transform: translateY(2px);
     transition: 0.1s;
@@ -132,6 +139,7 @@ textarea {
   color: $secondary;
   text-decoration: underline;
   font-weight: 700;
+
   &:hover {
     color: $primary;
     cursor: pointer;
@@ -158,17 +166,20 @@ body {
     position: fixed;
     top: 80px;
     width: 300px;
+
     &__title {
       font-size: 2.8em;
       font-weight: 700;
-      color: $primary;
+      color: $base-text;
       margin-bottom: 10px;
       line-height: 1.4em;
     }
+
     &__option {
       width: 300px;
       font-size: 1.8em;
       margin-bottom: 16px;
+
       i {
         font-size: 1em;
         margin-right: 4px;
@@ -176,81 +187,138 @@ body {
       }
     }
   }
+
   &__subtitle {
     font-size: 1.8em;
     margin-top: 6px;
     color: $base-text;
     margin-bottom: 2px;
   }
+
   &__link {
     position: fixed;
-    bottom: 64px;
+    bottom: 86px;
   }
+
   &__order-details {
     position: fixed;
     top: 74px;
     height: 380px;
     overflow-y: auto;
+
     &__title {
       font-size: 2.8em;
-      text-align: center;
-      margin-top: 0px;
-      margin-bottom: 0;
-      color: $primary;
+      text-align: right;
+      font-weight: 700;
+      color: $base-text;
     }
+
     &__observation {
       width: 300px;
       margin-bottom: -12px;
+
       &__title {
         color: $base-text;
         font-size: 1.8em;
-        margin-bottom: -16px;
+        font-weight: 700;
         margin-top: 0px;
       }
+
       &__text {
         font-size: 1.6em;
         line-height: 1.6em;
       }
     }
+
     &__image-grid {
       display: grid;
-      grid-template-columns: repeat(4, 48px);
-      grid-template-rows: repeat(2, 48px);
+      grid-template-columns: repeat(4, 56px);
+      grid-template-rows: repeat(2, 56px);
       grid-gap: 22px;
+
       &__picture {
         border-radius: 6px;
+        border: 2px solid $primary;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
         margin: auto;
+
         img {
-          width: 48px;
-          height: 48px;
+          width: 56px;
+          height: 56px;
+        }
+
+        &:hover {
+          box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+          cursor: pointer;
+          transition: .2s;
+        }
+
+        &:active {
+          box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          transform: translateY(2px);
+          transition: .1s;
+        }
+
+        &__remove {
+          position: relative;
+          z-index: 2;
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &__add {
+        font-size: 56px;
+        color: $primary;
+
+        &:hover {
+          color: ligthen($primary, 3%);
+          cursor: pointer;
+          transition: .2s;
+        }
+
+        &:active {
+          color: darken($primary, 3%);
+          transform: translateY(1px);
+          transition: .1s;
         }
       }
     }
-    &__subtitle {
-      font-size: 1.8em;
-      margin-top: 16px;
-      color: $primary;
-      margin-bottom: 6px;
-    }
   }
+
+  &__subtitle {
+    font-size: 1.8em;
+    margin-top: 16px;
+    color: $base-text;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
   &__form {
     position: fixed;
-    bottom: 88px;
+    bottom: 120px;
     width: 300px;
+
     &__title {
-      margin: 0;
       font-size: 2.8em;
-      text-align: center;
-      color: $primary;
+      font-weight: 700;
+      width: 300px;
+      text-align: right;
+      position: fixed;
+      bottom: 280px;
+      color: $base-text;
     }
 
     &__label {
       font-size: 1.8em;
       margin-bottom: 4px;
+      font-weight: 700;
     }
+
     &__placeholder {
       font-size: 1.6em;
     }
+
     &__input {
       width: 288px;
       height: 40px;
@@ -260,6 +328,7 @@ body {
       border: 2px solid $primary;
       margin-top: 4px;
       margin-bottom: 16px;
+
       &-alt {
         width: 100%;
         height: 40px;
@@ -271,36 +340,45 @@ body {
         margin-bottom: 16px;
       }
     }
+
     &__submit {
       width: 300px;
+
       i {
         margin-right: 6px;
       }
     }
   }
+
   &__logo {
     width: 289px;
     display: fixed;
     margin-top: 24px;
     top: 0;
+
     &__link {
       font-size: 4em;
       cursor: pointer;
     }
+
     embed {
       pointer-events: none;
     }
   }
+
   &__quick-access {
     display: block;
     position: fixed;
     top: 156px;
+
     i {
       margin-right: 6px;
     }
+
     &__call {
       width: 300px;
     }
+
     &__whatsapp {
       margin: 16px 0;
       width: 300px;
@@ -320,6 +398,7 @@ body {
         transition: 0.2s;
         box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
       }
+
       &:active {
         transform: translateY(2px);
         background-color: $whatsapp;
@@ -328,6 +407,7 @@ body {
         color: $white;
       }
     }
+
     &__maps {
       width: 300px;
       height: 44px;
@@ -346,6 +426,7 @@ body {
         transition: 0.2s;
         box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
       }
+
       &:active {
         transform: translateY(2px);
         background-color: $google-maps;
@@ -355,10 +436,12 @@ body {
       }
     }
   }
+
   &__search {
     position: fixed;
     margin-bottom: 146px;
     bottom: 0;
+
     &__input {
       width: 180px;
       height: 38px;
@@ -370,6 +453,7 @@ body {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
     }
+
     &__button {
       width: 108px;
       height: 44px;
@@ -378,51 +462,70 @@ body {
       border-top-left-radius: 0;
       position: relative;
       z-index: 2;
+
       i {
         margin-left: 6px;
       }
+
       &:active {
         transform: none;
       }
     }
   }
+
   &__add {
     position: fixed;
     margin-bottom: 88px;
     bottom: 0;
+
     &__button {
       width: 300px;
+
       i {
         margin-right: 6px;
       }
     }
   }
+
+  &__title {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 700;
+    text-align: center;
+    color: $primary;
+    position: fixed;
+    top: 72px;
+  }
+
   &__help {
     position: fixed;
     bottom: 0;
     margin-bottom: 24px;
+
     &__button {
       width: 192px;
       border-radius: 6px;
+
       i {
         margin-right: 6px;
       }
     }
   }
+
   &__search-results {
-    width: 100%;
-    height: 66%;
-    border: 2px solid $primary;
-    border-radius: 6px;
+    height: 300px;
+    position: fixed;
+    top: 100px;
     overflow-y: auto;
+
     &__result {
-      border: 2px solid $primary;
-      border-radius: 6px;
-      width: 96%;
+      margin: 12px 0;
       height: 32px;
-      margin: 2% auto;
+      margin-right: 6px;
+      margin-left: 6px;
+      width: 300px;
+
       p {
-        font-size: 1.8em;
         text-align: center;
         line-height: 0.2em;
         margin-top: 16px;
