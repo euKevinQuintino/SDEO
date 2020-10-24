@@ -1,33 +1,54 @@
 doctype html
 html(lang="pt-br")
   head
-    title Detalhes da ordem - SAAS
+    title Detalhes da ordem - SDEO
     include includes/head
   body
     .system
       .system__logo
-        a(onclick="paraIndex()")
+        a.system__logo__link(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__order-details
         h1.system__order-details__title ordem 4325
-        p.system__order-details__observation Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dolor deleniti aut nisi a soluta. Temporibus quam exercitationem distinctio, voluptates consequatur odit laborum veritatis vitae aliquid amet cum eum expedita.
-        .system__order-details__left
-          h2.system__order-details__left__subtitle antes
-          hr
-          .system__order-details__left__image-grid
-            .system__order-details__left__image-grid__picture
-              img(src="./img/android-icon-192x192.png")
-            .system__order-details__left__image-grid__picture
-              img(src="./img/android-icon-192x192.png")
-            .system__order-details__left__image-grid__picture
-              img(src="./img/android-icon-192x192.png")
-            .system__order-details__left__image-grid__picture
-              img(src="./img/android-icon-192x192.png")
-
-        .system__order-details__center
-        .system__order-details__right
-          h2.system__order-details__right__subtitle depois
-          hr
+        .system__order-details__observation
+          h2.system__order-details__observation__title observação:
+          p.system__order-details__observation__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel autem similique quia molestias laborum officia eaque animi at iure. Vero odit voluptates voluptatem ea odio.
+        h2.system__subtitle pré-execução:
+        .system__order-details__image-grid
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+        h2.system__subtitle pós-execução:
+        .system__order-details__image-grid
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+          .system__order-details__image-grid__picture
+            img(src="./img/android-icon-192x192.png")
+      .system__link
+        p.link(onclick="paraIndex()") voltar para a tela inicial
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
           i.fas.fa-question-circle

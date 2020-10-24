@@ -1,28 +1,31 @@
 doctype html
 html(lang="pt-br")
   head
-    title LBomfim - SAAS
+    title LBomfim - SDEO
     include includes/head
   body
     .system
       .system__logo
-        a(onclick="paraIndex()")
+        a.system__logo__link(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__quick-access
         div
-          button.system__quick-access__call.primary-button
-            i.fas.fa-phone-alt
-            | ligar para a empresa
+          a(href="tel:11-xxxx-xxxx")
+            button.system__quick-access__call.primary-button
+              i.fas.fa-phone-alt
+              | ligar para a empresa
         div
-          button.system__quick-access__whatsapp
-            i.fab.fa-whatsapp
-            | acessar o grupo da empresa
+          a(href="https://chat.whatsapp.com/LxdrVT2evNNF5iGnnQQPmz" target="_blank" rel="noopener noreferrer")
+            button.system__quick-access__whatsapp
+              i.fab.fa-whatsapp
+              | acessar o grupo da empresa
         div
-          button.system__quick-access__maps
-            i.fas.fa-map-marker-alt
-            | consultar o google maps
+          a(href="https://google.com.br/maps/place/PPA+LBOMFIM+Peccinin+Garen+Peças+Assistência+Motor+Cancelas+,+Manutenção/@-23.4467483,-46.5232519,17z/data=!3m1!4b1!4m5!3m4!1s0x94cef533fe016cf1:0x89252a58a22b6230!8m2!3d-23.4467532!4d-46.5210632" target="_blank" rel="noopener noreferrer")
+            button.system__quick-access__maps
+              i.fas.fa-map-marker-alt
+              | consultar o google maps
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="digite o número da ordem")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem")
         button.system__search__button.primary-button(id="botaoBusca")
           | buscar
           i.fas.fa-search

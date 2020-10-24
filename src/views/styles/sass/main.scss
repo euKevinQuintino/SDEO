@@ -23,7 +23,6 @@ html {
 }
 //Selection
 ::-moz-selection {
-  /* Code for Firefox */
   color: $white;
   background: $primary;
 }
@@ -31,6 +30,17 @@ html {
   color: $white;
   background: $primary;
 }
+
+//begin remove input type number arrows
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+//end remove input type number arrows
 
 hr {
   margin: 2%;
@@ -54,7 +64,11 @@ button {
 input:focus,
 textarea:focus,
 button:focus {
-  border: 2px solid $primary;
+  box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+input {
+  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 }
 
 textarea {
@@ -67,23 +81,24 @@ textarea {
   height: 44px;
   border-radius: 6px;
   background: $primary;
-  background: -webkit-linear-gradient(to right, $secondary, $primary);
-  background: linear-gradient(to right, $secondary, $primary);
+  //background: -webkit-linear-gradient(to right, $secondary, $primary);
+  //background: linear-gradient(to right, $secondary, $primary);
   color: $white;
   font-size: 1.8em;
   font-weight: 700;
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background: $secondary;
+    background: lighten($primary,3%);
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
   }
   &:active {
+    background: darken($primary,3%);
     transform: translateY(2px);
     transition: 0.1s;
-    box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -100,7 +115,7 @@ textarea {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background: lighten($primary, 30%);
+    background: lighten($primary, 33%);
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
@@ -108,7 +123,19 @@ textarea {
   &:active {
     transform: translateY(2px);
     transition: 0.1s;
-    box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.link {
+  font-size: 1.8em;
+  color: $secondary;
+  text-decoration: underline;
+  font-weight: 700;
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+    transition: 0.2s;
   }
 }
 
@@ -128,12 +155,20 @@ body {
   margin: 0 auto;
 
   &__guides {
+    position: fixed;
+    top: 80px;
     width: 300px;
-    margin: 0 auto;
+    &__title {
+      font-size: 2.8em;
+      font-weight: 700;
+      color: $primary;
+      margin-bottom: 10px;
+      line-height: 1.4em;
+    }
     &__option {
       width: 300px;
       font-size: 1.8em;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       i {
         font-size: 1em;
         margin-right: 4px;
@@ -141,109 +176,83 @@ body {
       }
     }
   }
-
+  &__subtitle {
+    font-size: 1.8em;
+    margin-top: 6px;
+    color: $base-text;
+    margin-bottom: 2px;
+  }
+  &__link {
+    position: fixed;
+    bottom: 64px;
+  }
   &__order-details {
-    width: 100%;
-    height: 66%;
-    margin: 0 auto;
-    border-radius: 6px;
-    border: 1px solid $primary;
-    box-shadow: inset 0 -8px 16px -8px rgba(0, 0, 0, 0.22);
+    position: fixed;
+    top: 74px;
+    height: 380px;
     overflow-y: auto;
     &__title {
-      font-size: 2.4em;
+      font-size: 2.8em;
       text-align: center;
-      margin-top: 8px;
+      margin-top: 0px;
+      margin-bottom: 0;
       color: $primary;
     }
     &__observation {
-      font-size: 1.6em;
-      padding-left: 2%;
-      margin-bottom: 12px;
-      line-height: 1.6em;
-    }
-    &__left {
-      width: 44.3%;
-      height: 60%;
-      padding: 2%;
-      position: relative;
-      text-align: center;
-      float: left;
-      &__subtitle {
+      width: 300px;
+      margin-bottom: -12px;
+      &__title {
+        color: $base-text;
         font-size: 1.8em;
-        margin-top: 0;
-        color: $primary;
-        margin-bottom: 0;
+        margin-bottom: -16px;
+        margin-top: 0px;
       }
-      &__image-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 2%;
-        &__picture {
-          border-radius: 6px;
-          margin: auto;
-          img {
-            max-width: 100%;
-            max-height: auto;
-          }
+      &__text {
+        font-size: 1.6em;
+        line-height: 1.6em;
+      }
+    }
+    &__image-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 48px);
+      grid-template-rows: repeat(2, 48px);
+      grid-gap: 22px;
+      &__picture {
+        border-radius: 6px;
+        margin: auto;
+        img {
+          width: 48px;
+          height: 48px;
         }
       }
     }
-    &__center {
-      width: 1px;
-      padding-left: 1.4%;
-      height: 60%;
-      border-right: 1px solid $primary;
-      position: relative;
-      float: left;
-      margin: 8% auto;
-    }
-    &__right {
-      width: 44.3%;
-      height: 75%;
-      padding: 2%;
-      position: relative;
-      text-align: center;
-      float: right;
-      &__subtitle {
-        font-size: 1.8em;
-        margin-top: 0;
-        color: $primary;
-        margin-bottom: 0;
-      }
+    &__subtitle {
+      font-size: 1.8em;
+      margin-top: 16px;
+      color: $primary;
+      margin-bottom: 6px;
     }
   }
   &__form {
-    width: 100%;
-    margin: 0 auto;
+    position: fixed;
+    bottom: 88px;
+    width: 300px;
     &__title {
-      margin-top: 0px;
-      margin-bottom: 6px;
-      font-size: 2.2em;
+      margin: 0;
+      font-size: 2.8em;
+      text-align: center;
       color: $primary;
     }
-    &__left {
-      width: 44%;
-      float: left;
-      position: relative;
-    }
-    &__right {
-      margin-right: 4%;
-      width: 44%;
-      float: right;
-      position: relative;
-    }
+
     &__label {
       font-size: 1.8em;
-      padding-left: 2px;
-      &-alt {
-        width: 100%;
-        font-size: 1.8em;
-        padding-left: 2px;
-      }
+      margin-bottom: 4px;
+    }
+    &__placeholder {
+      font-size: 1.6em;
     }
     &__input {
-      width: 300px;
+      width: 288px;
       height: 40px;
       border-radius: 6px;
       padding-left: 8px;
@@ -263,7 +272,7 @@ body {
       }
     }
     &__submit {
-      width: 100%;
+      width: 300px;
       i {
         margin-right: 6px;
       }
@@ -274,7 +283,7 @@ body {
     display: fixed;
     margin-top: 24px;
     top: 0;
-    a {
+    &__link {
       font-size: 4em;
       cursor: pointer;
     }
@@ -293,7 +302,7 @@ body {
       width: 300px;
     }
     &__whatsapp {
-      margin: 18px 0;
+      margin: 16px 0;
       width: 300px;
       height: 44px;
       border-radius: 6px;
@@ -315,7 +324,7 @@ body {
         transform: translateY(2px);
         background-color: $whatsapp;
         transition: 0.1s;
-        box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
         color: $white;
       }
     }
@@ -341,7 +350,7 @@ body {
         transform: translateY(2px);
         background-color: $google-maps;
         transition: 0.1s;
-        box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
         color: $white;
       }
     }
@@ -351,22 +360,29 @@ body {
     margin-bottom: 146px;
     bottom: 0;
     &__input {
-      width: 166px;
-      height: 40px;
+      width: 180px;
+      height: 38px;
       border-radius: 6px;
       padding-left: 8px;
       font-size: 1.8em;
       border: 2px solid $primary;
-      margin-top: 2px;
+      border-right: none;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
     }
     &__button {
       width: 108px;
       height: 44px;
-      margin-left: 12px;
       float: right;
-      margin-top: 2px;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      position: relative;
+      z-index: 2;
       i {
         margin-left: 6px;
+      }
+      &:active {
+        transform: none;
       }
     }
   }

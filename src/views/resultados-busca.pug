@@ -1,12 +1,12 @@
 doctype html
 html(lang="pt-br")
   head
-    title Resultados da busca - SAAS
+    title Resultados da busca - SDEO
     include includes/head
   body
     .system
       .system__logo
-        a(onclick="paraIndex()")
+        a.system__logo__link(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__search
         input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="Digite o código do serviço")

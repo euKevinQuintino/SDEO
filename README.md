@@ -1,4 +1,4 @@
-# Sistema de Apoio e Atualização de Serviços (SAAS - LES)
+# Sistema de Documentação de Execuções de Ordens (SDEO - LES)
 
 ### Instalação
 `npm install`

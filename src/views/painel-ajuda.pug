@@ -1,14 +1,15 @@
 doctype html
 html(lang="pt-br")
   head
-    title Painel de Ajuda - SAAS
+    title Painel de Ajuda -SDEO
     include includes/head
   body
     .system
       .system__logo
-        a(onclick="paraIndex()")
-          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+        a.system__logo__link(onclick="paraIndex()")
+          embed(src="./img/logotipo.svg" alt="logotipo da LBomfim")
       .system__guides
+        .system__guides__title qual tarefa você deseja realizar?
         button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
           i.far.fa-hand-point-right
           | quero #[strong cadastrar] uma ordem
@@ -18,5 +19,12 @@ html(lang="pt-br")
         button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
           i.far.fa-hand-point-right
           | quero #[strong atualizar] uma ordem
-        
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
+          i.far.fa-hand-point-right
+          | quero #[strong atualizar] uma ordem
+        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
+          i.far.fa-hand-point-right
+          | quero #[strong atualizar] uma ordem
+      .system__link
+        p.link(onclick="paraIndex()") voltar para a tela inicial
 
