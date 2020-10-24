@@ -8,8 +8,21 @@ html(lang="pt-br")
       .system__logo
         a(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+      .system__quick-access
+        div
+          button.system__quick-access__call.primary-button
+            i.fas.fa-phone-alt
+            | ligar para a empresa
+        div
+          button.system__quick-access__whatsapp
+            i.fab.fa-whatsapp
+            | acessar o grupo da empresa
+        div
+          button.system__quick-access__maps
+            i.fas.fa-map-marker-alt
+            | consultar o google maps
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="digite o número da ordem")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="digite o número da ordem")
         button.system__search__button.primary-button(id="botaoBusca")
           | buscar
           i.fas.fa-search
@@ -17,14 +30,6 @@ html(lang="pt-br")
         button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="paraCadastroOrdem()")
           i.fas.fa-arrow-circle-right
           | cadastrar uma nova ordem
-      .system__updates
-        .system__updates__change--updated
-          .system__updates__change--updated__text
-            p A ordem #[strong 4325] foi #[strong atualizada]
-        .system__updates__change--created
-          .system__updates__change--created__text
-            p A ordem #[strong 4297] foi #[strong cadastrada]
-        
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
           i.fas.fa-question-circle

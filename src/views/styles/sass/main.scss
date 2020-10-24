@@ -1,6 +1,8 @@
 $primary: #396afc;
 $secondary: #2948ff;
 $base-text: #313131;
+$whatsapp: #25d366;
+$google-maps: #e83c2e;
 $white: #fff;
 
 html {
@@ -20,7 +22,8 @@ html {
   color: #aaa;
 }
 //Selection
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
+  /* Code for Firefox */
   color: $white;
   background: $primary;
 }
@@ -28,7 +31,6 @@ html {
   color: $white;
   background: $primary;
 }
-
 
 hr {
   margin: 2%;
@@ -61,7 +63,7 @@ textarea {
 }
 
 .primary-button {
-  width: 172px;
+  width: 300px;
   height: 44px;
   border-radius: 6px;
   background: $primary;
@@ -70,24 +72,23 @@ textarea {
   color: $white;
   font-size: 1.8em;
   font-weight: 700;
-  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.33);
+  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
   &:hover {
     background: $secondary;
     cursor: pointer;
-    transition: .2s;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.44);
+    transition: 0.2s;
+    box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
   }
   &:active {
-    margin-top: 2px;
-    margin-bottom: -2px;
-    transition: .1s;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.11);
+    transform: translateY(2px);
+    transition: 0.1s;
+    box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
   }
 }
 
 .secondary-button {
-  width: 172px;
+  width: 300px;
   height: 44px;
   border-radius: 6px;
   background: $white;
@@ -96,21 +97,18 @@ textarea {
   font-size: 1.8em;
   font-weight: 700;
   transition: 0.2s;
-  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.33);
+  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background: $primary;
-    color: $white;
+    background: lighten($primary, 30%);
     cursor: pointer;
-    transition: .2s;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.44);
+    transition: 0.2s;
+    box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
   }
   &:active {
-    margin-top: 2px;
-    margin-bottom: -2px;
-    transition: .1s;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.11);
-    color: $white;
+    transform: translateY(2px);
+    transition: 0.1s;
+    box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -122,15 +120,18 @@ body {
 }
 
 .system {
-  width: 90%;
+  width: 100%;
   height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   margin: 0 auto;
 
   &__guides {
-    width: 96%;
+    width: 300px;
     margin: 0 auto;
     &__option {
-      width: 100%;
+      width: 300px;
       font-size: 1.8em;
       margin-bottom: 12px;
       i {
@@ -147,7 +148,7 @@ body {
     margin: 0 auto;
     border-radius: 6px;
     border: 1px solid $primary;
-    box-shadow: inset 0 -8px 16px -8px rgba(0,0,0,0.22);
+    box-shadow: inset 0 -8px 16px -8px rgba(0, 0, 0, 0.22);
     overflow-y: auto;
     &__title {
       font-size: 2.4em;
@@ -242,7 +243,7 @@ body {
       }
     }
     &__input {
-      width: 96%;
+      width: 300px;
       height: 40px;
       border-radius: 6px;
       padding-left: 8px;
@@ -270,9 +271,9 @@ body {
   }
   &__logo {
     width: 289px;
-    display: block;
-    margin: 6% auto;
-    margin-bottom: 0.2%;
+    display: fixed;
+    margin-top: 24px;
+    top: 0;
     a {
       font-size: 4em;
       cursor: pointer;
@@ -281,12 +282,76 @@ body {
       pointer-events: none;
     }
   }
+  &__quick-access {
+    display: block;
+    position: fixed;
+    top: 156px;
+    i {
+      margin-right: 6px;
+    }
+    &__call {
+      width: 300px;
+    }
+    &__whatsapp {
+      margin: 18px 0;
+      width: 300px;
+      height: 44px;
+      border-radius: 6px;
+      background-color: $whatsapp;
+      border: $whatsapp 2px solid;
+      color: $white;
+      font-size: 1.8em;
+      font-weight: 700;
+      transition: 0.2s;
+      box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+
+      &:hover {
+        background-color: lighten($whatsapp, 3%);
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
+      }
+      &:active {
+        transform: translateY(2px);
+        background-color: $whatsapp;
+        transition: 0.1s;
+        box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        color: $white;
+      }
+    }
+    &__maps {
+      width: 300px;
+      height: 44px;
+      border-radius: 6px;
+      background-color: $google-maps;
+      border: $google-maps 2px solid;
+      color: $white;
+      font-size: 1.8em;
+      font-weight: 700;
+      transition: 0.2s;
+      box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+
+      &:hover {
+        background-color: lighten($google-maps, 3%);
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
+      }
+      &:active {
+        transform: translateY(2px);
+        background-color: $google-maps;
+        transition: 0.1s;
+        box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        color: $white;
+      }
+    }
+  }
   &__search {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 6%;
+    position: fixed;
+    margin-bottom: 146px;
+    bottom: 0;
     &__input {
-      width: 61%;
+      width: 166px;
       height: 40px;
       border-radius: 6px;
       padding-left: 8px;
@@ -295,8 +360,9 @@ body {
       margin-top: 2px;
     }
     &__button {
-      width: 33%;
-      height: 45px;
+      width: 108px;
+      height: 44px;
+      margin-left: 12px;
       float: right;
       margin-top: 2px;
       i {
@@ -304,84 +370,24 @@ body {
       }
     }
   }
-  &__updates {
-    width: 99%;
-    height: 50%;
-    border: 2px solid $primary;
-    border-radius: 6px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    &__change--updated {
-      width: 96%;
-      display: block;
-      margin: 2% auto;
-      border: 2px solid $primary;
-      background-color: #ffff00;
-      border-radius: 6px;
-      height: 28px;
-      box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.22);
-      &:hover {
-        background-color: $primary;
-        color: $white;
-        cursor: pointer;
-        transition: .2s;
-        box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
-      }
-      &:active {
-        transition: .1s;
-        box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.11);
-      }
-      &__text {
-        text-align: center;
-        margin-top: -10px;
-        font-size: 1.6em;
-      }
-    }
-    &__change--created {
-      width: 96%;
-      display: block;
-      margin: 2% auto;
-      border: 2px solid $primary;
-      background-color: #ADFF2F;
-      border-radius: 6px;
-      height: 28px;
-      box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.22);
-      &:hover {
-        background-color: $primary;
-        color: $white;
-        cursor: pointer;
-        transition: .2s;
-        box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
-      }
-      &:active {
-        transition: .1s;
-        box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.11);
-      }
-      &__text {
-        text-align: center;
-        margin-top: -10px;
-        font-size: 1.6em;
-      }
-    }
-  }
   &__add {
-    margin-bottom: 4%;
+    position: fixed;
+    margin-bottom: 88px;
+    bottom: 0;
     &__button {
-      width: 100%;
+      width: 300px;
       i {
         margin-right: 6px;
       }
     }
   }
   &__help {
-    width: 100%;
-    height: 2%;
-    border-radius: 6px;
-    margin: 4% auto;
-    margin-bottom: 16%;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 24px;
     &__button {
-      width: 60%;
-      margin-left: 20%;
+      width: 192px;
+      border-radius: 6px;
       i {
         margin-right: 6px;
       }
