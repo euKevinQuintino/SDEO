@@ -6,34 +6,37 @@ html(lang="pt-br")
   body
     .system
       .system__logo
-        a.system__logo__link(onclick="paraIndex()")
-          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+        a.system__logo__link(onclick="paraIndex()" tabindex="0")
+          embed(src="./img/logotipo.svg" alt="logotipo da LBomfim")
+      .system__sdeo
+        .system__guides__title página inicial - SDEO
+        .system__guides__subtitle sistema de documentação #[br]de execuções de ordens
       .system__quick-access
         div
-          a(href="tel:11-xxxx-xxxx")
+          a(href="tel:11-xxxx-xxxx" tabindex="0")
             button.system__quick-access__call.primary-button
               i.fas.fa-phone-alt
               | ligar para a empresa
         div
-          a(href="https://chat.whatsapp.com/LxdrVT2evNNF5iGnnQQPmz" target="_blank" rel="noopener noreferrer")
+          a(href="https://chat.whatsapp.com/LxdrVT2evNNF5iGnnQQPmz" target="_blank" rel="noopener noreferrer" tabindex="0")
             button.system__quick-access__whatsapp
               i.fab.fa-whatsapp
               | acessar o grupo da empresa
         div
-          a(href="https://google.com.br/maps/place/PPA+LBOMFIM+Peccinin+Garen+Peças+Assistência+Motor+Cancelas+,+Manutenção/@-23.4467483,-46.5232519,17z/data=!3m1!4b1!4m5!3m4!1s0x94cef533fe016cf1:0x89252a58a22b6230!8m2!3d-23.4467532!4d-46.5210632" target="_blank" rel="noopener noreferrer")
+          a(href="https://google.com.br/maps/place/PPA+LBOMFIM+Peccinin+Garen+Peças+Assistência+Motor+Cancelas+,+Manutenção/@-23.4467483,-46.5232519,17z/data=!3m1!4b1!4m5!3m4!1s0x94cef533fe016cf1:0x89252a58a22b6230!8m2!3d-23.4467532!4d-46.5210632" target="_blank" rel="noopener noreferrer" tabindex="0")
             button.system__quick-access__maps
               i.fas.fa-map-marker-alt
               | consultar o google maps
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem")
-        button.system__search__button.primary-button(id="botaoBusca")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
+        button.system__search__button.primary-button(id="botaoBusca" tabindex="0")
           | buscar
           i.fas.fa-search
       .system__add
-        button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="paraCadastroOrdem()")
-          i.fas.fa-arrow-circle-right
+        button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="paraCadastroOrdem()" tabindex="0")
           | cadastrar uma nova ordem
+          i.fas.fa-arrow-circle-right
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda

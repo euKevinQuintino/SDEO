@@ -74,7 +74,7 @@ gulp.task('run', gulp.series('sass', 'minify-css', 'pug', 'concat', 'uglify'))
 gulp.task('watch', () => {
   gulp.watch('src/views/styles/sass/*.scss', gulp.series('sass'))
   gulp.watch('src/views/styles/css/*.css', gulp.series('minify-css'))
-  gulp.watch('src/views/*.pug', gulp.series('pug'))
+  gulp.watch('src/views/**/*.pug', gulp.series('pug'))
   gulp.watch('src/views/scripts/js/*.js', gulp.series('concat'))
   //gulp.watch('src/js/*.js', gulp.series('minifyJS'))
   gulp.watch('src/views/scripts/main.js', gulp.series('uglify'))

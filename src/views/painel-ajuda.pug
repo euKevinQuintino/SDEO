@@ -9,21 +9,22 @@ html(lang="pt-br")
         a.system__logo__link(onclick="paraIndex()")
           embed(src="./img/logotipo.svg" alt="logotipo da LBomfim")
       .system__guides
-        .system__guides__title qual tarefa você deseja realizar?
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
-          i.far.fa-hand-point-right
-          | quero #[strong cadastrar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
-          i.far.fa-hand-point-right
-          | quero #[strong consultar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
-          i.far.fa-hand-point-right
-          | quero #[strong atualizar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
-          i.far.fa-hand-point-right
-          | quero #[strong atualizar] uma ordem
-        button.system__guides__option.secondary-button(id="ajudaCadastroServico" onclick="paraPainelAjuda()")
-          i.far.fa-hand-point-right
-          | quero #[strong atualizar] uma ordem
+        .system__guides__title painel de ajuda
+        .system__guides__subtitle qual tarefa você deseja realizar?
+        button.system__guides__option.secondary-button(id="ajudaCadastroOrdem" onclick="abrirItemAjuda(1)")
+          | cadastrar uma ordem
+          i#dropDownCadastro.fas.fa-chevron-down
+        button.system__guides__option.secondary-button(id="ajudaConsultarOrdem" onclick="abrirItemAjuda(2)")
+          | consultar uma ordem
+          i#dropDownConsulta.fas.fa-chevron-down
+        button.system__guides__option.secondary-button(id="ajudaEditarObservacao" onclick="abrirItemAjuda(3)")
+          | editar uma observação
+          i#dropDownEdicao.fas.fa-chevron-down
+        button.system__guides__option.secondary-button(id="ajudaImagens" onclick="abrirItemAjuda(5)")
+          | adicionar/remover imagens
+          i#dropDownRemocao.fas.fa-chevron-down
+        button.system__guides__option.secondary-button(id="ajudaRemoverImagem" onclick="abrirItemAjuda(5)")
+          | extra: atalhos do teclado
+          i#dropDownRemocao.fas.fa-chevron-down
       .system__link
         p.link(onclick="paraIndex()") voltar para a tela inicial

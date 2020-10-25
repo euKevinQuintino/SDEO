@@ -42,25 +42,18 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
 //end remove input type number arrows
-hr {
-  margin: 2%;
-  background-color: $primary;
-  border-radius: 6px;
-  border: 0;
-  height: 1px;
-}
 
 body,
 input,
 textarea,
 button {
   font-size: 62.5%;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   border: none;
   color: $base-text;
   resize: none;
@@ -68,8 +61,11 @@ button {
 
 input:focus,
 textarea:focus,
-button:focus {
-  box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
+button:focus,
+a:focus,
+select:focus,
+area:focus {
+  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.6);
 }
 
 input {
@@ -162,15 +158,30 @@ body {
   justify-content: center;
   margin: 0 auto;
 
+  &__sdeo {
+    width: 300px;
+    position: fixed;
+    top: 72px;
+  }
+
   &__guides {
     position: fixed;
-    top: 80px;
+    top: 72px;
     width: 300px;
 
     &__title {
-      font-size: 2.8em;
+      font-size: 2.4em;
       font-weight: 700;
+      font-family: "Ubuntu", sans-serif;
       color: $base-text;
+      text-align: right;
+      line-height: 1.4em;
+    }
+
+    &__subtitle {
+      font-size: 1.6em;
+      color: $base-text;
+      text-align: right;
       margin-bottom: 10px;
       line-height: 1.4em;
     }
@@ -182,8 +193,9 @@ body {
 
       i {
         font-size: 1em;
-        margin-right: 4px;
-        margin-top: 0px;
+        margin-right: 18px;
+        margin-top: 2px;
+        float: right;
       }
     }
   }
@@ -200,15 +212,26 @@ body {
     bottom: 86px;
   }
 
+  &__subtitle-order {
+    font-size: 2em;
+    font-weight: 700;
+    color: $base-text;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+
   &__order-details {
     position: fixed;
     top: 74px;
-    height: 380px;
+    height: 360px;
     overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 16px;
 
     &__title {
-      font-size: 2.8em;
+      font-size: 2.4em;
       text-align: right;
+      font-family: "Ubuntu", sans-serif;
       font-weight: 700;
       color: $base-text;
     }
@@ -216,6 +239,27 @@ body {
     &__observation {
       width: 300px;
       margin-bottom: -12px;
+
+      &__edit {
+        float: right;
+
+        i {
+          font-size: 2em;
+          color: $primary;
+
+          &:hover {
+            color: lighten($primary, 3%);
+            cursor: pointer;
+            transition: 0.2s;
+          }
+
+          &:active {
+            color: darken($primary, 3%);
+            transition: 0.1s;
+            transform: translateY(1px);
+          }
+        }
+      }
 
       &__title {
         color: $base-text;
@@ -250,20 +294,44 @@ body {
         &:hover {
           box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
           cursor: pointer;
-          transition: .2s;
+          transition: 0.2s;
         }
 
         &:active {
           box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
           transform: translateY(2px);
-          transition: .1s;
+          transition: 0.1s;
         }
 
         &__remove {
-          position: relative;
+          position: absolute;
           z-index: 2;
-          width: 24px;
-          height: 24px;
+          background: $google-maps;
+          float: right;
+          margin-left: 40px;
+          margin-top: -8px;
+          border-radius: 24px;
+          width: 22px;
+          height: 22px;
+          border: 2px solid $white;
+
+          &:hover {
+            background: lighten($google-maps, 3%);
+            cursor: pointer;
+            transition: 0.2s;
+          }
+
+          &:active {
+            background: darken($google-maps, 3%);
+            transition: 0.1s;
+          }
+
+          i {
+            font-size: 1.7em;
+            color: $white;
+            margin-left: 5.6px;
+            margin-top: 1.9px;
+          }
         }
       }
 
@@ -274,24 +342,16 @@ body {
         &:hover {
           color: ligthen($primary, 3%);
           cursor: pointer;
-          transition: .2s;
+          transition: 0.2s;
         }
 
         &:active {
           color: darken($primary, 3%);
           transform: translateY(1px);
-          transition: .1s;
+          transition: 0.1s;
         }
       }
     }
-  }
-
-  &__subtitle {
-    font-size: 1.8em;
-    margin-top: 16px;
-    color: $base-text;
-    font-weight: 700;
-    margin-bottom: 6px;
   }
 
   &__form {
@@ -300,7 +360,8 @@ body {
     width: 300px;
 
     &__title {
-      font-size: 2.8em;
+      font-size: 2.4em;
+      font-family: "Ubuntu", sans-serif;
       font-weight: 700;
       width: 300px;
       text-align: right;
@@ -369,7 +430,7 @@ body {
   &__quick-access {
     display: block;
     position: fixed;
-    top: 156px;
+    top: 172px;
 
     i {
       margin-right: 6px;
@@ -446,7 +507,7 @@ body {
       width: 180px;
       height: 38px;
       border-radius: 6px;
-      padding-left: 8px;
+      padding-left: 12px;
       font-size: 1.8em;
       border: 2px solid $primary;
       border-right: none;
@@ -482,19 +543,9 @@ body {
       width: 300px;
 
       i {
-        margin-right: 6px;
+        margin-left: 6px;
       }
     }
-  }
-
-  &__title {
-    margin: 0;
-    font-size: 2.8em;
-    font-weight: 700;
-    text-align: center;
-    color: $primary;
-    position: fixed;
-    top: 72px;
   }
 
   &__help {
@@ -513,17 +564,24 @@ body {
   }
 
   &__search-results {
+    width: 300px;
     height: 300px;
     position: fixed;
-    top: 100px;
+    top: 72px;
     overflow-y: auto;
 
+    &__title {
+      font-family: "Ubuntu", sans-serif;
+      font-size: 2.4em;
+      font-weight: 700;
+      text-align: right;
+      color: $base-text;
+    }
+
     &__result {
-      margin: 12px 0;
+      margin: 12px auto;
       height: 32px;
-      margin-right: 6px;
-      margin-left: 6px;
-      width: 300px;
+      width: 284px;
 
       p {
         text-align: center;
