@@ -77,6 +77,10 @@ textarea {
   padding-top: 10px;
 }
 
+strong {
+  font-weight: 700;
+}
+
 .primary-button {
   width: 300px;
   height: 44px;
@@ -124,6 +128,33 @@ textarea {
   }
 
   &:active {
+    transform: translateY(2px);
+    transition: 0.1s;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.detructive-button {
+  width: 300px;
+  height: 44px;
+  border-radius: 6px;
+  background: $google-maps;
+  //background: -webkit-linear-gradient(to right, $secondary, $primary);
+  //background: linear-gradient(to right, $secondary, $primary);
+  color: $white;
+  font-size: 1.8em;
+  font-weight: 700;
+  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background: lighten($google-maps, 3%);
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  &:active {
+    background: darken($google-maps, 3%);
     transform: translateY(2px);
     transition: 0.1s;
     box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.4);
@@ -196,6 +227,23 @@ body {
         margin-right: 18px;
         margin-top: 2px;
         float: right;
+      }
+
+      &__content {
+        background-color: $white;
+        height: 128px;
+        padding: 8px;
+        font-size: 1.8em;
+        line-height: 1.6em;
+        border: 2px $primary solid;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        display: none;
+        overflow: hidden;
+        box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+        margin-bottom: 16px;
+        margin-top: -16px;
+        overflow-y: auto;
       }
     }
   }
@@ -587,6 +635,62 @@ body {
         text-align: center;
         line-height: 0.2em;
         margin-top: 16px;
+      }
+    }
+  }
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+
+  &__content {
+    width: 300px;
+    height: 300px;
+    border-radius: 6px;
+    background: $white;
+    top: 96px;
+    position: fixed;
+    box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+
+    &__close {
+      float: right;
+      margin-right: 12px;
+      margin-top: 8px;
+      font-size: 2.8em;
+      color: $base-text;
+
+      &:hover {
+        color: lighten($base-text, 9%);
+        cursor: pointer;
+      }
+
+      &:active {
+        color: darken($base-text, 3%);
+        transform: translateY(1px);
+      }
+    }
+
+    &__text {
+      margin: 64px  12px 32px 12px;
+      font-size: 2.4em;
+      line-height: 1.6em;
+    }
+
+    &__buttons {
+      input {
+        margin: 12px;
+        margin-bottom: 2px;
+        width: 276px;
       }
     }
   }
