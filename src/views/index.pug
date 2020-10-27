@@ -4,6 +4,7 @@ html(lang="pt-br")
     title LBomfim - SDEO
     include includes/head
   body
+    include includes/painel-ajuda
     .system
       .system__logo
         a.system__logo__link(onclick="paraIndex()" tabindex="0")
@@ -37,6 +38,6 @@ html(lang="pt-br")
           | cadastrar uma nova ordem
           i.fas.fa-arrow-circle-right
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()" tabindex="0")
+        button.system__help__button.secondary-button(onclick="abrirPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda

@@ -1,22 +1,3 @@
-var acc = document.getElementsByClassName("system__guides__option");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function () {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
     if (event.key === ' ' || 'Enter') {
@@ -34,53 +15,36 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-var isOpen = false;
-
-function abrirItemAjuda(item) {
-  if (isOpen) {
-    document.getElementById("dropDownCadastro").style.transition = ".2s";
-    document.getElementById("dropDownCadastro").style.transform = "rotate(0deg)";
-    document.getElementById("dropDownConsulta").style.transition = ".2s";
-    document.getElementById("dropDownConsulta").style.transform = "rotate(0deg)";
-    document.getElementById("dropDownEdicao").style.transition = ".2s";
-    document.getElementById("dropDownEdicao").style.transform = "rotate(0deg)";
-    document.getElementById("dropDownAdicao").style.transition = ".2s";
-    document.getElementById("dropDownAdicao").style.transform = "rotate(0deg)";
-    document.getElementById("dropDownRemocao").style.transition = ".2s";
-    document.getElementById("dropDownRemocao").style.transform = "rotate(0deg)";
-    isOpen = false;
-  } else if (item == 1 && !isOpen) {
-    document.getElementById("dropDownCadastro").style.transition = ".2s";
-    document.getElementById("dropDownCadastro").style.transform = "rotate(180deg)";
-    isOpen = true;
-  } else if (item == 2 && !isOpen) {
-    document.getElementById("dropDownConsulta").style.transition = ".2s";
-    document.getElementById("dropDownConsulta").style.transform = "rotate(180deg)";
-    isOpen = true;
-  } else if (item == 3 && !isOpen) {
-    document.getElementById("dropDownEdicao").style.transition = ".2s";
-    document.getElementById("dropDownEdicao").style.transform = "rotate(180deg)";
-    isOpen = true;
-  } else if (item == 4 && !isOpen) {
-    document.getElementById("dropDownAdicao").style.transition = ".2s";
-    document.getElementById("dropDownAdicao").style.transform = "rotate(180deg)";
-    isOpen = true;
-  } else if (item == 5 && !isOpen) {
-    document.getElementById("dropDownRemocao").style.transition = ".2s";
-    document.getElementById("dropDownRemocao").style.transform = "rotate(180deg)";
-    isOpen = true;
-  }
-}
-
+var popUpAberto = 'ajuda'
+var itemAberto = 'nenhum'
 function paraIndex() {
-    window.location="index.html";
+  window.location = "index.html";
 }
 function paraCadastroOrdem() {
-    window.location="cadastro-ordem.html";
+  window.location = "cadastro-ordem.html";
 }
-function paraPainelAjuda() {
-    window.location="painel-ajuda.html";
+function abrirPainelAjuda() {
+  document.getElementsByClassName('modal-ajuda').style.display = "flex";
+}
+function abrirItemAjuda(item) {
+  if (item == 'consulta') {
+    document.getElementById('AjudaConsulta').style.display = "flex";
+  } else if (item == 'cadastro') {
+    document.getElementById('AjudaCadastro').style.display = "flex";
+  } else if (item == 'alteracao') {
+    document.getElementById('AjudaAlteracao').style.display = "flex";
+  } else if (item == 'adicao-imagens') {
+    document.getElementById('AjudaAdicaoImagens').style.display = "flex";
+  } else if (item == 'remocao-imagens') {
+    document.getElementById('AjudaRemocaoImagens').style.display = "flex";
+  } else if (item == 'extra') {
+    document.getElementById('AjudaExtraAtalhos').style.display = "flex";
+  }
 }
 function fecharPopUp() {
-
+  if (popUpAberto === 'ajuda') {
+    document.getElementsByClassName('modal-ajuda').style.display = "none";
+  } else if (popUpAberto === 'destrutiva') {
+    document.getElementsByClassName('modal').style.display = "none";
+  } 
 }

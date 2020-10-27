@@ -4,6 +4,7 @@ html(lang="pt-br")
     title Cadastro de ordem - SDEO
     include includes/head
   body
+    include includes/painel-ajuda
     .system
       .system__logo
         a.system__logo__link(onclick="paraIndex()")
@@ -19,6 +20,6 @@ html(lang="pt-br")
       .system__link
         p.link(onclick="paraIndex()") voltar para a tela inicial
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda" onclick="paraPainelAjuda()")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="abrirPainelAjuda()")
           i.fas.fa-question-circle
           | preciso de ajuda

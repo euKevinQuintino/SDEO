@@ -643,12 +643,12 @@ body {
 .modal {
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 3;
   left: 0;
   top: 0;
-  display: flex;
+  display: none;
   align-content: center;
   justify-content: center;
   margin: auto;
@@ -681,7 +681,63 @@ body {
     }
 
     &__text {
-      margin: 64px  12px 32px 12px;
+      margin: 64px 12px 32px 12px;
+      font-size: 2.4em;
+      line-height: 1.6em;
+    }
+
+    &__buttons {
+      input {
+        margin: 12px;
+        margin-bottom: 2px;
+        width: 276px;
+      }
+    }
+  }
+}
+
+.modal-ajuda {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  display: none;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+
+  &__content {
+    width: 300px;
+    height: 300px;
+    border-radius: 6px;
+    background: $white;
+    top: 96px;
+    position: fixed;
+    box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
+
+    &__close {
+      float: right;
+      margin-right: 12px;
+      margin-top: 8px;
+      font-size: 2.8em;
+      color: $base-text;
+
+      &:hover {
+        color: lighten($base-text, 9%);
+        cursor: pointer;
+      }
+
+      &:active {
+        color: darken($base-text, 3%);
+        transform: translateY(1px);
+      }
+    }
+
+    &__text {
+      margin: 64px 12px 32px 12px;
       font-size: 2.4em;
       line-height: 1.6em;
     }
