@@ -7,11 +7,11 @@ html(lang="pt-br")
     include includes/painel-ajuda
     .system
       .system__logo
-        a.system__logo__link(onclick="paraIndex()")
-          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
+        a.system__logo__link(onclick="paraIndex()" tabindex="0")
+          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim" )
       .system__search(style="bottom: -28px;")
-        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="número da ordem")
-        button.system__search__button.primary-button(id="botaoBusca")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="número da ordem" tabindex="0")
+        button.system__search__button.primary-button(id="botaoBusca" tabindex="0")
           | buscar
           i.fas.fa-search
       .system__search-results
@@ -41,8 +41,8 @@ html(lang="pt-br")
         .system__search-results__result.secondary-button
           p.system__search-results__result__ordem #[strong 31548]
       .system__link
-        p.link(onclick="paraIndex()") voltar para a tela inicial
+        p.link(onclick="paraIndex()" tabindex="0") voltar para a tela inicial
       .system__help
-        button.system__help__button.secondary-button(id="botaoAjuda" onclick="abrirPainelAjuda()")
+        button.system__help__button.secondary-button(id="botaoAjuda" onclick="abrirPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda

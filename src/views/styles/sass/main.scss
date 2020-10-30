@@ -59,13 +59,8 @@ button {
   resize: none;
 }
 
-input:focus,
-textarea:focus,
-button:focus,
-a:focus,
-select:focus,
-area:focus {
-  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.6);
+*:focus {
+  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.8);
 }
 
 input {
@@ -171,6 +166,12 @@ strong {
     color: $primary;
     cursor: pointer;
     transition: 0.2s;
+  }
+  &:active {
+    box-shadow: none;
+  }
+  &:focus {
+    box-shadow: none;
   }
 }
 
@@ -552,7 +553,7 @@ body {
     bottom: 0;
 
     &__input {
-      width: 180px;
+      width: 172px;
       height: 38px;
       border-radius: 6px;
       padding-left: 12px;
@@ -564,7 +565,7 @@ body {
     }
 
     &__button {
-      width: 108px;
+      width: 112px;
       height: 44px;
       float: right;
       border-bottom-left-radius: 0;
@@ -711,10 +712,10 @@ body {
 
   &__content {
     width: 300px;
-    height: 300px;
+    height: 496px;
     border-radius: 6px;
     background: $white;
-    top: 96px;
+    top: 36px;
     position: fixed;
     box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 
@@ -736,18 +737,86 @@ body {
       }
     }
 
-    &__text {
-      margin: 64px 12px 32px 12px;
+    &__title {
+      margin: 4px 12px 2px 12px;
       font-size: 2.4em;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700;
       line-height: 1.6em;
     }
 
-    &__buttons {
+    &__items {
+      &__text {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: $secondary;
+        margin-left: 12px;
+        line-height: 1.2em;
+      }
+
       input {
-        margin: 12px;
-        margin-bottom: 2px;
+        margin: 8px 12px;
         width: 276px;
       }
     }
+
+    &__guide {
+      &__text {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: $secondary;
+        margin-left: 12px;
+        line-height: 1.2em;
+      }
+
+      input {
+        margin: 8px 12px;
+        width: 276px;
+      }
+
+      p {
+        font-size: 1.8em;
+      }
+
+      ol {
+        margin: 0px 20px;
+        padding: 12px;
+      }
+      
+      li {
+        list-style-type: decimal;
+        line-height: 1.6em;
+        font-size: 1.8em;
+        font-weight: 700;
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
   }
+}
+
+#AjudaConsulta {
+  display: none;
+}
+
+#AjudaCadastro {
+  display: none;
+}
+
+#AjudaAlteracao {
+  display: none;
+}
+
+#AjudaAdicaoImagem {
+  display: none;
+}
+
+#AjudaRemocaoImagem {
+  display: none;
+}
+
+#AjudaExtra {
+  display: none;
 }

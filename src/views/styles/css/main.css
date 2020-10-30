@@ -38,13 +38,8 @@ button {
   color: #333;
   resize: none; }
 
-input:focus,
-textarea:focus,
-button:focus,
-a:focus,
-select:focus,
-area:focus {
-  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.6); }
+*:focus {
+  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.8); }
 
 input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4); }
@@ -126,6 +121,10 @@ strong {
     color: #396afc;
     cursor: pointer;
     transition: 0.2s; }
+  .link:active {
+    box-shadow: none; }
+  .link:focus {
+    box-shadow: none; }
 
 body {
   width: 100vw;
@@ -400,7 +399,7 @@ body {
     margin-bottom: 146px;
     bottom: 0; }
     .system__search__input {
-      width: 180px;
+      width: 172px;
       height: 38px;
       border-radius: 6px;
       padding-left: 12px;
@@ -410,7 +409,7 @@ body {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0; }
     .system__search__button {
-      width: 108px;
+      width: 112px;
       height: 44px;
       float: right;
       border-bottom-left-radius: 0;
@@ -514,10 +513,10 @@ body {
   margin: auto; }
   .modal-ajuda__content {
     width: 300px;
-    height: 300px;
+    height: 496px;
     border-radius: 6px;
     background: #fff;
-    top: 96px;
+    top: 36px;
     position: fixed;
     box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4); }
     .modal-ajuda__content__close {
@@ -532,11 +531,57 @@ body {
       .modal-ajuda__content__close:active {
         color: #2b2b2b;
         transform: translateY(1px); }
-    .modal-ajuda__content__text {
-      margin: 64px 12px 32px 12px;
+    .modal-ajuda__content__title {
+      margin: 4px 12px 2px 12px;
       font-size: 2.4em;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700;
       line-height: 1.6em; }
-    .modal-ajuda__content__buttons input {
-      margin: 12px;
-      margin-bottom: 2px;
+    .modal-ajuda__content__items__text {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #2948ff;
+      margin-left: 12px;
+      line-height: 1.2em; }
+    .modal-ajuda__content__items input {
+      margin: 8px 12px;
       width: 276px; }
+    .modal-ajuda__content__guide__text {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #2948ff;
+      margin-left: 12px;
+      line-height: 1.2em; }
+    .modal-ajuda__content__guide input {
+      margin: 8px 12px;
+      width: 276px; }
+    .modal-ajuda__content__guide p {
+      font-size: 1.8em; }
+    .modal-ajuda__content__guide ol {
+      margin: 0px 20px;
+      padding: 12px; }
+    .modal-ajuda__content__guide li {
+      list-style-type: decimal;
+      line-height: 1.6em;
+      font-size: 1.8em;
+      font-weight: 700; }
+      .modal-ajuda__content__guide li span {
+        font-weight: 400; }
+
+#AjudaConsulta {
+  display: none; }
+
+#AjudaCadastro {
+  display: none; }
+
+#AjudaAlteracao {
+  display: none; }
+
+#AjudaAdicaoImagem {
+  display: none; }
+
+#AjudaRemocaoImagem {
+  display: none; }
+
+#AjudaExtra {
+  display: none; }

@@ -1,7 +1,20 @@
 .modal-ajuda
-  .modal__content
-    .modal__content__close(onclick='fecharPopUp()')
+  .modal-ajuda__content
+    .modal-ajuda__content__close(onclick='fecharPopUp()')
       i#painelAjuda.fas.fa-times
-    .modal__content__text painel de ajuda
-    .modal__content__buttons
-      
+    .modal-ajuda__content__title painel de ajuda
+    .modal-ajuda__content__items
+      .modal-ajuda__content__items__text qual tarefa você deseja realizar?
+      input.secondary-button(type="button" onclick="abrirItemAjuda('consulta')" value="consultar uma ordem" tabindex="0")
+      input.secondary-button(type="button" onclick="abrirItemAjuda('cadastro')" value="cadastrar uma ordem" tabindex="0")
+      input.secondary-button(type="button" onclick="abrirItemAjuda('alteracao')" value="alterar uma observação" tabindex="0")
+      input.secondary-button(type="button" onclick="abrirItemAjuda('adicaoImagem')" value="adicionar uma imagem" tabindex="0")
+      input.secondary-button(type="button" onclick="abrirItemAjuda('remocaoImagem')" value="remover uma imagem" tabindex="0")
+      input.secondary-button(type="button" onclick="abrirItemAjuda('extra')" value="consultar atalhos" tabindex="0")
+      p.link(onclick="paraIndex()" tabindex="0" style="text-align: center; margin-top: 6px;") voltar para a tela inicial
+    .modal-ajuda__content__guide#AjudaConsulta
+      .modal-ajuda__content__items__text consultando uma ordem:
+      ol
+        li #[span teste] 
+      input.secondary-button(type="button" onclick="fecharPopUp()" value="fechar painel de ajuda" tabindex="0")
+      p.link(onclick="abrirPainelAjuda()" tabindex="0" style="text-align: center; margin-top: 6px;") voltar para a seleção
