@@ -272,7 +272,8 @@ body {
   &__order-details {
     position: fixed;
     top: 74px;
-    height: 360px;
+    height: 63%;
+    border: 2px solid $whatsapp;
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 16px;
@@ -479,7 +480,7 @@ body {
   &__quick-access {
     display: block;
     position: fixed;
-    top: 172px;
+    top: 30%;
 
     i {
       margin-right: 6px;
@@ -740,7 +741,7 @@ body {
     &__title {
       margin: 4px 12px 2px 12px;
       font-size: 2.4em;
-      font-family: 'Ubuntu', sans-serif;
+      font-family: "Ubuntu", sans-serif;
       font-weight: 700;
       line-height: 1.6em;
     }
@@ -782,7 +783,7 @@ body {
         margin: 0px 20px;
         padding: 12px;
       }
-      
+
       li {
         list-style-type: decimal;
         line-height: 1.6em;
@@ -819,4 +820,12 @@ body {
 
 #AjudaExtra {
   display: none;
+}
+
+//tablet
+@media (min-width: 768px) and (max-width: 1199px) {
+}
+
+//desktop
+@media (min-width: 1200px) {
 }
