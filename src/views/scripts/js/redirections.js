@@ -1,74 +1,82 @@
 var isPainelAjudaAberto = false;
-var isGuiaAberto = false;
+var guiaAberto = "nenhum";
 
 function paraIndex() {
-  window.location = 'index.html';
+  window.location = "index.html";
 }
 
 function paraCadastroOrdem() {
-  window.location = 'cadastro-ordem.html';
+  window.location = "cadastro-ordem.html";
 }
 
 function abrirPainelAjuda() {
   if (isPainelAjudaAberto) {
-    if (isGuiaAberto) {
-      document.getElementById('AjudaCadastro').style.display = 'none';
-      document.getElementById('AjudaConsulta').style.display = 'none';
-      document.getElementById('AjudaAlteracao').style.display = 'none';
-      document.getElementById('AjudaAdicaoImagem').style.display = 'none';
-      document.getElementById('AjudaRemocaoImagem').style.display = 'none';
-      document.getElementById('AjudaExtra').style.display = 'none';
-      document.querySelector('.modal-ajuda__content__items').style.display = 'block';
-      document.querySelector('.modal-ajuda').style.display = 'flex';
-      isGuiaAberto = false;
+    if (guiaAberto !== "nenhum") {
+      if (guiaAberto == "consulta") {
+        document.getElementById("AjudaConsulta").style.display = "none";
+      } else if (guiaAberto == "cadastro") {
+        document.getElementById("AjudaCadastro").style.display = "none";
+      } else if (guiaAberto == "alteracao") {
+        document.getElementById("AjudaAlteracao").style.display = "none";
+      } else if (guiaAberto == "adicaoImagem") {
+        document.getElementById("AjudaAdicaoImagem").style.display = "none";
+      } else if (guiaAberto == "remocaoImagem") {
+        document.getElementById("AjudaRemocaoImagem").style.display = "none";
+      } else if (guiaAberto == "extra") {
+        document.getElementById("AjudaExtra").style.display = "none";
+      }
+      document.querySelector(".modal-ajuda__content__items").style.display =
+        "block";
+      guiaAberto = "nenhum";
     }
   } else {
-    document.querySelector('.modal-ajuda').style.display = 'flex';
-    document.querySelector('.modal-ajuda__content__items').style.display = 'block';
+    document.querySelector(".modal-ajuda").style.display = "flex";
+    document.querySelector(".modal-ajuda__content__items").style.display =
+      "block";
   }
   isPainelAjudaAberto = true;
 }
 
 function abrirItemAjuda(item) {
-  if (item == 'consulta') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaConsulta').style.display = 'block';
-    isGuiaAberto = true;
-  } else if (item == 'cadastro') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaCadastro').style.display = 'block';
-    isGuiaAberto = true;
-  } else if (item == 'alteracao') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaAlteracao').style.display = 'block';
-    isGuiaAberto = true;
-  } else if (item == 'adicaoImagem') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaAdicaoImagem').style.display = 'block';
-    isGuiaAberto = true;
-  } else if (item == 'remocaoImagem') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaRemocaoImagem').style.display = 'block';
-    isGuiaAberto = true;
-  } else if (item == 'extra') {
-    document.querySelector('.modal-ajuda__content__items').style.display = 'none';
-    document.getElementById('AjudaExtra').style.display = 'block';
-    isGuiaAberto = true;
+  document.querySelector(".modal-ajuda__content__items").style.display = "none";
+  if (item == "consulta") {
+    document.getElementById("AjudaConsulta").style.display = "block";
+    guiaAberto = "consulta";
+  } else if (item == "cadastro") {
+    document.getElementById("AjudaCadastro").style.display = "block";
+    guiaAberto = "cadastro";
+  } else if (item == "alteracao") {
+    document.getElementById("AjudaAlteracao").style.display = "block";
+    guiaAberto = "alteracao";
+  } else if (item == "adicaoImagem") {
+    document.getElementById("AjudaAdicaoImagem").style.display = "block";
+    guiaAberto = "adicaoImagem";
+  } else if (item == "remocaoImagem") {
+    document.getElementById("AjudaRemocaoImagem").style.display = "block";
+    guiaAberto = "remocaoImagem";
+  } else if (item == "extra") {
+    document.getElementById("AjudaExtra").style.display = "block";
+    guiaAberto = "extra";
   }
 }
 
 function fecharPopUp() {
   if (isPainelAjudaAberto) {
-    document.querySelector('.modal-ajuda').style.display = 'none';
-    /*document.getElementById('AjudaCadastro').style.display = 'none';
-    document.getElementById('AjudaConsulta').style.display = 'none';
-    document.getElementById('AjudaAlteracao').style.display = 'none';
-    document.getElementById('AjudaAdicaoImagem').style.display = 'none';
-    document.getElementById('AjudaRemocaoImagem').style.display = 'none';
-    document.getElementById('AjudaExtra').style.display = 'none';*/
+    document.querySelector(".modal-ajuda").style.display = "none";
+    if (guiaAberto == "consulta") {
+      document.getElementById("AjudaConsulta").style.display = "none";
+    } else if (guiaAberto == "cadastro") {
+      document.getElementById("AjudaCadastro").style.display = "none";
+    } else if (guiaAberto == "alteracao") {
+      document.getElementById("AjudaAlteracao").style.display = "none";
+    } else if (guiaAberto == "adicaoImagem") {
+      document.getElementById("AjudaAdicaoImagem").style.display = "none";
+    } else if (guiaAberto == "remocaoImagem") {
+      document.getElementById("AjudaRemocaoImagem").style.display = "none";
+    } else if (guiaAberto == "extra") {
+      document.getElementById("AjudaExtra").style.display = "none";
+    }
     isPainelAjudaAberto = false;
-    //isGuiaAberto = false;
-  } /*else if (popUpAberto == 'destrutiva') {
-    document.gquerySelector('.modal').style.display = 'none';
-  }*/
+    guiaAberto = "nenhum";
+  }
 }
