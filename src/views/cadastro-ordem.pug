@@ -13,7 +13,7 @@ html(lang="pt-br")
         h1.system__form__title cadastro de ordem
         p.system__form__label(for="codigoOrdem") #[strong número da ordem:]
         label.system__form__placeholder(for="codigoOrdem") é um número do tipo "12345"
-        input.system__form__input(id="codigoOrdem" type="number" name="codigoOrdem" tabindex="0" required)
+        input.system__form__input(id="codigoOrdem" type="number" name="codigoOrdem" tabindex="0" maxlength="4")
         button.system__form__submit.primary-button(id="submitCadastro" tabindex="0")
           i.fas.fa-plus-circle
           | cadastrar ordem

@@ -8,9 +8,9 @@ html(lang="pt-br")
     .system
       .system__logo
         a.system__logo__link(onclick="paraIndex()" tabindex="0")
-          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim" )
+          embed(src="./img/logotipo.svg" alt="Logotipo da LBomfim")
       .system__search(style="bottom: -28px;")
-        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="número da ordem" tabindex="0")
+        input.system__search__input(id="inputBusca" name="inputBusca" type="text" placeholder="número da ordem" tabindex="0" maxlength="4")
         button.system__search__button.primary-button(id="botaoBusca" tabindex="0")
           | buscar
           i.fas.fa-search

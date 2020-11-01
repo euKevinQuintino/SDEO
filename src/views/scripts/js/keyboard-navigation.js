@@ -1,16 +1,14 @@
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
-    if (event.key === ' ' || 'Enter') {
-      //event.preventDefault();
+    event.preventDefault();
+    if (event.key === " " || "Enter") {
       document.activeElement.click();
     }
-    if (event.key === 'Escape') {
-      //event.preventDefault();
-      paraIndex();
+    if (event.key == "Escape") {
+      fecharPopUp();
     }
-    if (event.key === 'F1') {
-      //event.preventDefault();
-      paraPainelAjuda();
+    if (event.key == "F1") {
+      abrirPainelAjuda();
     }
   }
 });

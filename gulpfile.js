@@ -13,9 +13,9 @@ sass.compiler = require('node-sass')
 /*const minifyJS = () =>
   gulp.src('src/js/*.js')
     .pipe(terser({
-       mangle: {
-         toplevel: true
-       }
+      mangle: {
+        toplevel: true
+      }
     }))
     .on('error', function (error) {
       this.emit('end')

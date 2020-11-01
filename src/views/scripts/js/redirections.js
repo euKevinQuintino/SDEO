@@ -28,13 +28,16 @@ function abrirPainelAjuda() {
       document.querySelector(".modal-ajuda__content__items").style.display =
         "block";
       guiaAberto = "nenhum";
+      isPainelAjudaAberto = true;
     }
+    document.querySelector(".modal-ajuda").style.display = "none";
+    isPainelAjudaAberto = false;
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
     document.querySelector(".modal-ajuda__content__items").style.display =
       "block";
+    isPainelAjudaAberto = true;
   }
-  isPainelAjudaAberto = true;
 }
 
 function abrirItemAjuda(item) {

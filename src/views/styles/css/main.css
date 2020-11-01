@@ -25,6 +25,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; }
 
+input:invalid {
+  border-color: #e83c2e; }
+
 input[type="number"] {
   -moz-appearance: textfield; }
 
@@ -202,7 +205,6 @@ body {
     position: fixed;
     top: 74px;
     height: 63%;
-    border: 2px solid #25d366;
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 16px; }

@@ -1,16 +1,14 @@
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
-    if (event.key === ' ' || 'Enter') {
-      //event.preventDefault();
+    event.preventDefault();
+    if (event.key === " " || "Enter") {
       document.activeElement.click();
     }
-    if (event.key === 'Escape') {
-      //event.preventDefault();
-      paraIndex();
+    if (event.key == "Escape") {
+      fecharPopUp();
     }
-    if (event.key === 'F1') {
-      //event.preventDefault();
-      paraPainelAjuda();
+    if (event.key == "F1") {
+      abrirPainelAjuda();
     }
   }
 });
@@ -45,13 +43,16 @@ function abrirPainelAjuda() {
       document.querySelector(".modal-ajuda__content__items").style.display =
         "block";
       guiaAberto = "nenhum";
+      isPainelAjudaAberto = true;
     }
+    document.querySelector(".modal-ajuda").style.display = "none";
+    isPainelAjudaAberto = false;
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
     document.querySelector(".modal-ajuda__content__items").style.display =
       "block";
+    isPainelAjudaAberto = true;
   }
-  isPainelAjudaAberto = true;
 }
 
 function abrirItemAjuda(item) {

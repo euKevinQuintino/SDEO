@@ -42,6 +42,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input:invalid {
+  border-color: $google-maps;
+}
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -273,7 +277,6 @@ body {
     position: fixed;
     top: 74px;
     height: 63%;
-    border: 2px solid $whatsapp;
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 16px;
