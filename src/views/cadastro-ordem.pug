@@ -9,7 +9,7 @@ html(lang="pt-br")
       .system__logo
         a.system__logo__link(onclick="paraIndex()" tabindex="0")
           embed(src="./img/logotipo.svg" alt="logotipo da LBomfim")
-      form.system__form
+      form.system__form(action="/dist/cadastro-ordem.html" method="GET")
         h1.system__form__title cadastro de ordem
         p.system__form__label(for="codigoOrdem") #[strong número da ordem:]
         label.system__form__placeholder(for="codigoOrdem") é um número do tipo "12345"
