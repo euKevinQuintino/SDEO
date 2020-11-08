@@ -128,6 +128,20 @@ strong {
     box-shadow: none; }
   .link:focus {
     box-shadow: none; }
+  .link__remove {
+    font-size: 1.8em;
+    color: #e83c2e;
+    text-decoration: underline;
+    font-weight: 700;
+    text-align: center; }
+    .link__remove:hover {
+      color: #d62618;
+      cursor: pointer;
+      transition: 0.2s; }
+    .link__remove:active {
+      box-shadow: none; }
+    .link__remove:focus {
+      box-shadow: none; }
 
 body {
   width: 100vw;
@@ -216,14 +230,16 @@ body {
       color: #333; }
     .system__order-details__observation {
       width: 300px;
-      margin-bottom: -12px; }
+      margin-top: 4px;
+      margin-bottom: 0px; }
       .system__order-details__observation__edit {
-        float: right; }
+        float: right;
+        margin-top: -20px; }
         .system__order-details__observation__edit i {
           font-size: 2em;
           color: #396afc; }
           .system__order-details__observation__edit i:hover {
-            color: #4875fc;
+            color: #5781fc;
             cursor: pointer;
             transition: 0.2s; }
           .system__order-details__observation__edit i:active {
@@ -286,7 +302,7 @@ body {
         font-size: 56px;
         color: #396afc; }
         .system__order-details__image-grid__add:hover {
-          color: ligthen(#396afc, 3%);
+          color: #4875fc;
           cursor: pointer;
           transition: 0.2s; }
         .system__order-details__image-grid__add:active {
@@ -464,7 +480,7 @@ body {
 .modal {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.69);
   position: fixed;
   z-index: 3;
   left: 0;
@@ -505,7 +521,7 @@ body {
 .modal-ajuda {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.69);
   position: fixed;
   z-index: 3;
   left: 0;
@@ -546,6 +562,10 @@ body {
       color: #2948ff;
       margin-left: 12px;
       line-height: 1.2em; }
+    .modal-ajuda__content__items__options {
+      width: 300px;
+      position: absolute;
+      bottom: 16px; }
     .modal-ajuda__content__items input {
       margin: 8px 12px;
       width: 276px; }
@@ -563,10 +583,16 @@ body {
     .modal-ajuda__content__guide ol {
       margin: 0px 20px;
       padding: 12px; }
+    .modal-ajuda__content__guide ul {
+      margin: 0px 20px;
+      padding: 12px; }
+      .modal-ajuda__content__guide ul li {
+        list-style-type: initial; }
     .modal-ajuda__content__guide li {
       list-style-type: decimal;
       line-height: 1.6em;
       font-size: 1.8em;
+      margin-bottom: 4px;
       font-weight: 700; }
       .modal-ajuda__content__guide li span {
         font-weight: 400; }

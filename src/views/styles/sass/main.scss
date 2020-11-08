@@ -177,6 +177,26 @@ strong {
   &:focus {
     box-shadow: none;
   }
+
+  &__remove {
+    font-size: 1.8em;
+    color: $google-maps;
+    text-decoration: underline;
+    font-weight: 700;
+    text-align: center;
+
+    &:hover {
+      color: darken($google-maps, 8%);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    &:active {
+      box-shadow: none;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }
 
 body {
@@ -291,17 +311,19 @@ body {
 
     &__observation {
       width: 300px;
-      margin-bottom: -12px;
+      margin-top: 4px;
+      margin-bottom: 0px;
 
       &__edit {
         float: right;
+        margin-top: -20px;
 
         i {
           font-size: 2em;
           color: $primary;
 
           &:hover {
-            color: lighten($primary, 3%);
+            color: lighten($primary, 6%);
             cursor: pointer;
             transition: 0.2s;
           }
@@ -393,7 +415,7 @@ body {
         color: $primary;
 
         &:hover {
-          color: ligthen($primary, 3%);
+          color: lighten($primary, 3%);
           cursor: pointer;
           transition: 0.2s;
         }
@@ -648,7 +670,7 @@ body {
 .modal {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.69);
   position: fixed;
   z-index: 3;
   left: 0;
@@ -704,7 +726,7 @@ body {
 .modal-ajuda {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.69);
   position: fixed;
   z-index: 3;
   left: 0;
@@ -758,6 +780,12 @@ body {
         line-height: 1.2em;
       }
 
+      &__options {
+        width: 300px;
+        position: absolute;
+        bottom: 16px;
+      }
+
       input {
         margin: 8px 12px;
         width: 276px;
@@ -787,10 +815,19 @@ body {
         padding: 12px;
       }
 
+      ul {
+        li {
+          list-style-type: initial;
+        }
+        margin: 0px 20px;
+        padding: 12px;
+      }
+
       li {
         list-style-type: decimal;
         line-height: 1.6em;
         font-size: 1.8em;
+        margin-bottom: 4px;
         font-weight: 700;
 
         span {

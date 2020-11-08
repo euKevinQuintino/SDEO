@@ -30,8 +30,6 @@ function abrirPainelAjuda() {
       guiaAberto = "nenhum";
       isPainelAjudaAberto = true;
     }
-    document.querySelector(".modal-ajuda").style.display = "none";
-    isPainelAjudaAberto = false;
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
     document.querySelector(".modal-ajuda__content__items").style.display =

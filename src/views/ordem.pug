@@ -15,58 +15,20 @@ html(lang="pt-br")
           h2.system__order-details__observation__title observação:
           #orderObservationEdit.system__order-details__observation__edit(onclick="editarObservacao()" tabindex="0")
             i.fas.fa-edit
-          p.system__order-details__observation__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel autem similique quia molestias laborum officia eaque animi at iure. Vero odit voluptates voluptatem ea odio.
+          p.system__order-details__observation__text 
         h2.system__subtitle-order pré-execução:
         .system__order-details__image-grid
-          .system__order-details__image-grid__picture
+          //.system__order-details__image-grid__picture
             .system__order-details__image-grid__picture__remove
               i.fas.fa-times
             img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-        h2.system__subtitle-order pós-execução:
-        .system__order-details__image-grid
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__picture
-            .system__order-details__image-grid__picture__remove
-              i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          
           .system__order-details__image-grid__add
             i.fas.fa-plus-circle
+        h2.system__subtitle-order pós-execução:
+        .system__order-details__image-grid
+          .system__order-details__image-grid__add
+            i.fas.fa-plus-circle
+        p.link__remove(onclick="RemoverOrdem()" tabindex="0") remover ordem
       .system__link
         p.link(onclick="paraIndex()" tabindex="0") voltar para a tela inicial
       .system__help

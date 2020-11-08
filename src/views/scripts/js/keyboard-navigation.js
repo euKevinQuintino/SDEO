@@ -1,7 +1,7 @@
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
     //event.preventDefault();
-    if (event.key === " " || "Enter") {
+    if (event.key == " " || "Enter") {
       document.activeElement.click();
     }
     if (event.key == "Escape") {
@@ -9,6 +9,17 @@ window.addEventListener("keydown", function (event) {
     }
     if (event.key == "F1") {
       abrirPainelAjuda();
+    }
+    if (event.key == "Backspace") {
+      if (isPainelAjudaAberto) {
+        if (guiaAberto !== "nenhum") {
+          abrirPainelAjuda();
+        } else {
+          fecharPopUp();
+        }
+      } else {
+        paraIndex();
+      }
     }
   }
 });
