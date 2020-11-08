@@ -42,7 +42,7 @@ app.post("/dist/cadastro-ordem.html", function (req, res) {
       numero_ordem: req.body.codigoOrdem,
     })
     .then(function () {
-      res.redirect("/");
+      res.redirect("/ordem.html");
     })
     .catch(function (erro) {
       res.send("ERRO: Não foi possível cadastrar a ordem." + erro);
