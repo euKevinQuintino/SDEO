@@ -10,7 +10,7 @@ window.addEventListener("keydown", function (event) {
     if (event.key == "F1") {
       abrirPainelAjuda();
     }
-    if (event.key == "Backspace") {
+    /*if (event.key == "Backspace") {
       if (isPainelAjudaAberto) {
         if (guiaAberto !== "nenhum") {
           abrirPainelAjuda();
@@ -20,6 +20,6 @@ window.addEventListener("keydown", function (event) {
       } else {
         paraIndex();
       }
-    }
+    }*/
   }
 });

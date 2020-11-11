@@ -338,7 +338,7 @@ body {
 
       &__title {
         color: $base-text;
-        font-size: 1.8em;
+        font-size: 2em;
         font-weight: 700;
         margin-top: 0px;
       }
@@ -675,7 +675,7 @@ body {
   z-index: 3;
   left: 0;
   top: 0;
-  display: none;
+  display: block;
   align-content: center;
   justify-content: center;
   margin: auto;
@@ -836,6 +836,18 @@ body {
       }
     }
   }
+}
+
+#PopUpCadastro {
+  display: none;
+}
+
+#PopUpRemocao {
+  display: none;
+}
+
+#PopUpAlteracao {
+  display: none;
 }
 
 #AjudaConsulta {

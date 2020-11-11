@@ -248,7 +248,7 @@ body {
             transform: translateY(1px); }
       .system__order-details__observation__title {
         color: #333;
-        font-size: 1.8em;
+        font-size: 2em;
         font-weight: 700;
         margin-top: 0px; }
       .system__order-details__observation__text {
@@ -485,7 +485,7 @@ body {
   z-index: 3;
   left: 0;
   top: 0;
-  display: none;
+  display: block;
   align-content: center;
   justify-content: center;
   margin: auto; }
@@ -596,6 +596,15 @@ body {
       font-weight: 700; }
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
+
+#PopUpCadastro {
+  display: none; }
+
+#PopUpRemocao {
+  display: none; }
+
+#PopUpAlteracao {
+  display: none; }
 
 #AjudaConsulta {
   display: none; }

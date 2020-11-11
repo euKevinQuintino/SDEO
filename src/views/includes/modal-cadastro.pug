@@ -1,0 +1,8 @@
+.modal#PopUpCadastro
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i#fecharModal.fas.fa-times
+    .modal__content__text ordem cadastrada com sucesso!
+    .modal__content__buttons
+      input#confirmarRemocao.detructive-button(type="button" value="visualizar ordem" onclick="BuscarOrdem(localStorage.getItem("id"))")
+      input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopup()")
