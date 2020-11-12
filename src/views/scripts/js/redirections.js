@@ -81,3 +81,11 @@ function fecharPopUp() {
     guiaAberto = "nenhum";
   }
 }
+
+function AbrirPopUpCadastro() {
+  document.getElementById("PopUpCadastro").style.display = "block";
+}
+
+function AbrirPopUpRemocao() {
+  document.getElementById("PopUpRemocao").style.display = "block";
+}

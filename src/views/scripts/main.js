@@ -8,24 +8,15 @@ function BuscarOrdem(i) {
   numeroOrdem = i;
 }
 
-window.onload = function() { 
+/*window.onload = function() { 
   PreencherOrdem(numeroOrdem);
-}
+}*/
 
 function PreencherOrdem(numeroOrdem) {
   numeroOrdem = localStorage.getItem("id");
   numeroOrdem.replace(/['"]+/g, ' ');
   document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
 }
-
-function AbrirPopUpCadastro() {
-  document.getElementById("PopUpCadastro").style.display = "block";
-}
-
-function AbrirPopUpRemocao() {
-  document.getElementById("PopUpRemocao").style.display = "block";
-}
-
 
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
@@ -135,4 +126,12 @@ function fecharPopUp() {
     isPainelAjudaAberto = false;
     guiaAberto = "nenhum";
   }
+}
+
+function AbrirPopUpCadastro() {
+  document.getElementById("PopUpCadastro").style.display = "block";
+}
+
+function AbrirPopUpRemocao() {
+  document.getElementById("PopUpRemocao").style.display = "block";
 }

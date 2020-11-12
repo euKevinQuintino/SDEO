@@ -1,34 +1,34 @@
-const db = require("./db");
-const ordem = require("./ordens");
+const database = require("./database");
+const ordem = require("./ordem");
 
-const imagem = db.sequelize.define(
+const imagem = database.sequelize.define(
   "imagem",
   {
-    numero_imagem: {
-      type: db.Sequelize.INTEGER,
+    numeroImagem: {
+      type: database.Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    numero_ordem: {
-      type: db.Sequelize.INTEGER,
-      model: "ordens",
-      key: "numero_ordem",
+    numeroOrdem: {
+      type: database.Sequelize.INTEGER,
+      model: "ordem",
+      key: "numeroOrdem",
       unique: true,
     },
-    imagem_pre_execucao: {
-      type: db.Sequelize.STRING,
+    imagemPreExecucao: {
+      type: database.Sequelize.STRING,
     },
-    imagem_pos_execucao: {
-      type: db.Sequelize.STRING,
+    imagemPosExecucao: {
+      type: database.Sequelize.STRING,
     },
   },
   {
     timestamps: false,
   }
 );
-ordem.hasMany(imagem, { foreignkey: "numero_ordem" });
+ordem.hasMany(imagem, { foreignkey: "numeroOrdem" });
 
-//Criar a tabela
+//Cria a tabela
 imagem.sync({ force: false });
 
 module.exports = imagem;

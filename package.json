@@ -1,8 +1,8 @@
 {
   "name": "sdeo",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Sistema de Documentação de Execuções de Ordens - Laboratório de Engenharia de Software",
-  "main": "index.js",
+  "main": "./src/controllers/index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"

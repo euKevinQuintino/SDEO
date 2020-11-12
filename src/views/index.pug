@@ -29,10 +29,11 @@ html(lang="pt-br")
               i.fas.fa-map-marker-alt
               | consultar o google maps
       .system__search
-        input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
-        button.system__search__button.primary-button(id="botaoBusca" tabindex="0" maxlength="4" onclick="BuscarOrdem()")
-          | buscar
-          i.fas.fa-search
+        form(action="" method="GET")
+          input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
+          button.system__search__button.primary-button(id="botaoBusca" tabindex="0" maxlength="4" onclick="BuscarOrdem()")
+            | buscar
+            i.fas.fa-search
       .system__add
         button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="paraCadastroOrdem()" tabindex="0")
           | cadastrar uma nova ordem
