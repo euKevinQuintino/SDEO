@@ -597,29 +597,6 @@ body {
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
 
-#PopUpCadastro {
-  display: none; }
-
-#PopUpRemocao {
-  display: none; }
-
-#PopUpAlteracao {
-  display: none; }
-
-#AjudaConsulta {
-  display: none; }
-
-#AjudaCadastro {
-  display: none; }
-
-#AjudaAlteracao {
-  display: none; }
-
-#AjudaAdicaoImagem {
-  display: none; }
-
-#AjudaRemocaoImagem {
-  display: none; }
-
-#AjudaExtra {
+#PopUpErroCadastro, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem,
+#AjudaExtra, #PopUpCadastro {
   display: none; }

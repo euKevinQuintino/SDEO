@@ -1,8 +1,8 @@
 const database = require("./database");
-const ordem = require("./ordem");
+const ordem = require("./Ordem");
 
-const imagem = database.sequelize.define(
-  "imagem",
+const Imagem = database.sequelize.define(
+  "Imagem",
   {
     numeroImagem: {
       type: database.Sequelize.INTEGER,
@@ -11,7 +11,7 @@ const imagem = database.sequelize.define(
     },
     numeroOrdem: {
       type: database.Sequelize.INTEGER,
-      model: "ordem",
+      model: "Ordem",
       key: "numeroOrdem",
       unique: true,
     },
@@ -26,9 +26,9 @@ const imagem = database.sequelize.define(
     timestamps: false,
   }
 );
-ordem.hasMany(imagem, { foreignkey: "numeroOrdem" });
+ordem.hasMany(Imagem, { foreignkey: "numeroOrdem" });
 
 //Cria a tabela
-imagem.sync({ force: false });
+//Imagem.sync({ force: false });
 
-module.exports = imagem;
+module.exports = Imagem;

@@ -1,19 +1,27 @@
-var i = 0;
+var numeroDigitado = 0;
 var numeroOrdem = 0;
 
-function BuscarOrdem(i) {
-  i = document.getElementById("inputBusca").value;
-  localStorage.setItem("id", JSON.stringify(i));
-  window.location = "ordem.html" + "?id=" + i;
-  numeroOrdem = i;
+function BuscarOrdem(numeroDigitado) {
+  numeroDigitado = document.getElementById("inputBusca").value;
+  localStorage.setItem("codigo", JSON.stringify(numeroDigitado));
+  window.location = "resultados-busca.html" + "?codigo=" + numeroDigitado;
+  numeroOrdem = numeroDigitado;
 }
 
-/*window.onload = function() { 
+function CadastrarOrdem(numeroDigitado) {
+  numeroDigitado = document.getElementById("inputCadastro").value;
+  localStorage.setItem("codigo", JSON.stringify(numeroDigitado));
+  window.location = "resultados-busca.html" + "?codigo=" + numeroDigitado;
+  numeroOrdem = numeroDigitado;
+  AbrirPopUpCadastro();
+}
+
+window.onload = function() { 
   PreencherOrdem(numeroOrdem);
-}*/
+}
 
 function PreencherOrdem(numeroOrdem) {
-  numeroOrdem = localStorage.getItem("id");
+  numeroOrdem = localStorage.getItem("codigo");
   numeroOrdem.replace(/['"]+/g, ' ');
   document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
 }
@@ -126,12 +134,14 @@ function fecharPopUp() {
     isPainelAjudaAberto = false;
     guiaAberto = "nenhum";
   }
+  document.getElementById("PopUpCadastro").style.display = "none";
+  document.getElementById("PopUpRemocao").style.display = "none";
 }
 
 function AbrirPopUpCadastro() {
-  document.getElementById("PopUpCadastro").style.display = "block";
+  document.getElementById("PopUpCadastro").style.display = "flex";
 }
 
 function AbrirPopUpRemocao() {
-  document.getElementById("PopUpRemocao").style.display = "block";
+  document.getElementById("PopUpRemocao").style.display = "flex";
 }

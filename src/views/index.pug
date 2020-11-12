@@ -5,6 +5,7 @@ html(lang="pt-br")
     include includes/head
   body
     include includes/painel-ajuda
+    include includes/modal-erro-busca
     .system
       .system__logo
         a.system__logo__link(onclick="paraIndex()" tabindex="0")
@@ -29,7 +30,7 @@ html(lang="pt-br")
               i.fas.fa-map-marker-alt
               | consultar o google maps
       .system__search
-        form(action="" method="GET")
+        form(action="/busca" method="GET")
           input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
           button.system__search__button.primary-button(id="botaoBusca" tabindex="0" maxlength="4" onclick="BuscarOrdem()")
             | buscar

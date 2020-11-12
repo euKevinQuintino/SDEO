@@ -80,12 +80,14 @@ function fecharPopUp() {
     isPainelAjudaAberto = false;
     guiaAberto = "nenhum";
   }
+  document.getElementById("PopUpCadastro").style.display = "none";
+  document.getElementById("PopUpRemocao").style.display = "none";
 }
 
 function AbrirPopUpCadastro() {
-  document.getElementById("PopUpCadastro").style.display = "block";
+  document.getElementById("PopUpCadastro").style.display = "flex";
 }
 
 function AbrirPopUpRemocao() {
-  document.getElementById("PopUpRemocao").style.display = "block";
+  document.getElementById("PopUpRemocao").style.display = "flex";
 }

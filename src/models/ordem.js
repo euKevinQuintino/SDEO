@@ -1,11 +1,10 @@
 const database = require("./database");
 
-const ordem = database.sequelize.define(
-  "ordem",
+const Ordem = database.sequelize.define(
+  "Ordem",
   {
     numeroOrdem: {
       type: database.Sequelize.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
     },
     observacaoOrdem: {
@@ -21,6 +20,6 @@ const ordem = database.sequelize.define(
 );
 
 //Cria a tabela
-ordem.sync({ force: false });
+//Ordem.sync({ force: false });
 
-module.exports = ordem;
+module.exports = Ordem;

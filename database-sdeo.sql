@@ -1,23 +1,28 @@
-CREATE DATABASE sdeo;
+CREATE DATABASE SDEO;
 
-USE sdeo;
+USE SDEO;
 
-CREATE TABLE `ordem` (
-  `numeroOrdem` int NOT NULL AUTO_INCREMENT,
-  `observacaoOrdem` varchar(255),
-  `ordemRemovida` tinyint(1),
-  PRIMARY KEY (`numeroOrdem`)  
-) ENGINE=InnoDB  DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci AUTO_INCREMENT=1 ;
+CREATE TABLE `Ordem` (
+  `numeroOrdem` INT NOT NULL,
+  `observacaoOrdem` VARCHAR(255),
+  `ordemRemovida` TINYINT(1),
+  PRIMARY KEY (`numeroOrdem`)
+) ENGINE = InnoDB DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci;
 
-
-CREATE TABLE `imagem` (
- `numeroImagem` int NOT NULL AUTO_INCREMENT,
- `numeroOrdem` int NOT NULL,
- `imagemPreExecucao` varchar(255),
- `imagemPosExecucao` varchar(255),
+CREATE TABLE `Imagem` (
+  `numeroImagem` INT NOT NULL AUTO_INCREMENT,
+  `numeroOrdem` INT NOT NULL,
+  `imagemPreExecucao` VARCHAR(255),
+  `imagemPosExecucao` VARCHAR(255),
   PRIMARY KEY (`numeroImagem`)
-) ENGINE=InnoDB  DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci AUTO_INCREMENT=1 ;
+) ENGINE = InnoDB DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci AUTO_INCREMENT = 1;
 
-ALTER TABLE imagem ADD INDEX(numeroOrdem);
-ALTER TABLE imagem
- ADD FOREIGN KEY (numeroOrdem) REFERENCES ordem(numeroOrdem);
+ALTER TABLE
+  Imagem
+ADD
+  INDEX(numeroOrdem);
+
+ALTER TABLE
+  Imagem
+ADD
+  FOREIGN KEY (numeroOrdem) REFERENCES Ordem(numeroOrdem);

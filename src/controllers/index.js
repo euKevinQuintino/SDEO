@@ -1,11 +1,16 @@
 const express = require("express");
 const app = express();
+const { Op } = require("sequelize");
 const bodyParser = require("body-parser");
-const ordem = require("../models/ordem");
-const imagem = require("../models/imagem");
+const ordem = require("../models/Ordem");
+const imagem = require("../models/Imagem");
+var path = require("path");
+var numeroOrdemDigitado = 0;
 
-app.listen(8080);
-app.set("view engine");
+app.listen(1234);
+//app.set("html", "view engine", "pug");
+app.set("views", path.join(__dirname, "../../dist/"));
+app.use(express.static(path.join(__dirname, "../../dist")));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,40 +20,60 @@ app.use("/", express.static(__dirname + "../../dist/cadastro-ordem"));
 app.use("/", express.static(__dirname + "../../dist/ordem"));
 app.use("/", express.static(__dirname + "../../dist/resultados-busca"));
 
-app.post("/cadastro", function (req, res) {
+app.get("/", function (req, res) {
+  res.render("index.html");
+});
+
+app.get("/resultados-busca", function (req, res) {
+  res.render("resultados-busca.html");
+});
+
+app.get("/busca", function (req, res) {
+  numeroOrdemDigitado = req.body.codigo;
   ordem
-    .create({
-      numeroOrdem: req.body.codigoOrdem,
+    .findAll({
+      where: {
+        numeroOrdem: numeroOrdemDigitado,
+        /*[Op.and]: [
+          { numeroOrdem: numeroOrdemDigitado },
+          { ordemRemovida: { [Op.not]: 0 } },
+        ],*/
+      },
     })
-    .then(function (){
-      res.redirect("/index.html");
+    .then(function (numeroOrdem) {
+      res.redirect("resultados-busca.html");
+      res.render("resultados-busca.html", { numeroOrdem: numeroOrdemDigitado });
     })
     .catch(function (erro) {
-      res.send("ERRO: Não foi possível cadastrar a ordem." + erro);
+      res.send("[BUSCA] Erro: Ordem não encontrada: " + erro);
+    });
+});
+
+app.post("/cadastro", function (req, res) {
+  numeroOrdemDigitado = req.body.numeroOrdem;
+  ordem
+    .create({
+      numeroOrdem: numeroOrdemDigitado,
+      ordemRemovida: 0
+    })
+    .then(function () {
+      console.log("[CADASTRO] Ordem cadastrada com sucesso!");
+    })
+    .catch(function (erro) {
+      console.log("[CADASTRO] Erro: Não foi possível cadastrar a ordem: " + erro);
     });
 });
 
 app.get("/exclusao", function (req, res) {
-  var i; 
-  localStorage.getItem("id", i);
+  var numeroDigitado;
+  localStorage.getItem("codigo", numeroDigitado);
   ordem
-    .destroy({ where: { numeroOrdem: i } })
+    .destroy({ where: { numeroOrdem: numeroDigitado } })
     .then(function () {
       res.redirect("/index.html");
+      console.log("[EXCLUSAO] Ordem excluída com sucesso!");
     })
     .catch(function (erro) {
-      res.send("Erro: Ordem não foi deletada com sucesso! " + erro);
-    });
-});
-
-app.get("/busca", function (req, res) {
-  const i = localStorage.getItem("id");
-  ordem
-    .findAll({ where: { numeroOrdem: i } })
-    .then(function () {
-      res.redirect('/ordem.html')
-    })
-    .catch(function (erro) {
-      res.send("Erro: Ordem não encontrada! " + erro);
+      res.send("[EXCLUSAO] Erro: Não foi possível excluir a ordem: " + erro);
     });
 });
