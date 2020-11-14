@@ -48,7 +48,6 @@ input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4); }
 
 textarea {
-  height: 80px !important;
   padding-top: 10px; }
 
 strong {
@@ -218,10 +217,9 @@ body {
   .system__order-details {
     position: fixed;
     top: 74px;
-    height: 63%;
+    height: 66.6%;
     overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: 16px; }
+    overflow-x: hidden; }
     .system__order-details__title {
       font-size: 2.4em;
       text-align: right;
@@ -230,30 +228,48 @@ body {
       color: #333; }
     .system__order-details__observation {
       width: 300px;
-      margin-top: 4px;
-      margin-bottom: 0px; }
-      .system__order-details__observation__edit {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      /*&__edit {
         float: right;
-        margin-top: -20px; }
-        .system__order-details__observation__edit i {
+        margin-top: -20px;
+
+        i {
           font-size: 2em;
-          color: #396afc; }
-          .system__order-details__observation__edit i:hover {
-            color: #5781fc;
+          color: $primary;
+
+          &:hover {
+            color: lighten($primary, 6%);
             cursor: pointer;
-            transition: 0.2s; }
-          .system__order-details__observation__edit i:active {
-            color: #2a5ffc;
+            transition: 0.2s;
+          }
+
+          &:active {
+            color: darken($primary, 3%);
             transition: 0.1s;
-            transform: translateY(1px); }
+            transform: translateY(1px);
+          }
+        }
+      }*/ }
+      .system__order-details__observation__link {
+        font-size: 1.8em;
+        color: #2948ff;
+        text-decoration: underline;
+        font-weight: 700;
+        text-align: right; }
+        .system__order-details__observation__link:hover {
+          color: #396afc;
+          cursor: pointer;
+          transition: 0.2s; }
+        .system__order-details__observation__link:active {
+          box-shadow: none; }
+        .system__order-details__observation__link:focus {
+          box-shadow: none; }
       .system__order-details__observation__title {
         color: #333;
         font-size: 2em;
         font-weight: 700;
         margin-top: 0px; }
-      .system__order-details__observation__text {
-        font-size: 1.6em;
-        line-height: 1.6em; }
     .system__order-details__image-grid {
       display: grid;
       grid-template-columns: repeat(4, 56px);
@@ -597,6 +613,16 @@ body {
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
 
-#PopUpErroCadastroMaior, #PopUpErroCadastroExiste, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem,
-#AjudaExtra, #PopUpCadastro {
+#PopUpErroCadastroMaior,
+#PopUpErroCadastroExiste,
+#PopUpErroBusca,
+#PopUpCadastro,
+#PopUpRemocao,
+#PopUpConfirmacaoAlteracao,
+#AjudaConsulta,
+#AjudaCadastro,
+#AjudaAlteracao,
+#AjudaAdicaoImagem,
+#AjudaRemocaoImagem,
+#AjudaExtra {
   display: none; }

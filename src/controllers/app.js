@@ -38,41 +38,69 @@ io.on("connection", (socket) => {
   socket.on("cadastro", (numeroDigitado) => {
     CadastrarOrdem(numeroDigitado);
   });
+  //Exclusão
+  socket.on("exclusao", (numeroOrdem) => {
+    RemoverOrdem(numeroOrdem);
+  });
 });
 
 // funções database
 function BuscarOrdem(numeroOrdemDigitado) {
   Ordem.findAll({
+    attributes: ['numeroOrdem', 'ordemRemovida'],
     where: {
       [Op.and]: [
-        { numeroOrdem: numeroOrdemDigitado },
-        { ordemRemovida: { [Op.not]: 0 } },
+        { numeroOrdem: { [Op.eq]: numeroOrdemDigitado } },
+        { ordemRemovida: { [Op.not]: 1 } },
       ],
     },
   })
-    .then(function () {
+    .then(() => {
       console.log("[BUSCA] Ordem encontrada!");
       io.emit("sucessoBusca", true);
     })
-    .catch(function (erro) {
+    .catch((erro) => {
       console.log("[BUSCA] Erro: Ordem não encontrada: " + erro);
       io.emit("sucessoBusca", false);
     });
 }
 
 function CadastrarOrdem(numeroOrdemDigitado) {
-  Ordem.create({
-    numeroOrdem: numeroOrdemDigitado,
-    ordemRemovida: 0,
-  })
-    .then(function () {
-      console.log("[CADASTRO] Ordem cadastrada com sucesso!");
-      io.emit("sucessoCadastro", true);
+  if (
+    Ordem.findAll({
+      where: {
+        [Op.and]: [
+          { numeroOrdem: { [Op.eq]: numeroOrdemDigitado } },
+          { ordemRemovida: { [Op.not]: 1 } },
+        ],
+      },
     })
-    .catch(function (erro) {
-      console.log(
-        "[CADASTRO] Erro: Não foi possível cadastrar a Ordem: " + erro
-      );
-      io.emit("sucessoCadastro", false);
+  ) {
+    Ordem.create({
+      numeroOrdem: numeroOrdemDigitado,
+      ordemRemovida: 0,
+    })
+      .then(() => {
+        console.log("[CADASTRO] Ordem cadastrada com sucesso!");
+        io.emit("sucessoCadastro", true);
+      })
+      .catch((erro) => {
+        console.log(
+          "[CADASTRO] Erro: Não foi possível cadastrar a Ordem: " + erro
+        );
+        io.emit("sucessoCadastro", false);
+      });
+  } else {
+    console.log("[CADASTRO] Erro: Ordem já existe");
+  }
+}
+
+function RemoverOrdem(numeroOrdemDigitado) {
+  Ordem.destroy({ where: { numeroOrdem: numeroOrdemDigitado } })
+    .then(() => {
+      console.log("[EXCLUSÃO] Ordem removida com sucesso!");
+    })
+    .catch((erro) => {
+      console.log("[EXCLUSÃO] Erro: Não foi possível remover a ordem: " + erro);
     });
 }
