@@ -16,6 +16,7 @@ const Ordem = database.sequelize.define(
   },
   {
     timestamps: false,
+    freezeTableName: true,
   }
 );
 

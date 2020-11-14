@@ -597,6 +597,6 @@ body {
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
 
-#PopUpErroCadastro, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem,
+#PopUpErroCadastroMaior, #PopUpErroCadastroExiste, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem,
 #AjudaExtra, #PopUpCadastro {
   display: none; }

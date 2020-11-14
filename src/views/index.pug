@@ -30,16 +30,17 @@ html(lang="pt-br")
               i.fas.fa-map-marker-alt
               | consultar o google maps
       .system__search
-        form(action="/busca" method="GET")
-          input.system__search__input(id="inputBusca" name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
-          button.system__search__button.primary-button(id="botaoBusca" tabindex="0" maxlength="4" onclick="BuscarOrdem()")
+        form#formularioBusca
+          input#numeroBusca.system__search__input(name="inputBusca" type="number" placeholder="número da ordem" tabindex="0")
+          button#botaoBusca.system__search__button.primary-button(tabindex="0")
             | buscar
             i.fas.fa-search
       .system__add
-        button.system__add__button.primary-button(id="botaoParaCadastroOrdem" onclick="paraCadastroOrdem()" tabindex="0")
+        button.system__add__button.primary-button(onclick="paraCadastroOrdem()" tabindex="0")
           | cadastrar uma nova ordem
           i.fas.fa-arrow-circle-right
       .system__help
         button.system__help__button.secondary-button(onclick="abrirPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda
+    script(src="/socket.io/socket.io.js")

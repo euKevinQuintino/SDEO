@@ -80,8 +80,19 @@ function fecharPopUp() {
     isPainelAjudaAberto = false;
     guiaAberto = "nenhum";
   }
-  document.getElementById("PopUpCadastro").style.display = "none";
-  document.getElementById("PopUpRemocao").style.display = "none";
+  if (pagina == "/cadastro-ordem.html") {
+    document.getElementById("PopUpCadastro").style.display = "none";
+    document.getElementById("PopUpErroCadastroExiste").style.display = "none";
+    document.getElementById("PopUpErroCadastroMaior").style.display = "none";
+  }
+  if (pagina == "/index.html" || pagina == "/resultados-busca.html") {
+    document.getElementById("PopUpErroBusca").style.display = "none";
+  }
+  if (pagina == "/ordem.html") {
+    document.getElementById("PopUpRemocao").style.display = "none";
+    document.getElementById("PopUpErroRemocao").style.display = "none";
+    document.getElementById("PopUpErroAlteracao").style.display = "none";
+  }
 }
 
 function AbrirPopUpCadastro() {
