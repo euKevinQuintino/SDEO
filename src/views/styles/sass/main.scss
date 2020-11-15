@@ -723,7 +723,7 @@ body {
     }
 
     &__text {
-      margin: 64px 12px 32px 12px;
+      margin: 28px 20px 26px 20px;
       font-size: 2.4em;
       line-height: 1.6em;
     }
@@ -856,14 +856,18 @@ body {
 #PopUpErroCadastroMaior,
 #PopUpErroCadastroExiste,
 #PopUpErroBusca,
+#PopUpErroBuscaIntervalo,
 #PopUpCadastro,
-#PopUpRemocao,
+#PopUpExclusao,
+#PopUpImagem,
+#PopUpObservacao,
 #PopUpConfirmacaoAlteracao,
+#PopUpExclusaoImagem,
 #AjudaConsulta,
 #AjudaCadastro,
 #AjudaAlteracao,
 #AjudaAdicaoImagem,
-#AjudaRemocaoImagem,
+#AjudaExclusaoImagem,
 #AjudaExtra {
   display: none;
 }

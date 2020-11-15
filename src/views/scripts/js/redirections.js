@@ -87,18 +87,17 @@ function fecharPopUp() {
   }
   if (pagina == "/index.html" || pagina == "/resultados-busca.html") {
     document.getElementById("PopUpErroBusca").style.display = "none";
+    document.getElementById("PopUpErroBuscaIntervalo").style.display = "none";
   }
   if (pagina == "/ordem.html") {
-    document.getElementById("PopUpRemocao").style.display = "none";
-    document.getElementById("PopUpErroRemocao").style.display = "none";
+    document.getElementById("PopUpExclusao").style.display = "none";
+    document.getElementById("PopUpObservacao").style.display = "none";
+    document.getElementById("PopUpErroExclusao").style.display = "none";
     document.getElementById("PopUpErroAlteracao").style.display = "none";
+    document.getElementById("PopUpImagem").style.display = "none";
   }
 }
 
 function AbrirPopUpCadastro() {
   document.getElementById("PopUpCadastro").style.display = "flex";
-}
-
-function AbrirPopUpRemocao() {
-  document.getElementById("PopUpRemocao").style.display = "flex";
 }

@@ -5,7 +5,6 @@ USE SDEO;
 CREATE TABLE `Ordem` (
   `numeroOrdem` INT NOT NULL,
   `observacaoOrdem` VARCHAR(255),
-  `ordemRemovida` TINYINT(1),
   PRIMARY KEY (`numeroOrdem`)
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci;
 

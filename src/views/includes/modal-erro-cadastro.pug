@@ -2,7 +2,8 @@
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
       i#fecharModal.fas.fa-times
-    .modal__content__text desculpe, digite um número entre 1 e 9999
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text desculpe, digite um número entre 1 e 9999.
     .modal__content__buttons
       input#confirmarRemocao.primary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
       input#cancelarRemocao.secondary-button(type="button" value="voltar para a tela inicial" onclick="paraIndex()")
@@ -11,7 +12,8 @@
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
       i#fecharModal.fas.fa-times
-    .modal__content__text desculpe, esta ordem já está cadastrada
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text desculpe, esta ordem já está cadastrada.
     .modal__content__buttons
-      input#confirmarRemocao.primary-button(type="button" value="ir para a ordem" onclick="fecharPopUp()")
+      input#confirmarRemocao.primary-button(type="button" value="ir para a ordem" onclick="AcessarOrdem()")
       input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopUp()")
