@@ -1,0 +1,107 @@
+.modal#PopUpCadastro
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title cadastro efetuado
+    .modal__content__text ordem cadastrada com sucesso!
+    .modal__content__buttons
+      input#confirmarRemocao.primary-button(type="button" value="visualizar ordem" onclick="AcessarOrdem()")
+      input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopUp()")
+.modal#PopUpConfirmacaoAlteracao
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()") 
+      i.fas.fa-times
+    .modal__content__text tem certeza que deseja #[strong alterar esta observação?]
+    .modal__content__buttons
+      input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação")
+      input#cancelarAlteracao.secondary-button(type="button" value="não, cancelar alteração")
+.modal#PopUpExclusaoImagem
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()") 
+      i.fas.fa-times
+    .modal-ajuda__content__title cuidado!
+    .modal__content__text tem certeza que deseja #[strong remover esta imagem?]
+    .modal__content__buttons
+      input#confirmarRemocao.detructive-button(type="button" value="sim, remover imagem")
+      input#cancelarRemocao.secondary-button(type="button" value="não, cancelar remoção")
+.modal#PopUpExclusao
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title cuidado!
+    .modal__content__text tem certeza que deseja #[strong excluir esta ordem?]
+    .modal__content__buttons
+      input.detructive-button(type="button" value="sim, excluir ordem" onclick="ExcluirOrdem()")
+      input.secondary-button(type="button" value="não, cancelar exclusão" onclick="fecharPopUp()")
+.modal#PopUpErroBuscaIntervalo
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text número inválido, digite um número de 1 até 9999.
+    .modal__content__buttons
+      input.primary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
+.modal#PopUpErroBusca
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text desculpe, ordem não encontrada.
+    .modal__content__buttons
+      input#confirmarRemocao.primary-button(type="button" value="criar esta ordem" onclick="CadastrarOrdemBuscada()")
+      input#cancelarRemocao.secondary-button(type="button" value="voltar para a tela inicial" onclick="paraIndex()")
+.modal#PopUpErroCadastroMaior
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text desculpe, digite um número entre 1 e 9999.
+    .modal__content__buttons
+      input#confirmarRemocao.primary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
+      input#cancelarRemocao.secondary-button(type="button" value="voltar para a tela inicial" onclick="paraIndex()")
+.modal#PopUpErroCadastroExiste
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text desculpe, esta ordem já está cadastrada.
+    .modal__content__buttons
+      input#confirmarRemocao.primary-button(type="button" value="ir para a ordem" onclick="AcessarOrdem()")
+      input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopUp()")
+.modal#PopUpConfirmacaoAlteracao
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado
+    .modal__content__text 
+    .modal__content__buttons
+      input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação")
+      input#cancelarAlteracao.secondary-button(type="button" value="não, cancelar alteração")
+.modal#PopUpObservacaoVazia
+  .modal__content
+    .modal__content__close 
+      i.fas.fa-times(onclick="fecharPopUp()")
+    .modal-ajuda__content__title adicionar observacao
+    .modal__content__description(style="margin: 0;margin-left: 12px;") digite a nova observação:
+    textarea#inputObservacao.modal__content__input(placeholder="exemplo: motor incompatível com a peça em estoque")
+    .modal__content__buttons
+      input.primary-button(type="button" value="adicionar observacao" onclick="ConfirmarAlteracaoObservacao()")
+      input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
+.modal#PopUpObservacaoPreenchida
+  .modal__content
+    .modal__content__close 
+      i.fas.fa-times(onclick="fecharPopUp()")
+    #tituloVerObservacao.modal-ajuda__content__title observacao
+    #tituloEditarObservacao.modal-ajuda__content__title observacao
+    .modal__content__description preenchida
+    #inputObservacao.modal__content__input
+    .modal__content__buttons
+      input#botaoConfirmarAlteracao.detructive-button(type="button" value="confirmar alteração" onclick="ConfirmarAlteracaoObservacao()")
+      input.primary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
+      input.secondary-button(type="button" value="editar observação" onclick="EditarObservacao()")
+.modal#PopUpImagem
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title imagem pré execução 01
+    img#imagemPre01

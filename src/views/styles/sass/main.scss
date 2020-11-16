@@ -71,11 +71,6 @@ input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 }
 
-textarea {
-  //height: 80px !important;
-  padding-top: 10px;
-}
-
 strong {
   font-weight: 700;
 }
@@ -171,9 +166,11 @@ strong {
     cursor: pointer;
     transition: 0.2s;
   }
+
   &:active {
     box-shadow: none;
   }
+
   &:focus {
     box-shadow: none;
   }
@@ -190,9 +187,11 @@ strong {
       cursor: pointer;
       transition: 0.2s;
     }
+
     &:active {
       box-shadow: none;
     }
+    
     &:focus {
       box-shadow: none;
     }
@@ -728,7 +727,25 @@ body {
       line-height: 1.6em;
     }
 
+    &__description {
+      margin: 20px 20px 20px 20px;
+      font-size: 1.8em;
+      line-height: 1.6em;
+    }
+
+    &__input {
+      margin-left: 4%;
+      border: 2px solid $primary;
+      border-radius: 6px;
+      width: 87.6%;
+      height: 90px;
+      font-size: 1.8em;
+      padding-left: 8px;
+    }
+
     &__buttons {
+      position: absolute;
+      bottom: 12px;
       input {
         margin: 12px;
         margin-bottom: 2px;
@@ -860,7 +877,8 @@ body {
 #PopUpCadastro,
 #PopUpExclusao,
 #PopUpImagem,
-#PopUpObservacao,
+#PopUpObservacaoVazia,
+#PopUpObservacaoPreenchida,
 #PopUpConfirmacaoAlteracao,
 #PopUpExclusaoImagem,
 #AjudaConsulta,

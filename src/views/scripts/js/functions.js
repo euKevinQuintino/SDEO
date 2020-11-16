@@ -3,7 +3,7 @@ const formularioCadastro = document.getElementById("formularioCadastro");
 const pagina = window.location.pathname;
 const socket = io();
 
-var observacaoVazia = true
+var observacaoVazia = true;
 
 //Acessar ordem
 function AcessarOrdem() {
@@ -98,7 +98,7 @@ function CadastrarImagem(imagem, tipo) {
     leitor.readAsArrayBuffer(this.files[0]);*/
 }
 if (pagina == "/ordem.html") {
-  var statusObservacaoAtualizado = false
+  var statusObservacaoAtualizado = false;
   let imagemPre = document.getElementById("enviarImagemPre");
   var imagemPre01 = document.getElementById("imagemPre01");
   imagemPre.addEventListener("change", function () {
@@ -115,23 +115,27 @@ if (pagina == "/ordem.html") {
     if (sucessoExclusao) {
       paraIndex();
     } else {
-      console.log('n foi, fazer pop-up')
+      console.log("erro na exclusão, fazer pop-up erro exclusão");
       document.getElementById("PopUpErroExclusaoOrdem").style.display = "flex";
     }
   });
-  socket.on("temObservacao", function (temOrdem) {
-    if (temOrdem && observacaoVazia) {
-      observacaoVazia = true
-      console.log(observacaoVazia)
-      statusObservacaoAtualizado = true
-      location.reload()
+  socket.on("temObservacao", function (temObservacao) {
+    if (temObservacao && observacaoVazia) {
+      observacaoVazia = false;
+      console.log(observacaoVazia);
+      statusObservacaoAtualizado = true;
+      location.reload();
     }
   });
 }
 
 //Acessar observação
 function AcessarObservacao() {
-  document.getElementById("PopUpObservacao").style.display = "flex";
+  if (observacaoVazia) {
+    document.getElementById("PopUpObservacaoVazia").style.display = "flex";
+  } else {
+    document.getElementById("PopUpObservacaoPreenchida").style.display = "flex";
+  }
 }
 
 //Alterar observação
@@ -155,10 +159,10 @@ window.onload = function () {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
   numeroOrdem.replace(/['"]+/g, " ");
   document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
-  if(!(statusObservacaoAtualizado)) {
-    socket.emit("conferirObservacao", numeroOrdem)
+  if (!statusObservacaoAtualizado) {
+    socket.emit("conferirObservacao", numeroOrdem);
   }
-  if(observacaoVazia) {
+  if (observacaoVazia) {
     document.getElementById("LinkOrdem").innerHTML = "adicionar observação";
   }
 };

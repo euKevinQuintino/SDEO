@@ -47,9 +47,6 @@ button {
 input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4); }
 
-textarea {
-  padding-top: 10px; }
-
 strong {
   font-weight: 700; }
 
@@ -529,10 +526,25 @@ body {
       margin: 28px 20px 26px 20px;
       font-size: 2.4em;
       line-height: 1.6em; }
-    .modal__content__buttons input {
-      margin: 12px;
-      margin-bottom: 2px;
-      width: 276px; }
+    .modal__content__description {
+      margin: 20px 20px 20px 20px;
+      font-size: 1.8em;
+      line-height: 1.6em; }
+    .modal__content__input {
+      margin-left: 4%;
+      border: 2px solid #396afc;
+      border-radius: 6px;
+      width: 87.6%;
+      height: 90px;
+      font-size: 1.8em;
+      padding-left: 8px; }
+    .modal__content__buttons {
+      position: absolute;
+      bottom: 12px; }
+      .modal__content__buttons input {
+        margin: 12px;
+        margin-bottom: 2px;
+        width: 276px; }
 
 .modal-ajuda {
   width: 100%;
@@ -620,7 +632,8 @@ body {
 #PopUpCadastro,
 #PopUpExclusao,
 #PopUpImagem,
-#PopUpObservacao,
+#PopUpObservacaoVazia,
+#PopUpObservacaoPreenchida,
 #PopUpConfirmacaoAlteracao,
 #PopUpExclusaoImagem,
 #AjudaConsulta,
