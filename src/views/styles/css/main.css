@@ -529,12 +529,14 @@ body {
     .modal__content__description {
       margin: 20px 20px 20px 20px;
       font-size: 1.8em;
-      line-height: 1.6em; }
+      line-height: 1.6em;
+      max-height: 100px;
+      overflow-y: auto; }
     .modal__content__input {
       margin-left: 4%;
       border: 2px solid #396afc;
       border-radius: 6px;
-      width: 87.6%;
+      width: 87.9%;
       height: 90px;
       font-size: 1.8em;
       padding-left: 8px; }
@@ -625,6 +627,8 @@ body {
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
 
+#botaoConfirmarAlteracao,
+#tituloEditarObservacao,
 #PopUpErroCadastroMaior,
 #PopUpErroCadastroExiste,
 #PopUpErroBusca,

@@ -78,26 +78,26 @@
       input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação")
       input#cancelarAlteracao.secondary-button(type="button" value="não, cancelar alteração")
 .modal#PopUpObservacaoVazia
-  .modal__content
+  form#formularioObservacao.modal__content
     .modal__content__close 
       i.fas.fa-times(onclick="fecharPopUp()")
     .modal-ajuda__content__title adicionar observacao
     .modal__content__description(style="margin: 0;margin-left: 12px;") digite a nova observação:
     textarea#inputObservacao.modal__content__input(placeholder="exemplo: motor incompatível com a peça em estoque")
     .modal__content__buttons
-      input.primary-button(type="button" value="adicionar observacao" onclick="ConfirmarAlteracaoObservacao()")
+      input.primary-button(type="submit" value="adicionar observacao")
       input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
 .modal#PopUpObservacaoPreenchida
-  .modal__content
+  form#formularioObservacao.modal__content
     .modal__content__close 
       i.fas.fa-times(onclick="fecharPopUp()")
-    #tituloVerObservacao.modal-ajuda__content__title observacao
-    #tituloEditarObservacao.modal-ajuda__content__title observacao
-    .modal__content__description preenchida
-    #inputObservacao.modal__content__input
+    #tituloVerObservacao.modal-ajuda__content__title observação
+    #tituloEditarObservacao.modal-ajuda__content__title editar observação
+    #conteudoObservacao.modal__content__description preenchida
+    #inputObservacao.modal__content__input(style="display: none;")
     .modal__content__buttons
-      input#botaoConfirmarAlteracao.detructive-button(type="button" value="confirmar alteração" onclick="ConfirmarAlteracaoObservacao()")
-      input.primary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
+      input#botaoConfirmarAlteracao.detructive-button(type="button" value="confirmar alteração")
+      input#botaoEditarOrdem.primary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
       input.secondary-button(type="button" value="editar observação" onclick="EditarObservacao()")
 .modal#PopUpImagem
   .modal__content

@@ -731,13 +731,15 @@ body {
       margin: 20px 20px 20px 20px;
       font-size: 1.8em;
       line-height: 1.6em;
+      max-height: 100px;
+      overflow-y: auto;
     }
 
     &__input {
       margin-left: 4%;
       border: 2px solid $primary;
       border-radius: 6px;
-      width: 87.6%;
+      width: 87.9%;
       height: 90px;
       font-size: 1.8em;
       padding-left: 8px;
@@ -870,6 +872,8 @@ body {
   }
 }
 
+#botaoConfirmarAlteracao,
+#tituloEditarObservacao,
 #PopUpErroCadastroMaior,
 #PopUpErroCadastroExiste,
 #PopUpErroBusca,

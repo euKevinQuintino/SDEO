@@ -4,14 +4,14 @@ const http = require("http");
 const socketio = require("socket.io");
 const bodyParser = require("body-parser");
 const path = require("path");
-const multer = require("multer");
-const ejs = require("ejs");
+//const multer = require("multer");
+//const ejs = require("ejs");
 const Ordem = require("../models/Ordem");
-const Imagem = require("../models/Imagem");
+//const Imagem = require("../models/Imagem");
 const { Op } = require("sequelize");
 const server = http.createServer(app);
 const io = socketio(server);
-const fs = require("fs");
+//const fs = require("fs");
 
 server.listen(1234);
 
@@ -27,7 +27,7 @@ app.use("/", express.static(__dirname + "../../dist/cadastro-Ordem"));
 app.use("/", express.static(__dirname + "../../dist/Ordem"));
 app.use("/", express.static(__dirname + "../../dist/resultados-busca"));
 
-// multer
+/*// multer
 const storage = multer.diskStorage({
   destination: "../../dist/temp/",
   filename: function (req, file, cb) {
@@ -40,7 +40,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-}).single("imagemPre");
+}).single("imagemPre");*/
 
 io.on("connection", (socket) => {
   console.log("[SERVER-SIDE] Socket conectado:", socket.id);
@@ -57,25 +57,19 @@ io.on("connection", (socket) => {
     RemoverOrdem(numeroOrdem);
   });
   socket.on("conferirObservacao", (numeroOrdem) => {
-    if (!(Ordem.count({
-      where: {
-        numeroOrdem: numeroOrdem,
-        observacaoOrdem: null,
-      },
-    }))) {
-      socket.emit("temObservacao", true)
-    } else {
-      socket.emit("temObservacao", false)
-    }
-  })
-  socket.on("upload", async (imagem) => {
+    ConferirObservacao(numeroOrdem);
+  });
+  socket.on("alteracaoObservacao", (novaObservacao, numeroOrdem) => {
+    AlterarObservacao(novaObservacao, numeroOrdem);
+  });
+  /*socket.on("upload", async (imagem) => {
     //CadastrarImagem(imagem);
     const buffer = Buffer.from(imagem); // está parando aqui
     await fs.writeFile("../../dist/tmp/image", buffer).catch(console.error); // fs.promises
     //await fs.writeFile("/tmp/image", buffer).catch(console.error); // fs.promises
     socket.emit("retornoImagem", imagem.toString("base64"));
     console.log(imagem);
-  });
+  });*/
 });
 
 // funções database
@@ -100,7 +94,6 @@ function CadastrarOrdem(numeroOrdemDigitado) {
   ) {
     Ordem.create({
       numeroOrdem: numeroOrdemDigitado,
-      ordemRemovida: 0,
     })
       .then(() => {
         console.log("[CADASTRO] Ordem cadastrada com sucesso!");
@@ -130,6 +123,35 @@ function RemoverOrdem(numeroOrdemDigitado) {
     });
 }
 
-function CadastrarImagem(imagem, tipo) {
-  //upload(imagem);
+async function AlterarObservacao(novaObservacao, numeroOrdem) {
+  await Ordem.update(
+    { observacaoOrdem: novaObservacao },
+    {
+      where: {
+        numeroOrdem: numeroOrdem,
+      },
+    }
+  )
+    .then(() => {
+      console.log("[OBSERVAÇÃO] Observação atualizada com sucesso!");
+      io.emit("resultadoAlteracaoObservacao", true);
+    })
+    .catch((erro) => {
+      console.log(
+        "[OBSERVAÇÃO] Erro: Não foi possível atualizar a observação: " + erro
+      );
+      io.emit("resultadoAlteracaoObservacao", false);
+    });
+}
+
+async function ConferirObservacao(numeroOrdem) {
+  console.log(numeroOrdem);
+  const ordem = await Ordem.findOne({
+    where: {
+      numeroOrdem: numeroOrdem,
+    },
+  });
+  console.log(ordem.numeroOrdem);
+  console.log(ordem.observacaoOrdem);
+  io.emit("temObservacao", ordem.observacaoOrdem);
 }
