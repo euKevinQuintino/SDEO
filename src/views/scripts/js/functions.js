@@ -91,6 +91,21 @@ if (pagina == "/ordem.html") {
       leitor.readAsDataURL(imagem01);
     }
   });
+
+  document.getElementById("enviarImagemPre").addEventListener(
+    "change",
+    function () {
+      const reader = new FileReader();
+      reader.onload = function () {
+        //const bytes = new Uint8Array(this.result);
+        console.log(typeof(this.result))
+        const bytes = this.result.replace(/.*base64,/, "");
+        socket.emit("image", bytes);
+      };
+      reader.readAsDataURL(this.files[0]);
+    },
+    false
+  );
   //Alteração/Cadastro observação
   formularioObservacao.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -157,11 +172,16 @@ if (pagina == "/ordem.html") {
     } else {
       localStorage.removeItem("observacao");
     }
-    let observacao = localStorage.getItem("observacao");
+    let statusObservacao = localStorage.getItem("observacao");
     if (statusObservacao == "desatualizada") {
       localStorage.setItem("statusObservacao", "atualizada");
       location.reload();
     }
+  });
+  socket.on("imagemVolta", function (buffer) {
+    var image = new Image();
+    image = 'data:image/png;base64,' + buffer;
+    imagemPre02.setAttribute("src", image);
   });
 }
 
