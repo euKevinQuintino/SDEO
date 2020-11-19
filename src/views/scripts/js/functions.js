@@ -1,7 +1,9 @@
 const formularioBusca = document.getElementById("formularioBusca");
 const formularioCadastro = document.getElementById("formularioCadastro");
 const formularioObservacao = document.getElementById("formularioObservacao");
-const formularioObservacaoEdicao = document.getElementById("formularioObservacaoEdicao");
+const formularioObservacaoEdicao = document.getElementById(
+  "formularioObservacaoEdicao"
+);
 const pagina = window.location.pathname;
 const socket = io();
 
@@ -90,14 +92,14 @@ if (pagina == "/ordem.html") {
     }
   });
   //Alteração/Cadastro observação
-  console.log(localStorage.getItem("statusObservacao"));
   formularioObservacao.addEventListener("submit", function (evento) {
     evento.preventDefault();
     let numeroOrdem = localStorage.getItem("numeroOrdem");
     let novaObservacao = evento.target.elements.inputObservacao.value;
-    localStorage.setItem("observacao", novaObservacao);
     if (novaObservacao.length > 255) {
-      document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
+      document.getElementById("PopUpObservacaoVazia").style.display = "none";
+      document.getElementById("PopUpErroEdicaoObservacao").style.display =
+        "flex";
     } else if (novaObservacao.length <= 0) {
       localStorage.removeItem("observacao");
       socket.emit("alteracaoObservacao", null, numeroOrdem);
@@ -112,7 +114,9 @@ if (pagina == "/ordem.html") {
     let novaObservacao = evento.target.elements.inputObservacao.value;
     localStorage.setItem("observacao", novaObservacao);
     if (novaObservacao.length > 255) {
-      document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
+      document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+      document.getElementById("PopUpErroEdicaoObservacao").style.display =
+        "flex";
     } else if (novaObservacao.length <= 0) {
       localStorage.removeItem("observacao");
       socket.emit("alteracaoObservacao", null, numeroOrdem);
@@ -123,8 +127,13 @@ if (pagina == "/ordem.html") {
   });
   socket.on("resultadoAlteracaoObservacao", function (sucessoAlteracao) {
     if (sucessoAlteracao) {
+      localStorage.setItem("statusObservacao", "desatualizada");
       location.reload();
     } else {
+      console.log("falha ao alterar a observação");
+      document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+      document.getElementById("PopUpErroEdicaoObservacao").style.display =
+        "flex";
     }
   });
   socket.on("sucessoCadastro", function (sucessoCadastro) {
@@ -138,19 +147,17 @@ if (pagina == "/ordem.html") {
     if (sucessoExclusao) {
       paraIndex();
     } else {
-      console.log("erro na exclusão, fazer pop-up erro exclusão");
       document.getElementById("PopUpErroExclusaoOrdem").style.display = "flex";
     }
   });
   socket.on("temObservacao", function (temObservacao) {
     let statusObservacao = localStorage.getItem("statusObservacao");
-    if(temObservacao !== null) {
+    if (temObservacao !== null) {
       localStorage.setItem("observacao", temObservacao);
     } else {
       localStorage.removeItem("observacao");
     }
     let observacao = localStorage.getItem("observacao");
-    console.log(observacao);
     if (statusObservacao == "desatualizada") {
       localStorage.setItem("statusObservacao", "atualizada");
       location.reload();
@@ -175,11 +182,15 @@ function ExibirConfirmacaoAlteracaoObservacao() {
 }
 
 function ConfirmarEdicaoObservacao() {
-  let novaObservacao = evento.target.elements.inputObservacao.value
-  let numeroOrdem = localStorage.getItem("numeroOrdem");
-  console.log(novaObservacao)
-  localStorage.removeItem("observacao");
-  socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem)
+  let novaObservacao = evento.target.elements.inputObservacao.value;
+  if (novaObservacao.length > 255) {
+    document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+    document.getElementById("PopUpErroEdicaoObservacao").style.display = "flex";
+  } else {
+    let numeroOrdem = localStorage.getItem("numeroOrdem");
+    localStorage.removeItem("observacao");
+    socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem);
+  }
 }
 
 //Remover ordem
@@ -197,7 +208,6 @@ window.onload = function () {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
   let observacao = localStorage.getItem("observacao");
   let statusObservacao = localStorage.getItem("statusObservacao");
-  console.log(statusObservacao)
   numeroOrdem.replace(/['"]+/g, " ");
   document.getElementById("conteudoObservacao").innerHTML = observacao;
   document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;

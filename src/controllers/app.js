@@ -119,14 +119,11 @@ async function EditarObservacao(novaObservacao, numeroOrdem) {
 }
 
 async function ConferirObservacao(numeroOrdem) {
-  console.log(numeroOrdem);
   const ordem = await Ordem.findOne({
     where: {
       numeroOrdem: numeroOrdem,
     },
   });
-  console.log(ordem.numeroOrdem);
-  console.log(ordem.observacaoOrdem);
   if (ordem.observacaoOrdem !== null) {
     io.emit("temObservacao", ordem.observacaoOrdem);
   } else {

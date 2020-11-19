@@ -29,6 +29,9 @@ function abrirPainelAjuda() {
         "block";
       guiaAberto = "nenhum";
       isPainelAjudaAberto = true;
+    } else {
+      document.querySelector(".modal-ajuda").style.display = "none";
+      isPainelAjudaAberto = false;
     }
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
@@ -95,10 +98,8 @@ function fecharPopUp() {
     document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
     document.getElementById("PopUpEdicaoObservacao").style.display = "none";
     document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";
-    document.getElementById("PopUpErroExclusao").style.display = "none";
-    document.getElementById("PopUpErroAlteracao").style.display = "none";
-    document.getElementById("PopUpImagem").style.display = "none";
-    
+    //document.getElementById("PopUpImagem").style.display = "none";
+    document.getElementById("PopUpErroEdicaoObservacao").style.display = "none";
   }
 }
 

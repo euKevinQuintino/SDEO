@@ -16,7 +16,7 @@
     .modal__content__buttons
       input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação" onclick="ConfirmarAlteracaoObservacao()")
       input.secondary-button(type="button" value="não, cancelar alteração" onclick="fecharPopUp()")
-.modal#PopUpExclusaoImagem
+//.modal#PopUpExclusaoImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()") 
       i.fas.fa-times
@@ -69,6 +69,14 @@
     .modal__content__buttons
       input#confirmarRemocao.primary-button(type="button" value="ir para a ordem" onclick="AcessarOrdem()")
       input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopUp()")
+.modal#PopUpErroEdicaoObservacao
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado =(
+    .modal__content__text desculpe, a observação deve ter menos de 255 caracteres.
+    .modal__content__buttons
+      input.primary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
 .modal#PopUpObservacaoVazia
   form#formularioObservacao.modal__content
     .modal__content__close 
@@ -98,7 +106,7 @@
     .modal__content__buttons
       input.primary-button(type="submit" value="confirmar alteração" onclick="ConfirmarEdicaoObservacao()")
       input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
-.modal#PopUpImagem
+//.modal#PopUpImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
       i.fas.fa-times
