@@ -93,12 +93,20 @@ function fecharPopUp() {
     document.getElementById("PopUpExclusao").style.display = "none";
     document.getElementById("PopUpObservacaoVazia").style.display = "none";
     document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
+    document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+    document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";
     document.getElementById("PopUpErroExclusao").style.display = "none";
     document.getElementById("PopUpErroAlteracao").style.display = "none";
     document.getElementById("PopUpImagem").style.display = "none";
+    
   }
 }
 
 function AbrirPopUpCadastro() {
   document.getElementById("PopUpCadastro").style.display = "flex";
+}
+
+function AbrirPopUpEdicaoObservacao() {
+  document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
+  document.getElementById("PopUpEdicaoObservacao").style.display = "flex";
 }

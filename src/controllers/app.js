@@ -4,14 +4,11 @@ const http = require("http");
 const socketio = require("socket.io");
 const bodyParser = require("body-parser");
 const path = require("path");
-//const multer = require("multer");
-//const ejs = require("ejs");
 const Ordem = require("../models/Ordem");
 //const Imagem = require("../models/Imagem");
-const { Op } = require("sequelize");
+//const { Op } = require("sequelize");
 const server = http.createServer(app);
 const io = socketio(server);
-//const fs = require("fs");
 
 server.listen(1234);
 
@@ -26,21 +23,6 @@ app.use("/", express.static(__dirname + "../../dist/index"));
 app.use("/", express.static(__dirname + "../../dist/cadastro-Ordem"));
 app.use("/", express.static(__dirname + "../../dist/Ordem"));
 app.use("/", express.static(__dirname + "../../dist/resultados-busca"));
-
-/*// multer
-const storage = multer.diskStorage({
-  destination: "../../dist/temp/",
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
-
-const upload = multer({
-  storage: storage,
-}).single("imagemPre");*/
 
 io.on("connection", (socket) => {
   console.log("[SERVER-SIDE] Socket conectado:", socket.id);
@@ -60,16 +42,8 @@ io.on("connection", (socket) => {
     ConferirObservacao(numeroOrdem);
   });
   socket.on("alteracaoObservacao", (novaObservacao, numeroOrdem) => {
-    AlterarObservacao(novaObservacao, numeroOrdem);
+    EditarObservacao(novaObservacao, numeroOrdem);
   });
-  /*socket.on("upload", async (imagem) => {
-    //CadastrarImagem(imagem);
-    const buffer = Buffer.from(imagem); // está parando aqui
-    await fs.writeFile("../../dist/tmp/image", buffer).catch(console.error); // fs.promises
-    //await fs.writeFile("/tmp/image", buffer).catch(console.error); // fs.promises
-    socket.emit("retornoImagem", imagem.toString("base64"));
-    console.log(imagem);
-  });*/
 });
 
 // funções database
@@ -123,7 +97,7 @@ function RemoverOrdem(numeroOrdemDigitado) {
     });
 }
 
-async function AlterarObservacao(novaObservacao, numeroOrdem) {
+async function EditarObservacao(novaObservacao, numeroOrdem) {
   await Ordem.update(
     { observacaoOrdem: novaObservacao },
     {
@@ -153,5 +127,9 @@ async function ConferirObservacao(numeroOrdem) {
   });
   console.log(ordem.numeroOrdem);
   console.log(ordem.observacaoOrdem);
-  io.emit("temObservacao", ordem.observacaoOrdem);
+  if (ordem.observacaoOrdem !== null) {
+    io.emit("temObservacao", ordem.observacaoOrdem);
+  } else {
+    io.emit("temObservacao", null);
+  }
 }

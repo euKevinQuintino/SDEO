@@ -1,12 +1,14 @@
 const formularioBusca = document.getElementById("formularioBusca");
 const formularioCadastro = document.getElementById("formularioCadastro");
 const formularioObservacao = document.getElementById("formularioObservacao");
+const formularioObservacaoEdicao = document.getElementById("formularioObservacaoEdicao");
 const pagina = window.location.pathname;
 const socket = io();
 
 //Acessar ordem
 function AcessarOrdem() {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
+  localStorage.setItem("statusObservacao", "desatualizada");
   window.location = "ordem.html" + "?numero=" + numeroOrdem;
 }
 
@@ -22,7 +24,7 @@ if (pagina == "/index.html") {
     ) {
       document.getElementById("PopUpErroBuscaIntervalo").style.display = "flex";
     } else {
-      localStorage.setItem("numeroOrdem", numeroDigitado); //JSON.stringify
+      localStorage.setItem("numeroOrdem", numeroDigitado);
       socket.emit("busca", numeroDigitado);
     }
   });
@@ -74,30 +76,7 @@ function AmpliarImagem(imagem) {
   leitor.readAsDataURL(imagem);
 }
 
-function CadastrarImagem(imagem, tipo) {
-  let imagemP = document.getElementById(tipo);
-  var imagem = document.getElementById(imagem);
-  imagemP.addEventListener("change", function () {
-    var imagem = this.files[0];
-    if (imagem) {
-      const leitor = new FileReader();
-      leitor.addEventListener("load", function () {
-        imagem.setAttribute("src", this.result);
-      });
-      leitor.readAsDataURL(imagem);
-    }
-  });
-
-  /*const leitor = new FileReader();
-    leitor.onload = function () {
-      const bytes = new Uint8Array(this.result);
-      socket.emit("upload", bytes);
-      console.log(bytes);
-    };
-    leitor.readAsArrayBuffer(this.files[0]);*/
-}
 if (pagina == "/ordem.html") {
-  console.log(localStorage.getItem("statusObservacao"));
   let imagemPre = document.getElementById("enviarImagemPre");
   var imagemPre01 = document.getElementById("imagemPre01");
   imagemPre.addEventListener("change", function () {
@@ -111,6 +90,7 @@ if (pagina == "/ordem.html") {
     }
   });
   //Alteração/Cadastro observação
+  console.log(localStorage.getItem("statusObservacao"));
   formularioObservacao.addEventListener("submit", function (evento) {
     evento.preventDefault();
     let numeroOrdem = localStorage.getItem("numeroOrdem");
@@ -119,8 +99,25 @@ if (pagina == "/ordem.html") {
     if (novaObservacao.length > 255) {
       document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
     } else if (novaObservacao.length <= 0) {
+      localStorage.removeItem("observacao");
       socket.emit("alteracaoObservacao", null, numeroOrdem);
     } else {
+      localStorage.removeItem("observacao");
+      socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem);
+    }
+  });
+  formularioObservacaoEdicao.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    let numeroOrdem = localStorage.getItem("numeroOrdem");
+    let novaObservacao = evento.target.elements.inputObservacao.value;
+    localStorage.setItem("observacao", novaObservacao);
+    if (novaObservacao.length > 255) {
+      document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
+    } else if (novaObservacao.length <= 0) {
+      localStorage.removeItem("observacao");
+      socket.emit("alteracaoObservacao", null, numeroOrdem);
+    } else {
+      localStorage.removeItem("observacao");
       socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem);
     }
   });
@@ -146,13 +143,16 @@ if (pagina == "/ordem.html") {
     }
   });
   socket.on("temObservacao", function (temObservacao) {
-    let observacaoVazia = localStorage.getItem("statusObservacao");
-    localStorage.setItem("observacao", temObservacao);
+    let statusObservacao = localStorage.getItem("statusObservacao");
+    if(temObservacao !== null) {
+      localStorage.setItem("observacao", temObservacao);
+    } else {
+      localStorage.removeItem("observacao");
+    }
     let observacao = localStorage.getItem("observacao");
     console.log(observacao);
-    if (temObservacao && observacaoVazia) {
-      localStorage.setItem("statusObservacao", atualizada);
-      console.log(temObservacao);
+    if (statusObservacao == "desatualizada") {
+      localStorage.setItem("statusObservacao", "atualizada");
       location.reload();
     }
   });
@@ -160,8 +160,8 @@ if (pagina == "/ordem.html") {
 
 //Acessar observação
 function AcessarObservacao() {
-  let observacaoVazia = localStorage.getItem("statusObservacao");
-  if (observacaoVazia) {
+  let observacao = localStorage.getItem("observacao");
+  if (observacao == null) {
     document.getElementById("PopUpObservacaoVazia").style.display = "flex";
   } else {
     document.getElementById("PopUpObservacaoPreenchida").style.display = "flex";
@@ -169,8 +169,17 @@ function AcessarObservacao() {
 }
 
 //Alterar observação
-function AlterarObservacao() {
-  document.getElementById("PopUpAlteracao").style.display = "flex";
+function ExibirConfirmacaoAlteracaoObservacao() {
+  document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+  document.getElementById("PopUpConfirmacaoAlteracao").style.display = "flex";
+}
+
+function ConfirmarEdicaoObservacao() {
+  let novaObservacao = evento.target.elements.inputObservacao.value
+  let numeroOrdem = localStorage.getItem("numeroOrdem");
+  console.log(novaObservacao)
+  localStorage.removeItem("observacao");
+  socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem)
 }
 
 //Remover ordem
@@ -188,15 +197,16 @@ window.onload = function () {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
   let observacao = localStorage.getItem("observacao");
   let statusObservacao = localStorage.getItem("statusObservacao");
+  console.log(statusObservacao)
   numeroOrdem.replace(/['"]+/g, " ");
   document.getElementById("conteudoObservacao").innerHTML = observacao;
   document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
-  
-
-  if (statusObservacao == null) {
-    socket.emit("conferirObservacao", numeroOrdem);
-  }
-  if (statusObservacao !== "atualizada" || statusObservacao !== null) {
+  socket.emit("conferirObservacao", numeroOrdem);
+  if (statusObservacao == "atualizada" && observacao == null) {
     document.getElementById("LinkOrdem").innerHTML = "adicionar observação";
   }
 };
+
+if (pagina !== "/ordem.html") {
+  localStorage.setItem("statusObservacao", "desatualizada");
+}

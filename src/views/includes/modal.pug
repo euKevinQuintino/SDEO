@@ -11,10 +11,11 @@
   .modal__content
     .modal__content__close(onclick="fecharPopUp()") 
       i.fas.fa-times
-    .modal__content__text tem certeza que deseja #[strong alterar esta observação?]
+    .modal-ajuda__content__title cuidado!
+    .modal__content__text tem certeza que deseja #[strong confirmar a alteração?]
     .modal__content__buttons
-      input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação")
-      input#cancelarAlteracao.secondary-button(type="button" value="não, cancelar alteração")
+      input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação" onclick="ConfirmarAlteracaoObservacao()")
+      input.secondary-button(type="button" value="não, cancelar alteração" onclick="fecharPopUp()")
 .modal#PopUpExclusaoImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()") 
@@ -68,15 +69,6 @@
     .modal__content__buttons
       input#confirmarRemocao.primary-button(type="button" value="ir para a ordem" onclick="AcessarOrdem()")
       input#cancelarRemocao.secondary-button(type="button" value="cadastrar outra ordem" onclick="fecharPopUp()")
-.modal#PopUpConfirmacaoAlteracao
-  .modal__content
-    .modal__content__close(onclick="fecharPopUp()")
-      i.fas.fa-times
-    .modal-ajuda__content__title algo deu errado
-    .modal__content__text 
-    .modal__content__buttons
-      input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação")
-      input#cancelarAlteracao.secondary-button(type="button" value="não, cancelar alteração")
 .modal#PopUpObservacaoVazia
   form#formularioObservacao.modal__content
     .modal__content__close 
@@ -88,17 +80,24 @@
       input.primary-button(type="submit" value="adicionar observacao")
       input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
 .modal#PopUpObservacaoPreenchida
-  form#formularioObservacao.modal__content
+  form.modal__content
     .modal__content__close 
       i.fas.fa-times(onclick="fecharPopUp()")
-    #tituloVerObservacao.modal-ajuda__content__title observação
-    #tituloEditarObservacao.modal-ajuda__content__title editar observação
+    .modal-ajuda__content__title observação
     #conteudoObservacao.modal__content__description preenchida
-    #inputObservacao.modal__content__input(style="display: none;")
     .modal__content__buttons
-      input#botaoConfirmarAlteracao.detructive-button(type="button" value="confirmar alteração")
-      input#botaoEditarOrdem.primary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
-      input.secondary-button(type="button" value="editar observação" onclick="EditarObservacao()")
+      input.primary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
+      input.secondary-button(type="button" value="editar observação" onclick="AbrirPopUpEdicaoObservacao()")
+.modal#PopUpEdicaoObservacao
+  form#formularioObservacaoEdicao.modal__content
+    .modal__content__close 
+      i.fas.fa-times(onclick="fecharPopUp()")
+    .modal-ajuda__content__title editar observação
+    .modal__content__description(style="margin: 0;margin-left: 12px;") digite a nova observação:
+    textarea#inputObservacao.modal__content__input(placeholder="exemplo: motor incompatível com a peça em estoque")
+    .modal__content__buttons
+      input.primary-button(type="submit" value="confirmar alteração" onclick="ConfirmarEdicaoObservacao()")
+      input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
 .modal#PopUpImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")

@@ -728,10 +728,12 @@ body {
     }
 
     &__description {
-      margin: 20px 20px 20px 20px;
+      margin: 0px 0px 0px 20px;
       font-size: 1.8em;
-      line-height: 1.6em;
-      max-height: 100px;
+      line-height: 1.5em;
+      max-width: 260px;
+      word-wrap: break-word;
+      max-height: 125px;
       overflow-y: auto;
     }
 
@@ -873,6 +875,7 @@ body {
 }
 
 #botaoConfirmarAlteracao,
+#botaoVoltarParaOrdemS,
 #tituloEditarObservacao,
 #PopUpErroCadastroMaior,
 #PopUpErroCadastroExiste,
@@ -883,12 +886,14 @@ body {
 #PopUpImagem,
 #PopUpObservacaoVazia,
 #PopUpObservacaoPreenchida,
+#PopUpEdicaoObservacao,
 #PopUpConfirmacaoAlteracao,
 #PopUpExclusaoImagem,
 #AjudaConsulta,
 #AjudaCadastro,
 #AjudaAlteracao,
 #AjudaAdicaoImagem,
+#AjudaRemocaoImagem,
 #AjudaExclusaoImagem,
 #AjudaExtra {
   display: none;
