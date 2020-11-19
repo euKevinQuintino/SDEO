@@ -24,6 +24,7 @@ const Imagem = database.sequelize.define(
   },
   {
     timestamps: false,
+    freezeTableName: true,
   }
 );
 ordem.hasMany(Imagem, { foreignkey: "numeroOrdem" });

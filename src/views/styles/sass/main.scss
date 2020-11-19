@@ -71,11 +71,6 @@ input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4);
 }
 
-textarea {
-  height: 80px !important;
-  padding-top: 10px;
-}
-
 strong {
   font-weight: 700;
 }
@@ -171,9 +166,11 @@ strong {
     cursor: pointer;
     transition: 0.2s;
   }
+
   &:active {
     box-shadow: none;
   }
+
   &:focus {
     box-shadow: none;
   }
@@ -190,9 +187,11 @@ strong {
       cursor: pointer;
       transition: 0.2s;
     }
+
     &:active {
       box-shadow: none;
     }
+    
     &:focus {
       box-shadow: none;
     }
@@ -296,10 +295,10 @@ body {
   &__order-details {
     position: fixed;
     top: 74px;
-    height: 63%;
+    height: 66.6%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-bottom: 16px;
+    //padding-bottom: 16px;
 
     &__title {
       font-size: 2.4em;
@@ -311,10 +310,30 @@ body {
 
     &__observation {
       width: 300px;
-      margin-top: 4px;
-      margin-bottom: 0px;
+      margin-top: 8px;
+      margin-bottom: 4px;
 
-      &__edit {
+      &__link {
+        font-size: 1.8em;
+        color: $secondary;
+        text-decoration: underline;
+        font-weight: 700;
+        text-align: right;
+
+        &:hover {
+          color: $primary;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+        &:active {
+          box-shadow: none;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+
+      /*&__edit {
         float: right;
         margin-top: -20px;
 
@@ -334,18 +353,13 @@ body {
             transform: translateY(1px);
           }
         }
-      }
+      }*/
 
       &__title {
         color: $base-text;
         font-size: 2em;
         font-weight: 700;
         margin-top: 0px;
-      }
-
-      &__text {
-        font-size: 1.6em;
-        line-height: 1.6em;
       }
     }
 
@@ -708,12 +722,34 @@ body {
     }
 
     &__text {
-      margin: 64px 12px 32px 12px;
+      margin: 28px 20px 26px 20px;
       font-size: 2.4em;
       line-height: 1.6em;
     }
 
+    &__description {
+      margin: 0px 0px 0px 20px;
+      font-size: 1.8em;
+      line-height: 1.5em;
+      max-width: 260px;
+      word-wrap: break-word;
+      max-height: 125px;
+      overflow-y: auto;
+    }
+
+    &__input {
+      margin-left: 4%;
+      border: 2px solid $primary;
+      border-radius: 6px;
+      width: 87.9%;
+      height: 90px;
+      font-size: 1.8em;
+      padding-left: 8px;
+    }
+
     &__buttons {
+      position: absolute;
+      bottom: 12px;
       input {
         margin: 12px;
         margin-bottom: 2px;
@@ -838,8 +874,29 @@ body {
   }
 }
 
-#PopUpErroCadastro, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem, 
-#AjudaExtra, #PopUpCadastro {
+#botaoConfirmarAlteracao,
+#botaoVoltarParaOrdemS,
+#tituloEditarObservacao,
+#PopUpErroCadastroMaior,
+#PopUpErroCadastroExiste,
+#PopUpErroBusca,
+#PopUpErroBuscaIntervalo,
+#PopUpErroEdicaoObservacao,
+#PopUpCadastro,
+#PopUpExclusao,
+#PopUpImagem,
+#PopUpObservacaoVazia,
+#PopUpObservacaoPreenchida,
+#PopUpEdicaoObservacao,
+#PopUpConfirmacaoAlteracao,
+#PopUpExclusaoImagem,
+#AjudaConsulta,
+#AjudaCadastro,
+#AjudaAlteracao,
+#AjudaAdicaoImagem,
+#AjudaRemocaoImagem,
+#AjudaExclusaoImagem,
+#AjudaExtra {
   display: none;
 }
 

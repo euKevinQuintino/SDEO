@@ -29,6 +29,9 @@ function abrirPainelAjuda() {
         "block";
       guiaAberto = "nenhum";
       isPainelAjudaAberto = true;
+    } else {
+      document.querySelector(".modal-ajuda").style.display = "none";
+      isPainelAjudaAberto = false;
     }
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
@@ -80,14 +83,31 @@ function fecharPopUp() {
     isPainelAjudaAberto = false;
     guiaAberto = "nenhum";
   }
-  document.getElementById("PopUpCadastro").style.display = "none";
-  document.getElementById("PopUpRemocao").style.display = "none";
+  if (pagina == "/cadastro-ordem.html") {
+    document.getElementById("PopUpCadastro").style.display = "none";
+    document.getElementById("PopUpErroCadastroExiste").style.display = "none";
+    document.getElementById("PopUpErroCadastroMaior").style.display = "none";
+  }
+  if (pagina == "/index.html" || pagina == "/resultados-busca.html") {
+    document.getElementById("PopUpErroBusca").style.display = "none";
+    document.getElementById("PopUpErroBuscaIntervalo").style.display = "none";
+  }
+  if (pagina == "/ordem.html") {
+    document.getElementById("PopUpExclusao").style.display = "none";
+    document.getElementById("PopUpObservacaoVazia").style.display = "none";
+    document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
+    document.getElementById("PopUpEdicaoObservacao").style.display = "none";
+    document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";
+    //document.getElementById("PopUpImagem").style.display = "none";
+    document.getElementById("PopUpErroEdicaoObservacao").style.display = "none";
+  }
 }
 
 function AbrirPopUpCadastro() {
   document.getElementById("PopUpCadastro").style.display = "flex";
 }
 
-function AbrirPopUpRemocao() {
-  document.getElementById("PopUpRemocao").style.display = "flex";
+function AbrirPopUpEdicaoObservacao() {
+  document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
+  document.getElementById("PopUpEdicaoObservacao").style.display = "flex";
 }

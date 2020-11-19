@@ -10,12 +10,13 @@ const Ordem = database.sequelize.define(
     observacaoOrdem: {
       type: database.Sequelize.STRING,
     },
-    ordemRemovida: {
+    /*ordemRemovida: {
       type: database.Sequelize.TINYINT(1),
-    },
+    },*/
   },
   {
     timestamps: false,
+    freezeTableName: true,
   }
 );
 

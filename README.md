@@ -1,9 +1,15 @@
 # Sistema de Documentação de Execuções de Ordens (SDEO - LES)
 
 ### Instalação
-`npm install`
+`npm i -g`
+
+### Iniciação
+`nodemon`
+
+### Acesso
+[http://localhost:1234/index.html](http://localhost:1234/index.html)
 
 ### Desenvolvedores
-- Kevin Quintino (UX design & front-end)
-- Mattheus Solér (Back-end)
-- Vinícius Bomfim (Database)
+- Kevin Quintino 
+- Mattheus Solér
+- Vinícius Bomfim

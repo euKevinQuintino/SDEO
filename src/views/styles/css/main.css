@@ -47,10 +47,6 @@ button {
 input {
   box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.4); }
 
-textarea {
-  height: 80px !important;
-  padding-top: 10px; }
-
 strong {
   font-weight: 700; }
 
@@ -218,10 +214,9 @@ body {
   .system__order-details {
     position: fixed;
     top: 74px;
-    height: 63%;
+    height: 66.6%;
     overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: 16px; }
+    overflow-x: hidden; }
     .system__order-details__title {
       font-size: 2.4em;
       text-align: right;
@@ -230,30 +225,48 @@ body {
       color: #333; }
     .system__order-details__observation {
       width: 300px;
-      margin-top: 4px;
-      margin-bottom: 0px; }
-      .system__order-details__observation__edit {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      /*&__edit {
         float: right;
-        margin-top: -20px; }
-        .system__order-details__observation__edit i {
+        margin-top: -20px;
+
+        i {
           font-size: 2em;
-          color: #396afc; }
-          .system__order-details__observation__edit i:hover {
-            color: #5781fc;
+          color: $primary;
+
+          &:hover {
+            color: lighten($primary, 6%);
             cursor: pointer;
-            transition: 0.2s; }
-          .system__order-details__observation__edit i:active {
-            color: #2a5ffc;
+            transition: 0.2s;
+          }
+
+          &:active {
+            color: darken($primary, 3%);
             transition: 0.1s;
-            transform: translateY(1px); }
+            transform: translateY(1px);
+          }
+        }
+      }*/ }
+      .system__order-details__observation__link {
+        font-size: 1.8em;
+        color: #2948ff;
+        text-decoration: underline;
+        font-weight: 700;
+        text-align: right; }
+        .system__order-details__observation__link:hover {
+          color: #396afc;
+          cursor: pointer;
+          transition: 0.2s; }
+        .system__order-details__observation__link:active {
+          box-shadow: none; }
+        .system__order-details__observation__link:focus {
+          box-shadow: none; }
       .system__order-details__observation__title {
         color: #333;
         font-size: 2em;
         font-weight: 700;
         margin-top: 0px; }
-      .system__order-details__observation__text {
-        font-size: 1.6em;
-        line-height: 1.6em; }
     .system__order-details__image-grid {
       display: grid;
       grid-template-columns: repeat(4, 56px);
@@ -510,13 +523,32 @@ body {
         color: #2b2b2b;
         transform: translateY(1px); }
     .modal__content__text {
-      margin: 64px 12px 32px 12px;
+      margin: 28px 20px 26px 20px;
       font-size: 2.4em;
       line-height: 1.6em; }
-    .modal__content__buttons input {
-      margin: 12px;
-      margin-bottom: 2px;
-      width: 276px; }
+    .modal__content__description {
+      margin: 0px 0px 0px 20px;
+      font-size: 1.8em;
+      line-height: 1.5em;
+      max-width: 260px;
+      word-wrap: break-word;
+      max-height: 125px;
+      overflow-y: auto; }
+    .modal__content__input {
+      margin-left: 4%;
+      border: 2px solid #396afc;
+      border-radius: 6px;
+      width: 87.9%;
+      height: 90px;
+      font-size: 1.8em;
+      padding-left: 8px; }
+    .modal__content__buttons {
+      position: absolute;
+      bottom: 12px; }
+      .modal__content__buttons input {
+        margin: 12px;
+        margin-bottom: 2px;
+        width: 276px; }
 
 .modal-ajuda {
   width: 100%;
@@ -597,6 +629,27 @@ body {
       .modal-ajuda__content__guide li span {
         font-weight: 400; }
 
-#PopUpErroCadastro, #PopUpErroBusca, #PopUpRemocao, #PopUpAlteracao, #AjudaConsulta, #AjudaCadastro, #AjudaAlteracao, #AjudaAdicaoImagem, #AjudaRemocaoImagem,
-#AjudaExtra, #PopUpCadastro {
+#botaoConfirmarAlteracao,
+#botaoVoltarParaOrdemS,
+#tituloEditarObservacao,
+#PopUpErroCadastroMaior,
+#PopUpErroCadastroExiste,
+#PopUpErroBusca,
+#PopUpErroBuscaIntervalo,
+#PopUpErroEdicaoObservacao,
+#PopUpCadastro,
+#PopUpExclusao,
+#PopUpImagem,
+#PopUpObservacaoVazia,
+#PopUpObservacaoPreenchida,
+#PopUpEdicaoObservacao,
+#PopUpConfirmacaoAlteracao,
+#PopUpExclusaoImagem,
+#AjudaConsulta,
+#AjudaCadastro,
+#AjudaAlteracao,
+#AjudaAdicaoImagem,
+#AjudaRemocaoImagem,
+#AjudaExclusaoImagem,
+#AjudaExtra {
   display: none; }

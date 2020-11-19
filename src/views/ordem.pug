@@ -5,6 +5,7 @@ html(lang="pt-br")
     include includes/head
   body
     include includes/painel-ajuda
+    include includes/modal
     .system
       .system__logo
         a.system__logo__link(onclick="paraIndex()" tabindex="0")
@@ -12,27 +13,34 @@ html(lang="pt-br")
       .system__order-details
         h1#TituloOrdem.system__order-details__title ordem #0000
         .system__order-details__observation
-          h2.system__order-details__observation__title observação:
-
-          #orderObservationEdit.system__order-details__observation__edit(onclick="editarObservacao()" tabindex="0")
+          p#LinkOrdem.system__order-details__observation__link(onclick="AcessarObservacao()" tabindex="0") visualizar observação
+          //.system__order-details__observation__edit(onclick="AlterarObservacao()" tabindex="0")
             i.fas.fa-edit
-          p.system__order-details__observation__text 
         h2.system__subtitle-order pré-execução:
         .system__order-details__image-grid
-          //.system__order-details__image-grid__picture
+          .system__order-details__image-grid__picture
             .system__order-details__image-grid__picture__remove
               i.fas.fa-times
-            img(src="./img/android-icon-192x192.png")
-          .system__order-details__image-grid__add
+            img#imagemPre01(onclick="AmpliarImagem(imagem01, enviarImagemPre)")
+          .system__order-details__image-grid__add#adicionarImagemPreExecucao
             i.fas.fa-plus-circle
         h2.system__subtitle-order pós-execução:
         .system__order-details__image-grid
-          .system__order-details__image-grid__add
+          .system__order-details__image-grid__add#adicionarImagemPosExecucao
             i.fas.fa-plus-circle
-        p.link__remove#RemoverOrdem(href="/exclusao" tabindex="0") remover ordem
+        p.link__remove(onclick="ExibirConfirmacaoExclusaoOrdem()" tabindex="0") remover ordem
       .system__link
         p.link(onclick="paraIndex()" tabindex="0") voltar para a tela inicial
       .system__help
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="abrirPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda
+      //input imagem
+      form#envioImagem
+        input(id="enviarImagemPre" type="file" name="imagemPre" style="display: none;")
+        input(id="enviarImagemPos" type="file" name="imagemPos" style="display: none;")
+    script(src="/socket.io/socket.io.js")
+    script.
+      $('#adicionarImagemPreExecucao').click(function(){ $('#enviarImagemPre').trigger('click'); });
+      $('#adicionarImagemPosExecucao').click(function(){ $('#enviarImagemPos').trigger('click'); });
+      
