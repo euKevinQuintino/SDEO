@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs")
 const app = express();
 const http = require("http");
 const socketio = require("socket.io");
@@ -44,6 +45,12 @@ io.on("connection", (socket) => {
   socket.on("alteracaoObservacao", (novaObservacao, numeroOrdem) => {
     EditarObservacao(novaObservacao, numeroOrdem);
   });
+  socket.on("image", async(image) => {
+    const buffer = Buffer.from(image, 'base64');
+    console.log(buffer.length)
+    io.emit("imagemVolta", image)
+    //await fs.writeFile('../../dist/temp/', image).catch(console.error);
+  })
 });
 
 // funções database
