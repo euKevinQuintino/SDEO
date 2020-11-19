@@ -13,4 +13,4 @@
 - Kevin Quintino 
 - Mattheus Solér
 - Vinícius Bomfim
-Menção honrosa: Alberto Goto.
+- Menção honrosa: Alberto Goto.
