@@ -14,8 +14,6 @@ html(lang="pt-br")
         h1#TituloOrdem.system__order-details__title ordem #0000
         .system__order-details__observation
           p#LinkOrdem.system__order-details__observation__link(onclick="AcessarObservacao()" tabindex="0") visualizar observação
-          //.system__order-details__observation__edit(onclick="AlterarObservacao()" tabindex="0")
-            i.fas.fa-edit
         h2.system__subtitle-order pré-execução:
         .system__order-details__image-grid
           .system__order-details__image-grid__picture
@@ -39,7 +37,6 @@ html(lang="pt-br")
         button.system__help__button.secondary-button(id="botaoAjuda" onclick="abrirPainelAjuda()" tabindex="0")
           i.fas.fa-question-circle
           | preciso de ajuda
-      //input imagem
       form#envioImagem
         input(id="enviarImagemPre" type="file" name="imagemPre" style="display: none;")
         input(id="enviarImagemPos" type="file" name="imagemPos" style="display: none;")

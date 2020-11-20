@@ -10,7 +10,6 @@ const socket = io();
 //Acessar ordem
 function AcessarOrdem() {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
-  localStorage.setItem("statusObservacao", "desatualizada");
   window.location = "ordem.html" + "?numero=" + numeroOrdem;
 }
 
@@ -55,9 +54,9 @@ if (pagina == "/cadastro-ordem.html") {
     evento.preventDefault();
     let numeroDigitado = evento.target.elements.numeroCadastro.value;
     if (String(numeroDigitado).length == 0 || numeroDigitado <= 0) {
-      document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
+      document.getElementById("PopUpErroBuscaIntervalo").style.display = "flex";
     } else if (String(numeroDigitado).length > 4) {
-      document.getElementById("PopUpErroCadastroMaior").style.display = "flex";
+      document.getElementById("PopUpErroBuscaIntervalo").style.display = "flex";
     } else {
       localStorage.setItem("numeroOrdem", numeroDigitado);
       socket.emit("cadastro", numeroDigitado);
@@ -79,6 +78,16 @@ function AmpliarImagem(imagem) {
 }
 
 if (pagina == "/ordem.html") {
+  let numeroOrdem = localStorage.getItem("numeroOrdem");
+  let observacao = localStorage.getItem("observacao");
+  let statusObservacao = localStorage.getItem("statusObservacao");
+  document.getElementById("conteudoObservacao").innerHTML = observacao;
+  document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
+  socket.emit("conferirObservacao", numeroOrdem);
+  if (statusObservacao == "atualizada" && observacao == null) {
+    document.getElementById("LinkOrdem").innerHTML = "adicionar observação";
+  }
+  //Imagens
   let imagemPre = document.getElementById("enviarImagemPre");
   var imagemPre01 = document.getElementById("imagemPre01");
   imagemPre.addEventListener("change", function () {
@@ -91,6 +100,20 @@ if (pagina == "/ordem.html") {
       leitor.readAsDataURL(imagem01);
     }
   });
+
+  document.getElementById("enviarImagemPre").addEventListener(
+    "change",
+    function () {
+      const reader = new FileReader();
+      reader.onload = function () {
+        //const bytes = new Uint8Array(this.result);
+        const bytes = this.result.replace(/.*base64,/, "");
+        socket.emit("image", bytes);
+      };
+      reader.readAsDataURL(this.files[0]);
+    },
+    false
+  );
   //Alteração/Cadastro observação
   formularioObservacao.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -104,7 +127,7 @@ if (pagina == "/ordem.html") {
       localStorage.removeItem("observacao");
       socket.emit("alteracaoObservacao", null, numeroOrdem);
     } else {
-      localStorage.removeItem("observacao");
+      localStorage.setItem("statusObservacao", "desatualizada");
       socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem);
     }
   });
@@ -122,15 +145,14 @@ if (pagina == "/ordem.html") {
       socket.emit("alteracaoObservacao", null, numeroOrdem);
     } else {
       localStorage.removeItem("observacao");
+      localStorage.setItem("statusObservacao", "desatualizada");
       socket.emit("alteracaoObservacao", novaObservacao, numeroOrdem);
     }
   });
   socket.on("resultadoAlteracaoObservacao", function (sucessoAlteracao) {
     if (sucessoAlteracao) {
-      localStorage.setItem("statusObservacao", "desatualizada");
       location.reload();
     } else {
-      console.log("falha ao alterar a observação");
       document.getElementById("PopUpEdicaoObservacao").style.display = "none";
       document.getElementById("PopUpErroEdicaoObservacao").style.display =
         "flex";
@@ -157,11 +179,16 @@ if (pagina == "/ordem.html") {
     } else {
       localStorage.removeItem("observacao");
     }
-    let observacao = localStorage.getItem("observacao");
+    let statusObservacao = localStorage.getItem("statusObservacao");
     if (statusObservacao == "desatualizada") {
       localStorage.setItem("statusObservacao", "atualizada");
       location.reload();
     }
+  });
+  socket.on("imagemVolta", function (buffer) {
+    var image = new Image();
+    image = "data:image/png;base64," + buffer;
+    imagemPre02.setAttribute("src", image);
   });
 }
 
@@ -204,26 +231,14 @@ function ExcluirOrdem() {
 }
 
 //Preencher ordem
-window.onload = function () {
-  let numeroOrdem = localStorage.getItem("numeroOrdem");
-  let observacao = localStorage.getItem("observacao");
-  let statusObservacao = localStorage.getItem("statusObservacao");
-  numeroOrdem.replace(/['"]+/g, " ");
-  document.getElementById("conteudoObservacao").innerHTML = observacao;
-  document.getElementById("TituloOrdem").innerHTML = "ordem #" + numeroOrdem;
-  socket.emit("conferirObservacao", numeroOrdem);
-  if (statusObservacao == "atualizada" && observacao == null) {
-    document.getElementById("LinkOrdem").innerHTML = "adicionar observação";
-  }
-};
+window.onload = function () {};
 
 if (pagina !== "/ordem.html") {
   localStorage.setItem("statusObservacao", "desatualizada");
 }
 
 window.addEventListener("keydown", function (event) {
-  if (event.key !== undefined && event.key !== "F12" && event.key !== "F5") {
-    event.preventDefault();
+  if (event.key !== undefined) {
     if (event.key == " " || "Enter") {
       document.activeElement.click();
     }
@@ -231,19 +246,9 @@ window.addEventListener("keydown", function (event) {
       fecharPopUp();
     }
     if (event.key == "F1") {
+      event.preventDefault();
       abrirPainelAjuda();
     }
-    /*if (event.key == "Backspace") {
-      if (isPainelAjudaAberto) {
-        if (guiaAberto !== "nenhum") {
-          abrirPainelAjuda();
-        } else {
-          fecharPopUp();
-        }
-      } else {
-        paraIndex();
-      }
-    }*/
   }
 });
 
@@ -279,8 +284,8 @@ function abrirPainelAjuda() {
       guiaAberto = "nenhum";
       isPainelAjudaAberto = true;
     } else {
-    document.querySelector(".modal-ajuda").style.display = "none";
-    isPainelAjudaAberto = false;
+      document.querySelector(".modal-ajuda").style.display = "none";
+      isPainelAjudaAberto = false;
     }
   } else {
     document.querySelector(".modal-ajuda").style.display = "flex";
@@ -349,7 +354,6 @@ function fecharPopUp() {
     document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";
     //document.getElementById("PopUpImagem").style.display = "none";
     document.getElementById("PopUpErroEdicaoObservacao").style.display = "none";
-    
   }
 }
 
@@ -358,6 +362,8 @@ function AbrirPopUpCadastro() {
 }
 
 function AbrirPopUpEdicaoObservacao() {
+  let observacao = localStorage.getItem("observacao");
   document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
   document.getElementById("PopUpEdicaoObservacao").style.display = "flex";
+  document.querySelector(".observacao-preenchida").value = observacao;
 }

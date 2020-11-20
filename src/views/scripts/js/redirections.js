@@ -108,6 +108,8 @@ function AbrirPopUpCadastro() {
 }
 
 function AbrirPopUpEdicaoObservacao() {
+  let observacao = localStorage.getItem("observacao");
   document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
   document.getElementById("PopUpEdicaoObservacao").style.display = "flex";
+  document.querySelector(".observacao-preenchida").value = observacao;
 }

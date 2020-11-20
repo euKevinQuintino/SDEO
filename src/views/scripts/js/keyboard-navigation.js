@@ -1,6 +1,5 @@
 window.addEventListener("keydown", function (event) {
-  if (event.key !== undefined && event.key !== "F12" && event.key !== "F5") {
-    //event.preventDefault();
+  if (event.key !== undefined) {
     if (event.key == " " || "Enter") {
       document.activeElement.click();
     }
@@ -8,18 +7,8 @@ window.addEventListener("keydown", function (event) {
       fecharPopUp();
     }
     if (event.key == "F1") {
+      event.preventDefault();
       abrirPainelAjuda();
     }
-    /*if (event.key == "Backspace") {
-      if (isPainelAjudaAberto) {
-        if (guiaAberto !== "nenhum") {
-          abrirPainelAjuda();
-        } else {
-          fecharPopUp();
-        }
-      } else {
-        paraIndex();
-      }
-    }*/
   }
 });

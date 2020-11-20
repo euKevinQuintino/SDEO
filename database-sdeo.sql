@@ -11,8 +11,8 @@ CREATE TABLE `Ordem` (
 CREATE TABLE `Imagem` (
   `numeroImagem` INT NOT NULL AUTO_INCREMENT,
   `numeroOrdem` INT NOT NULL,
-  `imagemPreExecucao` VARCHAR(255),
-  `imagemPosExecucao` VARCHAR(255),
+  `imagemPreExecucao` VARCHAR(2097152),
+  `imagemPosExecucao` VARCHAR(2097152),
   PRIMARY KEY (`numeroImagem`)
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8 COLLATE = utf8_general_ci AUTO_INCREMENT = 1;
 
