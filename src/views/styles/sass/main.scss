@@ -3,12 +3,15 @@ $secondary: #2948ff;
 $base-text: #333;
 $whatsapp: #25d366;
 $google-maps: #e83c2e;
+$focus: #ffa500;
 $white: #fff;
 
 html {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  background: $white;
+  //filter: invert(1);
 }
 
 //placeholder
@@ -64,7 +67,10 @@ button {
 }
 
 *:focus {
-  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.8);
+  outline-color: $focus;
+  outline-style: dashed;
+  outline-width: 2px;
+  outline-offset: 1px;
 }
 
 input {

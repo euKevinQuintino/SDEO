@@ -1,6 +1,6 @@
 window.addEventListener("keydown", function (event) {
   if (event.key !== undefined) {
-    if (event.key == " " || "Enter") {
+    if (event.key == "Enter") {
       document.activeElement.click();
     }
     if (event.key == "Escape") {

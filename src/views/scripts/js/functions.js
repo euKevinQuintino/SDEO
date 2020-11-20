@@ -88,9 +88,9 @@ if (pagina == "/ordem.html") {
     document.getElementById("LinkOrdem").innerHTML = "adicionar observação";
   }
   //Imagens
-  let imagemPre = document.getElementById("enviarImagemPre");
-  var imagemPre01 = document.getElementById("imagemPre01");
-  imagemPre.addEventListener("change", function () {
+  let inputImagemPre = document.getElementById("enviarImagemPre");
+  let imagemPre01 = document.getElementById("imagemPre01");
+  inputImagemPre.addEventListener("change", function () {
     var imagem01 = this.files[0];
     if (imagem01) {
       const leitor = new FileReader();
