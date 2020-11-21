@@ -127,7 +127,6 @@ if (pagina == "/ordem.html") {
     function () {
       const reader = new FileReader();
       reader.onload = function () {
-        //const bytes = new Uint8Array(this.result);
         const bytes = this.result.replace(/.*base64,/, "");
         socket.emit("image", bytes);
       };
@@ -260,6 +259,7 @@ function CriarItemImagem(pos) {
           "none";
       }
       quantidadeImagemPre += 1;
+      console.log(quantidadeImagemPre)
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -268,10 +268,15 @@ function CriarItemImagem(pos) {
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
       imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPre));
-      removeIconDiv.setAttribute(
+      let idImagem = "imagemPreQuadro" + String(quantidadeImagemPre);
+      removeIconDiv.addEventListener("click", function (evento) {
+        RemoverImagem(idImagem, 0, 0);
+        evento.preventDefault();
+      });
+      /*.setAttribute(
         "onclick",
-        RemoverImagem("imagemPreQuadro" + String(quantidadeImagemPre), 0)
-      );
+        "RemoverImagem(imagemPreQuadro" + String(quantidadeImagemPre) + ", 0, 0)"
+      );*/
       pictureBorder.setAttribute(
         "id",
         "imagemPreQuadro" + String(quantidadeImagemPre)
@@ -299,10 +304,11 @@ function CriarItemImagem(pos) {
       pictureBorder.className = "system__order-details__image-grid__picture";
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
-      removeIconDiv.setAttribute(
-        "onclick",
-        RemoverImagem("imagemPosQuadro" + String(quantidadeImagemPos), 1)
-      );
+      let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
+      removeIconDiv.addEventListener("click", function (evento) {
+        RemoverImagem(idImagem, 1, 0);
+        evento.preventDefault();
+      });
       imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
       pictureBorder.setAttribute(
         "id",
@@ -319,18 +325,50 @@ function CriarItemImagem(pos) {
     }
   }
 }
-function RemoverImagem(id, pos) {
-  console.log(id);
-  console.log(typeof id);
-  if (pos) {
-    //document.getElementById(id).remove();
-    //document.getElementById("inputImagemPosExecucao").style.display = "flex";
+function RemoverImagem(id, pos, confirmou) {
+  if (confirmou) {
+    if (pos) {
+      document.getElementById(id).remove();
+      quantidadeImagemPos -= 1;
+      console.log(quantidadeImagemPos);
+      localStorage.setItem("primeiraVez", 1);
+      ExibirBotaoAdicaoImagem(pos);
+    } else {
+      console.log(quantidadeImagemPre);
+      document.getElementById(id).remove();
+      quantidadeImagemPre -= 1;
+      console.log(quantidadeImagemPre);
+      localStorage.setItem("primeiraVez", 1);
+      ExibirBotaoAdicaoImagem(pos);
+    }
   } else {
-    //document.getElementById(id).remove();
-    //document.getElementById("inputImagemPreExecucao").style.display = "flex";
+    localStorage.setItem("idImagem", id);
+    localStorage.setItem("imagemPos", pos);
+    document.getElementById("PopUpExclusaoImagem").style.display = "flex";
   }
 }
 
+function ConfirmarRemocaoImagem() {
+  let imagemPos = localStorage.getItem("imagemPos");
+  let idImagem = localStorage.getItem("idImagem");
+  RemoverImagem(idImagem, imagemPos, 1);
+  fecharPopUp();
+  localStorage.removeItem("imagemPos");
+  localStorage.removeItem("idImagem");
+}
+
+function ExibirBotaoAdicaoImagem(pos) {
+  let primeiraVez = localStorage.getItem("primeiraVez");
+  if (pos) {
+    document.getElementById("inputImagemPreExecucao").style.display = "block";
+  } else {
+    document.getElementById("inputImagemPreExecucao").style.display = "block";
+  }
+  if (primeiraVez) {
+    localStorage.removeItem("primeiraVez");
+    setTimeout(ExibirBotaoAdicaoImagem, 16);
+  }
+}
 //Preencher ordem
 window.onload = function () {};
 

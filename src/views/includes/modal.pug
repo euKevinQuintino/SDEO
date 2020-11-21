@@ -16,15 +16,15 @@
     .modal__content__buttons
       input#confirmarAlteracao.detructive-button(type="button" value="sim, alterar observação" onclick="ConfirmarAlteracaoObservacao()")
       input.secondary-button(type="button" value="não, cancelar alteração" onclick="fecharPopUp()")
-//.modal#PopUpExclusaoImagem
+.modal#PopUpExclusaoImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()") 
       i.fas.fa-times
     .modal-ajuda__content__title cuidado!
     .modal__content__text tem certeza que deseja #[strong remover esta imagem?]
     .modal__content__buttons
-      input#confirmarRemocao.detructive-button(type="button" value="sim, remover imagem")
-      input#cancelarRemocao.secondary-button(type="button" value="não, cancelar remoção")
+      input.detructive-button(type="button" value="sim, remover imagem" onclick="ConfirmarRemocaoImagem()")
+      input.secondary-button(type="button" value="não, cancelar remoção" onclick="fecharPopUp()")
 .modal#PopUpExclusao
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
