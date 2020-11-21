@@ -7,6 +7,9 @@ const formularioObservacaoEdicao = document.getElementById(
 const pagina = window.location.pathname;
 const socket = io();
 
+var quantidadeImagemPre = 0;
+var quantidadeImagemPos = 0;
+
 //Acessar ordem
 function AcessarOrdem() {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
@@ -89,18 +92,36 @@ if (pagina == "/ordem.html") {
   }
   //Imagens
   let inputImagemPre = document.getElementById("enviarImagemPre");
-  let imagemPre01 = document.getElementById("imagemPre01");
+  let inputImagemPos = document.getElementById("enviarImagemPos");
   inputImagemPre.addEventListener("change", function () {
-    var imagem01 = this.files[0];
-    if (imagem01) {
+    CriarItemImagem(1);
+    let imagemPre = document.getElementById(
+      "imagemPre" + String(quantidadeImagemPre)
+    );
+    var imagem = this.files[0];
+    if (imagem) {
       const leitor = new FileReader();
       leitor.addEventListener("load", function () {
-        imagemPre01.setAttribute("src", this.result);
+        imagemPre.setAttribute("src", this.result);
       });
-      leitor.readAsDataURL(imagem01);
+      leitor.readAsDataURL(imagem);
     }
   });
-
+  let inputImagemPos = document.getElementById("enviarImagemPos");
+  inputImagemPos.addEventListener("change", function () {
+    CriarItemImagem(0);
+    let imagemPos = document.getElementById(
+      "imagemPos" + String(quantidadeImagemPos)
+    );
+    var imagem = this.files[0];
+    if (imagem) {
+      const leitor = new FileReader();
+      leitor.addEventListener("load", function () {
+        imagemPos.setAttribute("src", this.result);
+      });
+      leitor.readAsDataURL(imagem);
+    }
+  });
   document.getElementById("enviarImagemPre").addEventListener(
     "change",
     function () {
@@ -228,6 +249,59 @@ function ExibirConfirmacaoExclusaoOrdem() {
 function ExcluirOrdem() {
   let numeroOrdem = localStorage.getItem("numeroOrdem");
   socket.emit("exclusao", numeroOrdem);
+}
+
+//Imagens
+function CriarItemImagem(pos) {
+  if (pos) {
+    if (quantidadeImagemPre < 8) {
+      if (quantidadeImagemPre == 7) {
+        document.getElementById("inputImagemPreExecucao").style.display =
+          "none";
+      }
+      quantidadeImagemPre += 1;
+      let pictureBorder = document.createElement("div");
+      let removeIconDiv = document.createElement("div");
+      let imagem = document.createElement("img");
+      let removeIcon = document.createElement("i");
+      pictureBorder.className = "system__order-details__image-grid__picture";
+      removeIconDiv.className =
+        "system__order-details__image-grid__picture__remove";
+      imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPre));
+      removeIcon.className = "fas";
+      removeIcon.classList.add("fa-times");
+      removeIconDiv.appendChild(removeIcon);
+      pictureBorder.appendChild(removeIconDiv);
+      pictureBorder.appendChild(imagem);
+      document.querySelector(".preExecucao").appendChild(pictureBorder);
+    } else {
+      console.log("imagemPre lotada");
+    }
+  } else {
+    if (quantidadeImagemPos < 8) {
+      if (quantidadeImagemPos == 7) {
+        document.getElementById("inputImagemPosExecucao").style.display =
+          "none";
+      }
+      quantidadeImagemPos += 1;
+      let pictureBorder = document.createElement("div");
+      let removeIconDiv = document.createElement("div");
+      let imagem = document.createElement("img");
+      let removeIcon = document.createElement("i");
+      pictureBorder.className = "system__order-details__image-grid__picture";
+      removeIconDiv.className =
+        "system__order-details__image-grid__picture__remove";
+      imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPos));
+      removeIcon.className = "fas";
+      removeIcon.classList.add("fa-times");
+      removeIconDiv.appendChild(removeIcon);
+      pictureBorder.appendChild(removeIconDiv);
+      pictureBorder.appendChild(imagem);
+      document.querySelector(".posExecucao").appendChild(pictureBorder);
+    } else {
+      console.log("imagemPos lotada");
+    }
+  }
 }
 
 //Preencher ordem
