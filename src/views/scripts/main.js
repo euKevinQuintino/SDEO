@@ -94,7 +94,7 @@ if (pagina == "/ordem.html") {
   let inputImagemPre = document.getElementById("enviarImagemPre");
   let inputImagemPos = document.getElementById("enviarImagemPos");
   inputImagemPre.addEventListener("change", function () {
-    CriarItemImagem(1);
+    CriarItemImagem(0);
     let imagemPre = document.getElementById(
       "imagemPre" + String(quantidadeImagemPre)
     );
@@ -109,7 +109,7 @@ if (pagina == "/ordem.html") {
   });
   let inputImagemPos = document.getElementById("enviarImagemPos");
   inputImagemPos.addEventListener("change", function () {
-    CriarItemImagem(0);
+    CriarItemImagem(1);
     let imagemPos = document.getElementById(
       "imagemPos" + String(quantidadeImagemPos)
     );
@@ -253,7 +253,7 @@ function ExcluirOrdem() {
 
 //Imagens
 function CriarItemImagem(pos) {
-  if (pos) {
+  if (!pos) {
     if (quantidadeImagemPre < 8) {
       if (quantidadeImagemPre == 7) {
         document.getElementById("inputImagemPreExecucao").style.display =
@@ -268,6 +268,14 @@ function CriarItemImagem(pos) {
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
       imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPre));
+      removeIconDiv.setAttribute(
+        "onclick",
+        RemoverImagem("imagemPreQuadro" + String(quantidadeImagemPre), 0)
+      );
+      pictureBorder.setAttribute(
+        "id",
+        "imagemPreQuadro" + String(quantidadeImagemPre)
+      );
       removeIcon.className = "fas";
       removeIcon.classList.add("fa-times");
       removeIconDiv.appendChild(removeIcon);
@@ -291,7 +299,15 @@ function CriarItemImagem(pos) {
       pictureBorder.className = "system__order-details__image-grid__picture";
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
-      imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPos));
+      removeIconDiv.setAttribute(
+        "onclick",
+        RemoverImagem("imagemPosQuadro" + String(quantidadeImagemPos), 1)
+      );
+      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
+      pictureBorder.setAttribute(
+        "id",
+        "imagemPosQuadro" + String(quantidadeImagemPos)
+      );
       removeIcon.className = "fas";
       removeIcon.classList.add("fa-times");
       removeIconDiv.appendChild(removeIcon);
@@ -301,6 +317,17 @@ function CriarItemImagem(pos) {
     } else {
       console.log("imagemPos lotada");
     }
+  }
+}
+function RemoverImagem(id, pos) {
+  console.log(id);
+  console.log(typeof id);
+  if (pos) {
+    //document.getElementById(id).remove();
+    //document.getElementById("inputImagemPosExecucao").style.display = "flex";
+  } else {
+    //document.getElementById(id).remove();
+    //document.getElementById("inputImagemPreExecucao").style.display = "flex";
   }
 }
 
