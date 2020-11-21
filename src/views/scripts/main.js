@@ -259,7 +259,7 @@ function CriarItemImagem(pos) {
           "none";
       }
       quantidadeImagemPre += 1;
-      console.log(quantidadeImagemPre)
+      console.log(quantidadeImagemPre);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");

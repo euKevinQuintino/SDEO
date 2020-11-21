@@ -44,12 +44,12 @@ io.on("connection", (socket) => {
   socket.on("alteracaoObservacao", (novaObservacao, numeroOrdem) => {
     EditarObservacao(novaObservacao, numeroOrdem);
   });
-  socket.on("adicaoImagemPre", async(imagem) => {
-    const buffer = Buffer.from(imagem, 'base64');
-    console.log(buffer.length)
-    io.emit("imagemVolta", imagem)
+  socket.on("adicaoImagemPre", async (imagem) => {
+    const buffer = Buffer.from(imagem, "base64");
+    console.log(buffer.length);
+    io.emit("imagemVolta", imagem);
     //await fs.writeFile('../../dist/temp/', image).catch(console.error);
-  })
+  });
 });
 
 // funções database
