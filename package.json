@@ -1,6 +1,6 @@
 {
   "name": "sdeo",
-  "version": "1.0",
+  "version": "0.0.5",
   "description": "Sistema de Documentação de Execuções de Ordens - Laboratório de Engenharia de Software",
   "main": "./src/controllers/app.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "Engenharia",
     "Software"
   ],
-  "author": "Kevin Quintino, Mattheus Soler & Vinínius de Jesus",
+  "author": "Kevin Quintino, Mattheus Solér & Vinícius de Jesus",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kevinnicolasbq/SDEO/issues"

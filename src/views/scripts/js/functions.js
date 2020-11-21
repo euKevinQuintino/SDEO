@@ -239,7 +239,44 @@ function ExcluirOrdem() {
 
 //Imagens
 function CriarItemImagem(pos) {
-  if (!pos) {
+  if (pos) {
+    if (quantidadeImagemPos < 8) {
+      if (quantidadeImagemPos == 7) {
+        document.getElementById("inputImagemPosExecucao").style.display =
+          "none";
+      }
+      ++quantidadeImagemPos;
+      let pictureBorder = document.createElement("div");
+      let removeIconDiv = document.createElement("div");
+      let imagem = document.createElement("img");
+      let removeIcon = document.createElement("i");
+      pictureBorder.className = "system__order-details__image-grid__picture";
+      removeIconDiv.className =
+        "system__order-details__image-grid__picture__remove";
+      let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
+      imagem.addEventListener("click", function (evento) {
+        AmpliarImagem(idImagem);
+        evento.preventDefault();
+      });
+      removeIconDiv.addEventListener("click", function (evento) {
+        RemoverImagem(idImagem, 1, 0);
+        evento.preventDefault();
+      });
+      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
+      pictureBorder.setAttribute(
+        "id",
+        "imagemPosQuadro" + String(quantidadeImagemPos)
+      );
+      removeIcon.className = "fas";
+      removeIcon.classList.add("fa-times");
+      removeIconDiv.appendChild(removeIcon);
+      pictureBorder.appendChild(removeIconDiv);
+      pictureBorder.appendChild(imagem);
+      document.querySelector(".posExecucao").appendChild(pictureBorder);
+    } else {
+      console.log("imagemPos lotada");
+    }
+  } else {
     if (quantidadeImagemPre < 8) {
       if (quantidadeImagemPre == 7) {
         document.getElementById("inputImagemPreExecucao").style.display =
@@ -277,43 +314,6 @@ function CriarItemImagem(pos) {
     } else {
       console.log("imagemPre lotada");
     }
-  } else {
-    if (quantidadeImagemPos < 8) {
-      if (quantidadeImagemPos == 7) {
-        document.getElementById("inputImagemPosExecucao").style.display =
-          "none";
-      }
-      ++quantidadeImagemPos;
-      let pictureBorder = document.createElement("div");
-      let removeIconDiv = document.createElement("div");
-      let imagem = document.createElement("img");
-      let removeIcon = document.createElement("i");
-      pictureBorder.className = "system__order-details__image-grid__picture";
-      removeIconDiv.className =
-        "system__order-details__image-grid__picture__remove";
-      let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
-      pictureBorder.addEventListener("click", function (evento) {
-        AmpliarImagem(idImagem);
-        evento.preventDefault();
-      });
-      removeIconDiv.addEventListener("click", function (evento) {
-        RemoverImagem(idImagem, 1, 0);
-        evento.preventDefault();
-      });
-      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
-      pictureBorder.setAttribute(
-        "id",
-        "imagemPosQuadro" + String(quantidadeImagemPos)
-      );
-      removeIcon.className = "fas";
-      removeIcon.classList.add("fa-times");
-      removeIconDiv.appendChild(removeIcon);
-      pictureBorder.appendChild(removeIconDiv);
-      pictureBorder.appendChild(imagem);
-      document.querySelector(".posExecucao").appendChild(pictureBorder);
-    } else {
-      console.log("imagemPos lotada");
-    }
   }
 }
 
@@ -330,14 +330,14 @@ function RemoverImagem(id, pos, confirmou) {
     if (pos) {
       console.log(quantidadeImagemPos);
       document.getElementById(id).remove();
-      quantidadeImagemPos--;
+      --quantidadeImagemPos;
       console.log(quantidadeImagemPos);
       localStorage.setItem("primeiraVez", 1);
       ExibirBotaoAdicaoImagem(pos);
     } else {
       console.log(quantidadeImagemPre);
       document.getElementById(id).remove();
-      quantidadeImagemPre--;
+      --quantidadeImagemPre;
       console.log(quantidadeImagemPre);
       localStorage.setItem("primeiraVez", 1);
       ExibirBotaoAdicaoImagem(pos);
