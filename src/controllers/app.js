@@ -48,7 +48,6 @@ io.on("connection", (socket) => {
     const buffer = Buffer.from(imagem, "base64");
     console.log(buffer.length);
     io.emit("imagemVolta", imagem);
-    //await fs.writeFile('../../dist/temp/', image).catch(console.error);
   });
 });
 

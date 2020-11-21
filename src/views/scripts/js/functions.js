@@ -74,10 +74,8 @@ if (pagina == "/cadastro-ordem.html") {
   });
 }
 
-//Adicionar imagem
-function AmpliarImagem(imagem) {
-  document.getElementById("PopUpImagem").style.display = "none";
-  leitor.readAsDataURL(imagem);
+if (pagina !== "/ordem.html") {
+  localStorage.setItem("statusObservacao", "desatualizada");
 }
 
 if (pagina == "/ordem.html") {
@@ -122,18 +120,6 @@ if (pagina == "/ordem.html") {
       leitor.readAsDataURL(imagem);
     }
   });
-  document.getElementById("enviarImagemPre").addEventListener(
-    "change",
-    function () {
-      const reader = new FileReader();
-      reader.onload = function () {
-        const bytes = this.result.replace(/.*base64,/, "");
-        socket.emit("image", bytes);
-      };
-      reader.readAsDataURL(this.files[0]);
-    },
-    false
-  );
   //Alteração/Cadastro observação
   formularioObservacao.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -208,7 +194,7 @@ if (pagina == "/ordem.html") {
   socket.on("imagemVolta", function (buffer) {
     var image = new Image();
     image = "data:image/png;base64," + buffer;
-    imagemPre02.setAttribute("src", image);
+    document.getElementById("imagemPopUp").setAttribute("src", image);
   });
 }
 
@@ -228,6 +214,7 @@ function ExibirConfirmacaoAlteracaoObservacao() {
   document.getElementById("PopUpConfirmacaoAlteracao").style.display = "flex";
 }
 
+//Confirma alterações na observação
 function ConfirmarEdicaoObservacao() {
   let novaObservacao = evento.target.elements.inputObservacao.value;
   if (novaObservacao.length > 255) {
@@ -258,25 +245,25 @@ function CriarItemImagem(pos) {
         document.getElementById("inputImagemPreExecucao").style.display =
           "none";
       }
-      quantidadeImagemPre += 1;
+      ++quantidadeImagemPre;
       console.log(quantidadeImagemPre);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
       let removeIcon = document.createElement("i");
-      pictureBorder.className = "system__order-details__image-grid__picture";
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
       imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPre));
       let idImagem = "imagemPreQuadro" + String(quantidadeImagemPre);
+      pictureBorder.className = "system__order-details__image-grid__picture";
+      imagem.addEventListener("click", function (evento) {
+        AmpliarImagem(idImagem);
+        evento.preventDefault();
+      });
       removeIconDiv.addEventListener("click", function (evento) {
         RemoverImagem(idImagem, 0, 0);
         evento.preventDefault();
       });
-      /*.setAttribute(
-        "onclick",
-        "RemoverImagem(imagemPreQuadro" + String(quantidadeImagemPre) + ", 0, 0)"
-      );*/
       pictureBorder.setAttribute(
         "id",
         "imagemPreQuadro" + String(quantidadeImagemPre)
@@ -296,7 +283,7 @@ function CriarItemImagem(pos) {
         document.getElementById("inputImagemPosExecucao").style.display =
           "none";
       }
-      quantidadeImagemPos += 1;
+      ++quantidadeImagemPos;
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -305,6 +292,10 @@ function CriarItemImagem(pos) {
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
       let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
+      pictureBorder.addEventListener("click", function (evento) {
+        AmpliarImagem(idImagem);
+        evento.preventDefault();
+      });
       removeIconDiv.addEventListener("click", function (evento) {
         RemoverImagem(idImagem, 1, 0);
         evento.preventDefault();
@@ -325,18 +316,28 @@ function CriarItemImagem(pos) {
     }
   }
 }
+
+function AmpliarImagem(idImagem) {
+  let imagem = document.getElementById(String(idImagem)).src;
+  console.log(imagem);
+  let imagemPopUp = document.getElementById("imagemPopUp");
+  imagemPopUp.setAttribute("src", imagem);
+  document.getElementById("PopUpImagem").style.display = "flex";
+}
+
 function RemoverImagem(id, pos, confirmou) {
   if (confirmou) {
     if (pos) {
+      console.log(quantidadeImagemPos);
       document.getElementById(id).remove();
-      quantidadeImagemPos -= 1;
+      quantidadeImagemPos--;
       console.log(quantidadeImagemPos);
       localStorage.setItem("primeiraVez", 1);
       ExibirBotaoAdicaoImagem(pos);
     } else {
       console.log(quantidadeImagemPre);
       document.getElementById(id).remove();
-      quantidadeImagemPre -= 1;
+      quantidadeImagemPre--;
       console.log(quantidadeImagemPre);
       localStorage.setItem("primeiraVez", 1);
       ExibirBotaoAdicaoImagem(pos);
@@ -346,15 +347,6 @@ function RemoverImagem(id, pos, confirmou) {
     localStorage.setItem("imagemPos", pos);
     document.getElementById("PopUpExclusaoImagem").style.display = "flex";
   }
-}
-
-function ConfirmarRemocaoImagem() {
-  let imagemPos = localStorage.getItem("imagemPos");
-  let idImagem = localStorage.getItem("idImagem");
-  RemoverImagem(idImagem, imagemPos, 1);
-  fecharPopUp();
-  localStorage.removeItem("imagemPos");
-  localStorage.removeItem("idImagem");
 }
 
 function ExibirBotaoAdicaoImagem(pos) {
@@ -369,9 +361,12 @@ function ExibirBotaoAdicaoImagem(pos) {
     setTimeout(ExibirBotaoAdicaoImagem, 16);
   }
 }
-//Preencher ordem
-window.onload = function () {};
 
-if (pagina !== "/ordem.html") {
-  localStorage.setItem("statusObservacao", "desatualizada");
+function ConfirmarRemocaoImagem() {
+  let imagemPos = localStorage.getItem("imagemPos");
+  let idImagem = localStorage.getItem("idImagem");
+  RemoverImagem(idImagem, imagemPos, 1);
+  fecharPopUp();
+  localStorage.removeItem("imagemPos");
+  localStorage.removeItem("idImagem");
 }

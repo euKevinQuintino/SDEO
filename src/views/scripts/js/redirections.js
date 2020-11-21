@@ -99,7 +99,7 @@ function fecharPopUp() {
     document.getElementById("PopUpEdicaoObservacao").style.display = "none";
     document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";
     document.getElementById("PopUpExclusaoImagem").style.display = "none";
-    //document.getElementById("PopUpImagem").style.display = "none";
+    document.getElementById("PopUpImagem").style.display = "none";
     document.getElementById("PopUpErroEdicaoObservacao").style.display = "none";
   }
 }

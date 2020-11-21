@@ -50,7 +50,7 @@
     .modal__content__text desculpe, ordem não encontrada.
     .modal__content__buttons
       input#confirmarRemocao.primary-button(type="button" value="criar esta ordem" onclick="CadastrarOrdemBuscada()")
-      input#cancelarRemocao.secondary-button(type="button" value="voltar para a tela inicial" onclick="paraIndex()")
+      input#cancelarRemocao.secondary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
 .modal#PopUpErroCadastroExiste
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
@@ -97,9 +97,9 @@
     .modal__content__buttons
       input.primary-button(type="submit" value="confirmar alteração" onclick="ConfirmarEdicaoObservacao()")
       input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
-//.modal#PopUpImagem
+.modal#PopUpImagem
   .modal__content
     .modal__content__close(onclick="fecharPopUp()")
       i.fas.fa-times
-    .modal-ajuda__content__title imagem pré execução 01
-    img#imagemPre01
+    .modal-ajuda__content__title imagem
+    img#imagemPopUp
