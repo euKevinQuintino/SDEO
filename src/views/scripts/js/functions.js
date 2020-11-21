@@ -7,8 +7,8 @@ const formularioObservacaoEdicao = document.getElementById(
 const pagina = window.location.pathname;
 const socket = io();
 
-var quantidadeImagemPre = 0;
-var quantidadeImagemPos = 0;
+localStorage.setItem("quantidadeImagemPre", 0);
+localStorage.setItem("quantidadeImagemPos", 0);
 
 //Acessar ordem
 function AcessarOrdem() {
@@ -90,12 +90,12 @@ if (pagina == "/ordem.html") {
   }
   //Imagens
   let inputImagemPre = document.getElementById("enviarImagemPre");
-  let inputImagemPos = document.getElementById("enviarImagemPos");
+  let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
   inputImagemPre.addEventListener("change", function () {
-    CriarItemImagem(0);
     let imagemPre = document.getElementById(
       "imagemPre" + String(quantidadeImagemPre)
     );
+    CriarItemImagem(0);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
@@ -106,11 +106,12 @@ if (pagina == "/ordem.html") {
     }
   });
   let inputImagemPos = document.getElementById("enviarImagemPos");
+  let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
   inputImagemPos.addEventListener("change", function () {
-    CriarItemImagem(1);
     let imagemPos = document.getElementById(
       "imagemPos" + String(quantidadeImagemPos)
     );
+    CriarItemImagem(1);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
@@ -240,12 +241,14 @@ function ExcluirOrdem() {
 //Imagens
 function CriarItemImagem(pos) {
   if (pos) {
+    let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
     if (quantidadeImagemPos < 8) {
       if (quantidadeImagemPos == 7) {
         document.getElementById("inputImagemPosExecucao").style.display =
           "none";
       }
       ++quantidadeImagemPos;
+      localStorage.setItem("quantidadeImagemPos", quantidadeImagemPos);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -253,6 +256,7 @@ function CriarItemImagem(pos) {
       pictureBorder.className = "system__order-details__image-grid__picture";
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
+      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
       let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
       imagem.addEventListener("click", function (evento) {
         AmpliarImagem(idImagem);
@@ -262,7 +266,6 @@ function CriarItemImagem(pos) {
         RemoverImagem(idImagem, 1, 0);
         evento.preventDefault();
       });
-      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
       pictureBorder.setAttribute(
         "id",
         "imagemPosQuadro" + String(quantidadeImagemPos)
@@ -277,13 +280,13 @@ function CriarItemImagem(pos) {
       console.log("imagemPos lotada");
     }
   } else {
+    let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
     if (quantidadeImagemPre < 8) {
       if (quantidadeImagemPre == 7) {
         document.getElementById("inputImagemPreExecucao").style.display =
           "none";
       }
-      ++quantidadeImagemPre;
-      console.log(quantidadeImagemPre);
+      localStorage.setItem("quantidadeImagemPre", ++quantidadeImagemPre);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -319,7 +322,6 @@ function CriarItemImagem(pos) {
 
 function AmpliarImagem(idImagem) {
   let imagem = document.getElementById(String(idImagem)).src;
-  console.log(imagem);
   let imagemPopUp = document.getElementById("imagemPopUp");
   imagemPopUp.setAttribute("src", imagem);
   document.getElementById("PopUpImagem").style.display = "flex";
@@ -327,20 +329,24 @@ function AmpliarImagem(idImagem) {
 
 function RemoverImagem(id, pos, confirmou) {
   if (confirmou) {
-    if (pos) {
-      console.log(quantidadeImagemPos);
+    if (pos == 1) {
+      let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
       document.getElementById(id).remove();
       --quantidadeImagemPos;
-      console.log(quantidadeImagemPos);
+      localStorage.setItem("quantidadeImagemPos", quantidadeImagemPos);
       localStorage.setItem("primeiraVez", 1);
-      ExibirBotaoAdicaoImagem(pos);
+      if (quantidadeImagemPos == 7) {
+        ExibirBotaoAdicaoImagem(pos);
+      }
     } else {
-      console.log(quantidadeImagemPre);
+      let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
       document.getElementById(id).remove();
       --quantidadeImagemPre;
-      console.log(quantidadeImagemPre);
+      localStorage.setItem("quantidadeImagemPre", quantidadeImagemPre);
       localStorage.setItem("primeiraVez", 1);
-      ExibirBotaoAdicaoImagem(pos);
+      if (quantidadeImagemPos == 7) {
+        ExibirBotaoAdicaoImagem(pos);
+      }
     }
   } else {
     localStorage.setItem("idImagem", id);
@@ -351,8 +357,8 @@ function RemoverImagem(id, pos, confirmou) {
 
 function ExibirBotaoAdicaoImagem(pos) {
   let primeiraVez = localStorage.getItem("primeiraVez");
-  if (pos) {
-    document.getElementById("inputImagemPreExecucao").style.display = "block";
+  if (pos == 1) {
+    document.getElementById("inputImagemPosExecucao").style.display = "block";
   } else {
     document.getElementById("inputImagemPreExecucao").style.display = "block";
   }
