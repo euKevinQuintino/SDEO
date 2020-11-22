@@ -255,7 +255,7 @@ function CriarItemImagem(pos) {
       imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
       let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
       imagem.addEventListener("click", function (evento) {
-        AmpliarImagem(idImagem);
+        AmpliarImagem("imagemPos" + String(quantidadeImagemPos));
         evento.preventDefault();
       });
       removeIconDiv.addEventListener("click", function (evento) {
@@ -293,7 +293,7 @@ function CriarItemImagem(pos) {
       let idImagem = "imagemPreQuadro" + String(quantidadeImagemPre);
       pictureBorder.className = "system__order-details__image-grid__picture";
       imagem.addEventListener("click", function (evento) {
-        AmpliarImagem(idImagem);
+        AmpliarImagem("imagemPre" + String(quantidadeImagemPre));
         evento.preventDefault();
       });
       removeIconDiv.addEventListener("click", function (evento) {
@@ -317,10 +317,17 @@ function CriarItemImagem(pos) {
 }
 
 function AmpliarImagem(idImagem) {
-  let imagem = document.getElementById(String(idImagem)).src;
+  let imagem = document.getElementById(idImagem).src;
   let imagemPopUp = document.getElementById("imagemPopUp");
   imagemPopUp.setAttribute("src", imagem);
   document.getElementById("PopUpImagem").style.display = "flex";
+  let downloadImagem = imagem.replace(
+    /^data:image\/[^;]+/,
+    "data:application/octet-stream"
+  );
+  document
+    .getElementById("botaoBaixarImagem")
+    .setAttribute("href", downloadImagem);
 }
 
 function RemoverImagem(id, pos, confirmou) {

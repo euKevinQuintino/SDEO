@@ -97,9 +97,12 @@
     .modal__content__buttons
       input.primary-button(type="submit" value="confirmar alteração" onclick="ConfirmarEdicaoObservacao()")
       input.secondary-button(type="button" value="voltar para a ordem" onclick="fecharPopUp()")
-.modal#PopUpImagem
-  .modal__content
-    .modal__content__close(onclick="fecharPopUp()")
+.modal-imagem#PopUpImagem
+  .modal-imagem__content
+    .modal-imagem__content__close(onclick="fecharPopUp()")
       i.fas.fa-times
     .modal-ajuda__content__title imagem
     img#imagemPopUp
+    .modal-imagem__content__buttons
+      input.primary-button(type="submit" value="voltar para a ordem" onclick="fecharPopUp()" style="margin-bottom: 12px;")
+      a#botaoBaixarImagem.link(href="" style="margin-left: 88px;" target="_blank" download="imagem-SDEO-LBomfim.png") baixar imagem

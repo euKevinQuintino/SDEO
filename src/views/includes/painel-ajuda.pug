@@ -44,14 +44,19 @@
     .modal-ajuda__content__guide#AjudaAdicaoImagem
       .modal-ajuda__content__items__text adicionando imagens:
       ol
-        li #[span em breve] 
+        li #[span acesse ou cadastre a ordem na qual deseja adicionar imagens;]
+        li #[span escolha em qual seção a imagem deve ir (pré ou pós execução);]
+        li #[span verifique se, na seção escolhida, existe o botão "+", permitindo a adição de mais imagens, se ele não estiver aparecendo, significa que aquela seção está lotada (possui oito imagens);]
+        li #[span caso contrário, clique nele e selecione a imagem que deseja adicionar, e ela será associada àquela ordem.] 
       .modal-ajuda__content__items__options
         input.secondary-button(type="button" onclick="fecharPopUp()" value="fechar painel de ajuda" tabindex="0")
         p.link(onclick="abrirPainelAjuda()" tabindex="0" style="text-align: center; margin-top: 6px;") voltar para a seleção
     .modal-ajuda__content__guide#AjudaRemocaoImagem
       .modal-ajuda__content__items__text removendo imagens:
       ol
-        li #[span em breve] 
+        li #[span acesse ou cadastre a ordem na qual deseja adicionar imagens;]
+        li #[span ao encontrar a imagem que deseja remover, clique no botão "x", no canto superio direito de seu quadro;]
+        li #[span confirme a remoção e a ordem será removida do sistema.]
       .modal-ajuda__content__items__options
         input.secondary-button(type="button" onclick="fecharPopUp()" value="fechar painel de ajuda" tabindex="0")
         p.link(onclick="abrirPainelAjuda()" tabindex="0" style="text-align: center; margin-top: 6px;") voltar para a seleção
@@ -59,7 +64,8 @@
       .modal-ajuda__content__items__text atalhos de teclado (desktop):
       ul
         li #[span pressione F1 para acessar ou fechar o painel de ajuda;]
-        li #[span pressione "enter" ou "espaço" para submeter um formulário já preenchido;]
+        li #[span pressione "enter" para submeter um formulário já preenchido;]
+        li #[span se necessário ou desejável, utilize a navegação pela tecla "Tab".]
       .modal-ajuda__content__items__options
         input.secondary-button(type="button" onclick="fecharPopUp()" value="fechar painel de ajuda" tabindex="0")
         p.link(onclick="abrirPainelAjuda()" tabindex="0" style="text-align: center; margin-top: 6px;") voltar para a seleção
