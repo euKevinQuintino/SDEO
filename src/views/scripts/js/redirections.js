@@ -86,7 +86,7 @@ function fecharPopUp() {
   if (pagina == "/cadastro-ordem.html") {
     document.getElementById("PopUpCadastro").style.display = "none";
     document.getElementById("PopUpErroCadastroExiste").style.display = "none";
-    document.getElementById("PopUpErroCadastroMaior").style.display = "none";
+    document.getElementById("PopUpErroBuscaIntervalo").style.display = "none";
   }
   if (pagina == "/index.html" || pagina == "/resultados-busca.html") {
     document.getElementById("PopUpErroBusca").style.display = "none";

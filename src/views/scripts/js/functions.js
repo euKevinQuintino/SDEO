@@ -92,15 +92,13 @@ if (pagina == "/ordem.html") {
   let inputImagemPre = document.getElementById("enviarImagemPre");
   let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
   inputImagemPre.addEventListener("change", function () {
-    let imagemPre = document.getElementById(
-      "imagemPre" + String(quantidadeImagemPre)
-    );
     CriarItemImagem(0);
+    let imagemPre = "imagemPre" + String(++quantidadeImagemPre);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
       leitor.addEventListener("load", function () {
-        imagemPre.setAttribute("src", this.result);
+        document.getElementById(imagemPre).setAttribute("src", this.result);
       });
       leitor.readAsDataURL(imagem);
     }
@@ -108,15 +106,13 @@ if (pagina == "/ordem.html") {
   let inputImagemPos = document.getElementById("enviarImagemPos");
   let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
   inputImagemPos.addEventListener("change", function () {
-    let imagemPos = document.getElementById(
-      "imagemPos" + String(quantidadeImagemPos)
-    );
     CriarItemImagem(1);
+    let imagemPos = "imagemPos" + String(++quantidadeImagemPos);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
       leitor.addEventListener("load", function () {
-        imagemPos.setAttribute("src", this.result);
+        document.getElementById(imagemPos).setAttribute("src", this.result);
       });
       leitor.readAsDataURL(imagem);
     }
@@ -332,19 +328,27 @@ function RemoverImagem(id, pos, confirmou) {
     if (pos == 1) {
       let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
       document.getElementById(id).remove();
+      if (quantidadeImagemPos == 8) {
+        --quantidadeImagemPos;
+        var eraOito = true;
+      }
       --quantidadeImagemPos;
       localStorage.setItem("quantidadeImagemPos", quantidadeImagemPos);
       localStorage.setItem("primeiraVez", 1);
-      if (quantidadeImagemPos == 7) {
+      if (quantidadeImagemPos == 7 || eraOito) {
         ExibirBotaoAdicaoImagem(pos);
       }
     } else {
       let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
       document.getElementById(id).remove();
+      if (quantidadeImagemPre == 8) {
+        --quantidadeImagemPre;
+        var eraOito = true;
+      }
       --quantidadeImagemPre;
       localStorage.setItem("quantidadeImagemPre", quantidadeImagemPre);
       localStorage.setItem("primeiraVez", 1);
-      if (quantidadeImagemPos == 7) {
+      if (quantidadeImagemPre == 7 || eraOito) {
         ExibirBotaoAdicaoImagem(pos);
       }
     }
@@ -364,7 +368,7 @@ function ExibirBotaoAdicaoImagem(pos) {
   }
   if (primeiraVez) {
     localStorage.removeItem("primeiraVez");
-    setTimeout(ExibirBotaoAdicaoImagem, 16);
+    //setTimeout(ExibirBotaoAdicaoImagem, 16);
   }
 }
 
