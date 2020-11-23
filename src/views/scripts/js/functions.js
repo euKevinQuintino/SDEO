@@ -8,7 +8,11 @@ const pagina = window.location.pathname;
 const socket = io();
 
 localStorage.setItem("quantidadeImagemPre", 0);
+localStorage.setItem("limitePre", 0);
+localStorage.setItem("limitePos", 0);
 localStorage.setItem("quantidadeImagemPos", 0);
+localStorage.setItem("houveExclusaoPre", 0);
+localStorage.setItem("houveExclusaoPos", 0);
 
 //Acessar ordem
 function AcessarOrdem() {
@@ -90,28 +94,30 @@ if (pagina == "/ordem.html") {
   }
   //Imagens
   let inputImagemPre = document.getElementById("enviarImagemPre");
-  let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
   inputImagemPre.addEventListener("change", function () {
+    let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
     CriarItemImagem(0);
-    let imagemPre = "imagemPre" + String(++quantidadeImagemPre);
+    var imagemPre = "imagemPre" + String(++quantidadeImagemPre);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
       leitor.addEventListener("load", function () {
+        console.log(imagemPre);
         document.getElementById(imagemPre).setAttribute("src", this.result);
       });
       leitor.readAsDataURL(imagem);
     }
   });
   let inputImagemPos = document.getElementById("enviarImagemPos");
-  let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
   inputImagemPos.addEventListener("change", function () {
+    let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
     CriarItemImagem(1);
-    let imagemPos = "imagemPos" + String(++quantidadeImagemPos);
+    var imagemPos = "imagemPos" + String(++quantidadeImagemPos);
     var imagem = this.files[0];
     if (imagem) {
       const leitor = new FileReader();
       leitor.addEventListener("load", function () {
+        console.log(imagemPos);
         document.getElementById(imagemPos).setAttribute("src", this.result);
       });
       leitor.readAsDataURL(imagem);
@@ -238,13 +244,14 @@ function ExcluirOrdem() {
 function CriarItemImagem(pos) {
   if (pos) {
     let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
-    if (quantidadeImagemPos < 8) {
-      if (quantidadeImagemPos == 7) {
+    let limitePos = localStorage.getItem("limitePos");
+    if (limitePos < 8) {
+      if (limitePos == 7) {
         document.getElementById("inputImagemPosExecucao").style.display =
           "none";
       }
-      ++quantidadeImagemPos;
-      localStorage.setItem("quantidadeImagemPos", quantidadeImagemPos);
+      localStorage.setItem("quantidadeImagemPos", ++quantidadeImagemPos);
+      localStorage.setItem("limitePos", ++limitePos);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -259,7 +266,7 @@ function CriarItemImagem(pos) {
         evento.preventDefault();
       });
       removeIconDiv.addEventListener("click", function (evento) {
-        RemoverImagem(idImagem, 1, 0);
+        RemoverImagem(idImagem, 1, false);
         evento.preventDefault();
       });
       pictureBorder.setAttribute(
@@ -277,12 +284,14 @@ function CriarItemImagem(pos) {
     }
   } else {
     let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
-    if (quantidadeImagemPre < 8) {
-      if (quantidadeImagemPre == 7) {
+    let limitePre = localStorage.getItem("limitePre");
+    if (limitePre < 8) {
+      if (limitePre == 7) {
         document.getElementById("inputImagemPreExecucao").style.display =
           "none";
       }
       localStorage.setItem("quantidadeImagemPre", ++quantidadeImagemPre);
+      localStorage.setItem("limitePre", ++limitePre);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
       let imagem = document.createElement("img");
@@ -333,30 +342,24 @@ function AmpliarImagem(idImagem) {
 function RemoverImagem(id, pos, confirmou) {
   if (confirmou) {
     if (pos == 1) {
-      let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
+      localStorage.setItem("houveExclusaoPos", true);
       document.getElementById(id).remove();
-      if (quantidadeImagemPos == 8) {
-        --quantidadeImagemPos;
-        var eraOito = true;
-      }
-      --quantidadeImagemPos;
-      localStorage.setItem("quantidadeImagemPos", quantidadeImagemPos);
-      localStorage.setItem("primeiraVez", 1);
-      if (quantidadeImagemPos == 7 || eraOito) {
+      let limitePos = localStorage.getItem("limitePos");
+      localStorage.setItem("limitePos", --limitePos);
+      localStorage.setItem("primeiraVez", true);
+      if (limitePos == 7 || eraOito) {
         ExibirBotaoAdicaoImagem(pos);
+        var eraOito = false;
       }
     } else {
-      let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
+      let limitePre = localStorage.getItem("limitePre");
+      localStorage.setItem("limitePre", --limitePre);
+      localStorage.setItem("houveExclusaoPre", true);
       document.getElementById(id).remove();
-      if (quantidadeImagemPre == 8) {
-        --quantidadeImagemPre;
-        var eraOito = true;
-      }
-      --quantidadeImagemPre;
-      localStorage.setItem("quantidadeImagemPre", quantidadeImagemPre);
-      localStorage.setItem("primeiraVez", 1);
-      if (quantidadeImagemPre == 7 || eraOito) {
+      localStorage.setItem("primeiraVez", true);
+      if (limitePre == 7 || eraOito) {
         ExibirBotaoAdicaoImagem(pos);
+        var eraOito = false;
       }
     }
   } else {
@@ -382,7 +385,7 @@ function ExibirBotaoAdicaoImagem(pos) {
 function ConfirmarRemocaoImagem() {
   let imagemPos = localStorage.getItem("imagemPos");
   let idImagem = localStorage.getItem("idImagem");
-  RemoverImagem(idImagem, imagemPos, 1);
+  RemoverImagem(idImagem, imagemPos, true);
   fecharPopUp();
   localStorage.removeItem("imagemPos");
   localStorage.removeItem("idImagem");
