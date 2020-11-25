@@ -7,10 +7,10 @@ const formularioObservacaoEdicao = document.getElementById(
 const pagina = window.location.pathname;
 const socket = io();
 
-localStorage.setItem("quantidadeImagemPre", 0);
+localStorage.setItem("numeroImagemPre", 0);
 localStorage.setItem("limitePre", 0);
 localStorage.setItem("limitePos", 0);
-localStorage.setItem("quantidadeImagemPos", 0);
+localStorage.setItem("numeroImagemPos", 0);
 localStorage.setItem("houveExclusaoPre", 0);
 localStorage.setItem("houveExclusaoPos", 0);
 
@@ -95,32 +95,38 @@ if (pagina == "/ordem.html") {
   //Imagens
   let inputImagemPre = document.getElementById("enviarImagemPre");
   inputImagemPre.addEventListener("change", function () {
-    let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
-    CriarItemImagem(0);
-    var imagemPre = "imagemPre" + String(++quantidadeImagemPre);
-    var imagem = this.files[0];
-    if (imagem) {
-      const leitor = new FileReader();
-      leitor.addEventListener("load", function () {
-        console.log(imagemPre);
-        document.getElementById(imagemPre).setAttribute("src", this.result);
-      });
-      leitor.readAsDataURL(imagem);
+    if (!this.files[0].name.match(/.(jpg|jpeg|png)$/i)) {
+      document.getElementById("PopUpErroFormatoImagem").style.display = "flex";
+    } else {
+      let numeroImagemPre = localStorage.getItem("numeroImagemPre");
+      CriarItemImagem(0);
+      var imagemPre = "imagemPre" + String(++numeroImagemPre);
+      var imagem = this.files[0];
+      if (imagem) {
+        const leitor = new FileReader();
+        leitor.addEventListener("load", function () {
+          document.getElementById(imagemPre).setAttribute("src", this.result);
+        });
+        leitor.readAsDataURL(imagem);
+      }
     }
   });
   let inputImagemPos = document.getElementById("enviarImagemPos");
   inputImagemPos.addEventListener("change", function () {
-    let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
-    CriarItemImagem(1);
-    var imagemPos = "imagemPos" + String(++quantidadeImagemPos);
-    var imagem = this.files[0];
-    if (imagem) {
-      const leitor = new FileReader();
-      leitor.addEventListener("load", function () {
-        console.log(imagemPos);
-        document.getElementById(imagemPos).setAttribute("src", this.result);
-      });
-      leitor.readAsDataURL(imagem);
+    if (!this.files[0].name.match(/.(jpg|jpeg|png)$/i)) {
+      document.getElementById("PopUpErroFormatoImagem").style.display = "flex";
+    } else {
+      let numeroImagemPos = localStorage.getItem("numeroImagemPos");
+      CriarItemImagem(1);
+      var imagemPos = "imagemPos" + String(++numeroImagemPos);
+      var imagem = this.files[0];
+      if (imagem) {
+        const leitor = new FileReader();
+        leitor.addEventListener("load", function () {
+          document.getElementById(imagemPos).setAttribute("src", this.result);
+        });
+        leitor.readAsDataURL(imagem);
+      }
     }
   });
   //Alteração/Cadastro observação
@@ -241,16 +247,16 @@ function ExcluirOrdem() {
 }
 
 //Imagens
-function CriarItemImagem(pos) {
-  if (pos) {
-    let quantidadeImagemPos = localStorage.getItem("quantidadeImagemPos");
+function CriarItemImagem(tipo) {
+  if (tipo) {
+    let numeroImagemPos = localStorage.getItem("numeroImagemPos");
     let limitePos = localStorage.getItem("limitePos");
     if (limitePos < 8) {
       if (limitePos == 7) {
         document.getElementById("inputImagemPosExecucao").style.display =
           "none";
       }
-      localStorage.setItem("quantidadeImagemPos", ++quantidadeImagemPos);
+      localStorage.setItem("numeroImagemPos", ++numeroImagemPos);
       localStorage.setItem("limitePos", ++limitePos);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
@@ -259,10 +265,10 @@ function CriarItemImagem(pos) {
       pictureBorder.className = "system__order-details__image-grid__picture";
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
-      imagem.setAttribute("id", "imagemPos" + String(quantidadeImagemPos));
-      let idImagem = "imagemPosQuadro" + String(quantidadeImagemPos);
+      imagem.setAttribute("id", "imagemPos" + String(numeroImagemPos));
+      let idImagem = "imagemPosQuadro" + String(numeroImagemPos);
       imagem.addEventListener("click", function (evento) {
-        AmpliarImagem("imagemPos" + String(quantidadeImagemPos));
+        AmpliarImagem("imagemPos" + String(numeroImagemPos));
         evento.preventDefault();
       });
       removeIconDiv.addEventListener("click", function (evento) {
@@ -271,7 +277,7 @@ function CriarItemImagem(pos) {
       });
       pictureBorder.setAttribute(
         "id",
-        "imagemPosQuadro" + String(quantidadeImagemPos)
+        "imagemPosQuadro" + String(numeroImagemPos)
       );
       removeIcon.className = "fas";
       removeIcon.classList.add("fa-times");
@@ -283,14 +289,14 @@ function CriarItemImagem(pos) {
       console.log("imagemPos lotada");
     }
   } else {
-    let quantidadeImagemPre = localStorage.getItem("quantidadeImagemPre");
+    let numeroImagemPre = localStorage.getItem("numeroImagemPre");
     let limitePre = localStorage.getItem("limitePre");
     if (limitePre < 8) {
       if (limitePre == 7) {
         document.getElementById("inputImagemPreExecucao").style.display =
           "none";
       }
-      localStorage.setItem("quantidadeImagemPre", ++quantidadeImagemPre);
+      localStorage.setItem("numeroImagemPre", ++numeroImagemPre);
       localStorage.setItem("limitePre", ++limitePre);
       let pictureBorder = document.createElement("div");
       let removeIconDiv = document.createElement("div");
@@ -298,11 +304,11 @@ function CriarItemImagem(pos) {
       let removeIcon = document.createElement("i");
       removeIconDiv.className =
         "system__order-details__image-grid__picture__remove";
-      imagem.setAttribute("id", "imagemPre" + String(quantidadeImagemPre));
-      let idImagem = "imagemPreQuadro" + String(quantidadeImagemPre);
+      imagem.setAttribute("id", "imagemPre" + String(numeroImagemPre));
+      let idImagem = "imagemPreQuadro" + String(numeroImagemPre);
       pictureBorder.className = "system__order-details__image-grid__picture";
       imagem.addEventListener("click", function (evento) {
-        AmpliarImagem("imagemPre" + String(quantidadeImagemPre));
+        AmpliarImagem("imagemPre" + String(numeroImagemPre));
         evento.preventDefault();
       });
       removeIconDiv.addEventListener("click", function (evento) {
@@ -311,7 +317,7 @@ function CriarItemImagem(pos) {
       });
       pictureBorder.setAttribute(
         "id",
-        "imagemPreQuadro" + String(quantidadeImagemPre)
+        "imagemPreQuadro" + String(numeroImagemPre)
       );
       removeIcon.className = "fas";
       removeIcon.classList.add("fa-times");
@@ -339,39 +345,39 @@ function AmpliarImagem(idImagem) {
     .setAttribute("href", downloadImagem);
 }
 
-function RemoverImagem(id, pos, confirmou) {
+function RemoverImagem(idImagem, tipo, confirmou) {
   if (confirmou) {
-    if (pos == 1) {
+    if (tipo == 1) {
       localStorage.setItem("houveExclusaoPos", true);
-      document.getElementById(id).remove();
+      document.getElementById(idImagem).remove();
       let limitePos = localStorage.getItem("limitePos");
       localStorage.setItem("limitePos", --limitePos);
       localStorage.setItem("primeiraVez", true);
       if (limitePos == 7 || eraOito) {
-        ExibirBotaoAdicaoImagem(pos);
+        ExibirBotaoAdicaoImagem(tipo);
         var eraOito = false;
       }
     } else {
       let limitePre = localStorage.getItem("limitePre");
       localStorage.setItem("limitePre", --limitePre);
       localStorage.setItem("houveExclusaoPre", true);
-      document.getElementById(id).remove();
+      document.getElementById(idImagem).remove();
       localStorage.setItem("primeiraVez", true);
       if (limitePre == 7 || eraOito) {
-        ExibirBotaoAdicaoImagem(pos);
+        ExibirBotaoAdicaoImagem(tipo);
         var eraOito = false;
       }
     }
   } else {
-    localStorage.setItem("idImagem", id);
-    localStorage.setItem("imagemPos", pos);
+    localStorage.setItem("idImagem", idImagem);
+    localStorage.setItem("imagemPos", tipo);
     document.getElementById("PopUpExclusaoImagem").style.display = "flex";
   }
 }
 
-function ExibirBotaoAdicaoImagem(pos) {
+function ExibirBotaoAdicaoImagem(tipo) {
   let primeiraVez = localStorage.getItem("primeiraVez");
-  if (pos == 1) {
+  if (tipo == 1) {
     document.getElementById("inputImagemPosExecucao").style.display = "block";
   } else {
     document.getElementById("inputImagemPreExecucao").style.display = "block";

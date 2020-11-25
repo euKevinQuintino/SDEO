@@ -95,6 +95,7 @@ function fecharPopUp() {
   if (pagina == "/ordem.html") {
     document.getElementById("PopUpExclusao").style.display = "none";
     document.getElementById("PopUpObservacaoVazia").style.display = "none";
+    document.getElementById("PopUpErroFormatoImagem").style.display = "none";
     document.getElementById("PopUpObservacaoPreenchida").style.display = "none";
     document.getElementById("PopUpEdicaoObservacao").style.display = "none";
     document.getElementById("PopUpConfirmacaoAlteracao").style.display = "none";

@@ -36,13 +36,13 @@ io.on("connection", (socket) => {
   });
   //Exclusão
   socket.on("exclusao", (numeroOrdem) => {
-    RemoverOrdem(numeroOrdem);
+    ExluirOrdem(numeroOrdem);
   });
   socket.on("conferirObservacao", (numeroOrdem) => {
     ConferirObservacao(numeroOrdem);
   });
   socket.on("alteracaoObservacao", (novaObservacao, numeroOrdem) => {
-    EditarObservacao(novaObservacao, numeroOrdem);
+    AlterarObservacao(novaObservacao, numeroOrdem);
   });
   socket.on("adicaoImagemPre", async (imagem) => {
     const buffer = Buffer.from(imagem, "base64");
@@ -90,19 +90,19 @@ function CadastrarOrdem(numeroOrdemDigitado) {
   }
 }
 
-function RemoverOrdem(numeroOrdemDigitado) {
+function ExluirOrdem(numeroOrdemDigitado) {
   Ordem.destroy({ where: { numeroOrdem: numeroOrdemDigitado } })
     .then(() => {
       console.log("[EXCLUSÃO] Ordem removida com sucesso!");
       io.emit("sucessoExclusao", true);
     })
     .catch((erro) => {
-      console.log("[EXCLUSÃO] Erro: Não foi possível remover a ordem: " + erro);
+      console.log("[EXCLUSÃO] Erro: Não foi possível exluir a ordem: " + erro);
       io.emit("sucessoExclusao", false);
     });
 }
 
-async function EditarObservacao(novaObservacao, numeroOrdem) {
+async function AlterarObservacao(novaObservacao, numeroOrdem) {
   await Ordem.update(
     { observacaoOrdem: novaObservacao },
     {

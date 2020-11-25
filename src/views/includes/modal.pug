@@ -106,3 +106,11 @@
     .modal-imagem__content__buttons
       input.primary-button(type="submit" value="voltar para a ordem" onclick="fecharPopUp()" style="margin-bottom: 12px;")
       a#botaoBaixarImagem.link(href="" style="margin-left: 88px;" target="_blank" download="imagem-SDEO-LBomfim.png") baixar imagem
+.modal-imagem#PopUpErroFormatoImagem
+  .modal__content
+    .modal__content__close(onclick="fecharPopUp()")
+      i.fas.fa-times
+    .modal-ajuda__content__title algo deu errado =(
+    .modal__content__text(style="margin-top: 16px") desculpe, são aceitas apenas imagens nos formatos: #[br] #[strong png, jpeg ou jpg.]
+    .modal__content__buttons
+      input.primary-button(type="button" value="tentar novamente" onclick="fecharPopUp()")
